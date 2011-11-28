@@ -13,6 +13,7 @@ end
 gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 group :development do
   gem 'ZenTest'
