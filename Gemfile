@@ -14,6 +14,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'twitter-bootstrap-rails'
 
 group :development do
   gem 'ZenTest'
