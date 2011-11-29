@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :is_admin?, :only => :destroy
+
   # GET /profiles
   # GET /profiles.json
   def index
@@ -17,17 +20,6 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @profile }
-    end
-  end
-
-  # GET /profiles/new
-  # GET /profiles/new.json
-  def new
-    @profile = Profile.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.json { render json: @profile }
     end
   end
@@ -57,7 +49,6 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
-
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
