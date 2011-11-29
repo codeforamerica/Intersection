@@ -10,6 +10,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'bootstrap-sass'
 gem 'devise'
 gem 'haml-rails'
 gem 'gravatar_image_tag'
