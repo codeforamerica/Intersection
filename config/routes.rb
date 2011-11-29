@@ -1,8 +1,9 @@
 Intersection::Application.routes.draw do
-  resources :projects
+  resources :links
 
-  ActiveAdmin.routes(self)
-
+  resources :projects do 
+    resources :links
+  end
 
   resources :profiles
 

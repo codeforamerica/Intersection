@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @link.name
+%p
+  %b Link:
+  = @link.link
+%p
+  %b Project:
+  = @link.project_id
+%p
+  %b Link type:
+  = @link.link_type_id
+
+= link_to 'Edit', edit_link_path(@link)
+\|
+= link_to 'Back', links_path
