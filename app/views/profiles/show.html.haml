@@ -10,6 +10,6 @@
   %b Bio:
   = @profile.bio
 
-= link_to 'Edit', edit_profile_path(@profile)
-\|
+= link_to 'Edit', edit_profile_path(@profile) if (current_user.profile == @profile or current_user.admin?)
+\| 
 = link_to 'Back', profiles_path

@@ -1,23 +1,22 @@
-%h1 Listing profiles
+%h1 Fellows
 
 %table
   %tr
-    %th User
     %th Name
     %th Bio
+    %th Email
     %th
     %th
     %th
 
   - @profiles.each do |profile|
     %tr
-      %td= profile.user_id
       %td= profile.name
+      %td= profile.user.email
       %td= profile.bio
       %td= link_to 'Show', profile
-      %td= link_to 'Edit', edit_profile_path(profile)
-      %td= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Edit', edit_profile_path(profile) if (current_user.profile == profile or current_user.admin?)
+      %td= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete if current_user.admin?
 
 %br
 
-= link_to 'New Profile', new_profile_path

@@ -24,7 +24,7 @@
           %li
             = link_to 'Projects', '#'
           %li
-            = link_to 'Fellows', '#'
+            = link_to 'Fellows', profiles_path
           %li
             - if user_signed_in?
               = link_to('Logout', destroy_user_session_path, :method => :delete)
