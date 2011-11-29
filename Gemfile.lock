@@ -72,7 +72,7 @@ GEM
     eventmachine (0.12.10)
     execjs (1.2.9)
       multi_json (~> 1.0)
-    factory_girl (2.3.0)
+    factory_girl (2.3.2)
       activesupport
     factory_girl_rails (1.4.0)
       factory_girl (~> 2.3.0)
@@ -108,7 +108,7 @@ GEM
     mime-types (1.17.2)
     mocha (0.10.0)
       metaclass (~> 0.0.1)
-    multi_json (1.0.3)
+    multi_json (1.0.4)
     nifty-generators (0.4.6)
     nokogiri (1.5.0)
     orm_adapter (0.0.5)
