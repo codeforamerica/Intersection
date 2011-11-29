@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20111129165809) do
     t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_type"
+    t.integer  "user_type_id"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
