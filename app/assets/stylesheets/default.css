@@ -1,0 +1,185 @@
+/*
+===============
+developed by Vel
+at http://www.vhg-design.com
+===============
+*/
+
+#github_ribbon {
+position: absolute;
+top: 0;
+right: 0;
+display: block;
+width: 149px;
+height: 150px;
+background: url(github-ribbon.png) no-repeat;
+text-indent: -999px;
+overflow: hidden;
+z-index: 3;}
+
+
+.wrap {
+  margin: 0 auto;
+  text-align: left;
+  width: 940px;
+  clear: both;
+}
+.wrap-b {
+  padding-bottom: 15px;
+  background: url(wrap-bg-b.gif) 0 100% repeat-x;
+  margin-bottom: 10px;
+
+}
+.wrap-t {
+  padding-top: 15px;
+  background: url(wrap-bg-t.gif) 0 0 repeat-x;
+  margin-top: 10px;
+
+}
+
+.like-btn {
+  display: block;
+  text-indent: -999em;
+  outline: none;
+}
+
+.wp-caption-text {font-style: italic;
+font-size: .8em;
+text-align: center;}
+
+.wp-caption .alignright {float: right;}
+.wp-caption .alignleft {float: left;}
+
+
+/*   ============   HEADER   ============   */
+
+#header {
+  height: 167px;
+  position: relative;
+ padding-top: 27px;
+}
+#header a#logo {
+  width: 250px;
+  height: 101px;
+  float: left;
+  background: url(cfa-full-logo.png) 0 0 no-repeat;
+  margin-top: 3px;
+}
+#header #tag-line {
+  height: 75px;
+  width: 420px;
+  background: url(vertical-dot.gif) 0 0 repeat-y;
+  margin-left: 35px;
+  padding-left: 35px;
+  float: left;
+}
+#header #tag-line h1 {
+  font-size: 1.75em;
+  text-transform: uppercase;
+  margin:2px 0 8px;
+  letter-spacing: 1px;
+text-shadow: #999 1px 1px 1px;
+}
+#header #tag-line h2 {
+  font-size: 1.25em;
+   font-weight: normal;
+}
+#social {
+  float: right;
+  margin-top: 15px;
+}
+#social li {
+  float: left;
+  margin-left: 5px;
+}
+#social li a {
+  display: block;
+  outline: none;
+  text-indent: -999em;
+  width: 41px;
+  height: 40px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+#social li a#rss {
+  background-image: url(rss-icon.png);
+}
+#social li a#fb {
+  background-image: url(fb-icon.png);
+}
+#social li a#yt {
+  background-image: url(yt-icon.png);
+}
+#social li a#tw {
+  background-image: url(tw-icon.png);
+}
+#social li a#mail {
+  background-image: url(mail-icon.png);
+}
+#nav-wrap {
+  clear: both;
+  padding-top: 18px;
+  height: 64px;
+}
+#nav {
+  position: relative;
+  height: 50px;
+  float: left;
+  margin-top: 10px;
+}
+
+
+#nav li {
+  float: left;
+  padding-right: 3px;
+  background: url(nav-li-bg.gif) top right no-repeat;
+}
+#nav li.current_page_item {
+  padding-left: 0;
+}
+#nav li a {
+  padding: 0 14px;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 1px;
+text-shadow: #ccc 1px 1px 1px;
+}
+#nav li.first a {
+  padding-left: 0;
+}
+
+
+#nav li.current_page_item a, #nav li a:hover, #nav li a.active {
+   color: #409dd6;
+}
+#nav ul {
+  position: absolute;
+  left: 0;
+  top: 27px;
+}
+#nav ul li {
+  float: left;
+  padding: 0;
+  background: url(arrow.png) no-repeat 100% 0%;
+  margin-right: 15px;
+padding-right: 15px;
+}
+#nav ul li a {
+  text-transform: none;
+  font-size: 1.08em;
+   color: #409dd6;
+   padding: 0;
+   font-weight: normal;
+   letter-spacing: normal;
+}
+#nav ul li a span {
+  color: #cb283a;
+}
+
+li#menu-item-4 a, li#menu-item-2468 a {
+  padding-left: 0px;
+}
+
