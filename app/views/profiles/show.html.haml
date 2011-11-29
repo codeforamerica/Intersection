@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @profile.user_id
+%p
+  %b Name:
+  = @profile.name
+%p
+  %b Bio:
+  = @profile.bio
+
+= link_to 'Edit', edit_profile_path(@profile)
+\|
+= link_to 'Back', profiles_path
