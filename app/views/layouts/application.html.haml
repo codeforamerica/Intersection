@@ -7,9 +7,18 @@
     = csrf_meta_tags
 
   %body
-    = notice
-    = alert
-
+    - if flash[:notice]
+      .div{:class => 'alert-message success fade in', 'data-alert' => 'alert'}
+        %a.close{:href => '#'} x
+        %p
+          %strong
+            = notice
+    - if flash[:alert]
+      .div{:class => 'alert-message info fade in', 'data-alert' => 'alert'}
+        %a.close{:href => '#'} x
+        %p
+          %strong
+            = alert
     #header.wrap
       %a.like-btn{:href => "/", :id =>"logo"} Code for America
       #tag-line
