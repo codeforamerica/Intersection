@@ -4,18 +4,19 @@ require 'factory_girl_rails'
 
 if Rails.env!='production'
 
+#Add User Types
+  staff = Factory(:user_type, :name => "Staff")
+  fellow = Factory(:user_type, :name => "Fellow")
 
-#Add 50 Users
-  puts "Creating 30 users"
-  30.times do |i|
-    user = Factory(:user)
-  end
-  puts "Adding admins"
-  User.all[5..10].each do |user|
-    puts "\t Admin #{user.email} pass something\n"
-    user.admin = true
-    user.save
-  end
+#Add Fellows
+  puts "Adding 15 Fellows"
+    15.times do |i|
+      user = Factory(:user, :profile => Factory(:profile, :user_type => fellow))
+    end
 
+#Add Admin
+  puts "Creating admin"
+  user = Factory(:admin_user, :profile => Factory(:profile, :user_type => staff))
+  puts "\t Admin #{user.email} pass something\n"
 
 end
