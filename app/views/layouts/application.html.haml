@@ -9,5 +9,11 @@
   %body
     = notice
     = alert
-    = yield
 
+    #header.wrap
+      %a.like-btn{:href => "/", :id =>"logo"} Code for America
+      #tag-line
+        %h1 Intersection
+        %h2 Project Dashboard
+    .container
+      = yield
