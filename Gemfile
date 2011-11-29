@@ -14,8 +14,10 @@ gem 'devise'
 gem 'haml-rails'
 gem 'gravatar_image_tag'
 gem 'jquery-rails'
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+#gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'twitter-bootstrap-rails'
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
 
 group :development do
   gem 'ZenTest'

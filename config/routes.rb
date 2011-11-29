@@ -1,7 +1,8 @@
 Intersection::Application.routes.draw do
-  resources :profiles
+  ActiveAdmin.routes(self)
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  resources :profiles
 
   devise_for :users
 
