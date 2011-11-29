@@ -1,6 +1,8 @@
 %p#notice= notice
 
 %p
+  = gravatar_image_tag(@profile.user.email)
+%p
   %b User:
   = @profile.user_id
 %p
@@ -11,5 +13,5 @@
   = @profile.bio
 
 = link_to 'Edit', edit_profile_path(@profile) if (current_user.profile == @profile or current_user.admin?)
-\| 
+\|
 = link_to 'Back', profiles_path

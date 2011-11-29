@@ -12,6 +12,7 @@ end
 
 gem 'devise'
 gem 'haml-rails'
+gem 'gravatar_image_tag'
 gem 'jquery-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'twitter-bootstrap-rails'
