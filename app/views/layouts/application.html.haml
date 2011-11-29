@@ -15,5 +15,18 @@
       #tag-line
         %h1 Intersection
         %h2 Project Dashboard
-    .container
-      = yield
+      #nav-wrap
+        %ul#nav.menu
+          %li
+            = link_to 'Home', '#'
+          %li
+            = link_to 'Teams', '#'
+          %li
+            = link_to 'Projects', '#'
+          %li
+            = link_to 'Fellows', '#'
+    .wrap-t
+      .container
+        = yield
+    %footer
+      Code for America
