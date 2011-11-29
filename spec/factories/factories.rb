@@ -30,3 +30,14 @@ Factory.define :project do |p|
   p.description {Faker::Lorem.sentence(3)}
   p.impact_statement {Faker::Lorem.sentence(3)}
 end
+
+Factory.define :link_type do |lt|
+  lt.name "github"
+end
+
+Factory.define :link do |l|
+  l.name "Something"
+  l.url {Faker::Internet.domain_name}
+  l.project {Factory(:project)}
+  l.link_type {Factory(:link_type)}
+end

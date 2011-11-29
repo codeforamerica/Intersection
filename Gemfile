@@ -15,7 +15,8 @@ gem 'haml-rails'
 gem 'gravatar_image_tag'
 gem 'jquery-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
-
+gem 'inherited_resources'
+gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 group :development do
   gem 'ZenTest'
 end

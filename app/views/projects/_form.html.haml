@@ -1,4 +1,4 @@
-= form_for @project do |f|
+= nested_form_for @project do |f|
   -if @project.errors.any?
     #error_explanation
       %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
@@ -19,5 +19,14 @@
   .field
     = f.label :active
     = f.check_box :active
+  -if !@project.new_record?
+    =f.fields_for :links do |link|
+      = link.label :name
+      = link.text_field :name
+      = link.label :url
+      = link.text_field :url
+      = link.select(:link_type_id, LinkType.all.collect {|p| [ p.name, p.id ] }, {:include_blank => false})
+      = link.link_to_remove "Remove"
+    =f.link_to_add "Add Link",:links
   .actions
     = f.submit 'Save'
