@@ -15,5 +15,23 @@
       #tag-line
         %h1 Intersection
         %h2 Project Dashboard
-    .container
-      = yield
+      #nav-wrap
+        %ul#nav.menu
+          %li
+            = link_to 'Home', '#'
+          %li
+            = link_to 'Teams', '#'
+          %li
+            = link_to 'Projects', '#'
+          %li
+            = link_to 'Fellows', '#'
+          %li
+            - if user_signed_in?
+              = link_to('Logout', destroy_user_session_path, :method => :delete)
+            - else
+              = link_to('Login', new_user_session_path)
+    .wrap-t
+      .container
+        = yield
+    %footer
+      Code for America
