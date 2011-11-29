@@ -1,3 +1,24 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+textarea#project_description {
+  width: 400px;
+  height: 250px;
+  margin: 15px;
+}
+
+input#project_name {
+  width: 400px;
+  margin: 15px;
+}
+
+textarea#project_impact_statement {
+  width: 400px;
+  height: 250px;
+  margin: 15px;
+}
+
+input#project_active {
+  margin: 15px;
+}

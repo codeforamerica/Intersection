@@ -38,7 +38,7 @@ RailsAdmin.config do |config|
 
   # Or use simple custom authorization rule:
   # config.authorize_with do
-  #   redirect_to root_path unless warden.user.is_admin?
+  #    redirect_to root_path unless warden.user.admin?
   # end
 
   # Use a specific role for ActiveModel's :attr_acessible :attr_protected
