@@ -156,10 +156,10 @@ text-align: center;}
  padding-top: 27px;
 }
 #header a#logo {
-  width: 150px;
-  height: 86px;
+  width: 250px;
+  height: 101px;
   float: left;
-  background: url(logo.png) 0 0 no-repeat;
+  background: url(cfa-full-logo.png) 0 0 no-repeat;
   margin-top: 3px;
 }
 #header #tag-line {
