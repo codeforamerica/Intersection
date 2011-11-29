@@ -1,5 +1,9 @@
 Intersection::Application.routes.draw do
-  resources :projects
+  resources :links
+
+  resources :projects do 
+    resources :links
+  end
 
   resources :profiles
 
