@@ -89,11 +89,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     hike (1.2.1)
-<<<<<<< HEAD
-    hpricot (0.8.5)
-=======
     hpricot (0.8.4)
->>>>>>> parent of 4d86124... Replacing RailsAdmin with Active Admin
     i18n (0.6.0)
     jquery-rails (1.0.19)
       railties (~> 3.0)
