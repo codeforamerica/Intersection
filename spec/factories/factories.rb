@@ -4,7 +4,9 @@ Factory.define :user do |u|
   u.email { Faker::Internet.email }
   u.admin false
   u.password "something"
-  u.profile {Factory(:profile)}
+  u.after_build do |user|
+    user.profile = Factory.create(:profile)
+  end
 end
 
 Factory.define :admin_user, :parent => :user do |u|
