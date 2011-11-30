@@ -8,7 +8,7 @@
   = @project.impact_statement
 %p
   %b Active:
-  = @project.active
+  = @project.active? ? 'Yes' : 'No'
 
 = link_to 'Edit', edit_project_path(@project)
 \|
