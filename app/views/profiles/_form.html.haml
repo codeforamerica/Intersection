@@ -5,11 +5,15 @@
       %ul
         - @profile.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :bio
-    = f.text_area :bio
-  .actions
-    = f.submit 'Save'
+  .fieldset
+    .legend
+    .clearfix
+      = f.label :name
+      .input
+        = f.text_field :name
+    .clearfix
+      = f.label :bio
+      .input
+        = f.text_area :bio
+    .actions
+      = f.submit 'Save', {:class => "btn primary"}
