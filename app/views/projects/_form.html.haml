@@ -5,8 +5,6 @@
       %ul
         - @project.errors.full_messages.each do |msg|
           %li= msg
-
-
   .field
     = f.label :name
     = f.text_field :name
@@ -28,5 +26,16 @@
       = link.select(:link_type_id, LinkType.all.collect {|p| [ p.name, p.id ] }, {:include_blank => false})
       = link.link_to_remove "Remove"
     =f.link_to_add "Add Link",:links
+    =f.fields_for :project_milestones do |pm|
+      = pm.label :milestone_id, "Select a Milestone"
+      = pm.select(:milestone_id, Milestone.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
+      = pm.label :planned_date, "Planned Completion Date"
+      = pm.date_select("planned_date", :start_year => Time.now.year)
+      = pm.label :completed_date, "Completed On"
+      = pm.date_select("completed_date", :start_year => Time.now.year, :include_blank => true)
+      = pm.label :active, "Currently On:"
+      = pm.check_box("active")
+      = pm.link_to_remove "Remove"
+    = f.link_to_add "Add Milestone",:project_milestones
   .actions
     = f.submit 'Save'

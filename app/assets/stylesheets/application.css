@@ -49,3 +49,7 @@ a#logo {
   letter-spacing: 1px;
   text-shadow: #ccc 1px 1px 1px;
 }
+
+label {
+  float:none;
+}

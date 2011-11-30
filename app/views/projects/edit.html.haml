@@ -1,7 +1,10 @@
-%h1 Editing project
+.div{:class=>"row"}
+  .span16
+    %h1 Editing project
+  .span4
+    = link_to 'Show', @project
+    \|
+    = link_to 'Back', projects_path
+  .span16
+    =render 'form'
 
-= render 'form'
-
-= link_to 'Show', @project
-\|
-= link_to 'Back', projects_path

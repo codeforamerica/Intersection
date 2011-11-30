@@ -41,3 +41,14 @@ Factory.define :link do |l|
   l.project {Factory(:project)}
   l.link_type {Factory(:link_type)}
 end
+
+
+Factory.define :milestone do |m|
+  m.name {Faker::Lorem.words(4).to_sentence}
+end
+
+Factory.define :project_milestone do |pm|
+  pm.milestone {Factory(:milestone)}
+  pm.project {Factory(:project)}
+  pm.planned_date {rand(6).months.ago}
+end

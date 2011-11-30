@@ -62,7 +62,8 @@ ActiveRecord::Schema.define(:version => 20111130001507) do
     t.integer  "project_id"
     t.integer  "milestone_id"
     t.date     "planned_date"
-    t.boolean  "active",       :default => false
+    t.boolean  "active",         :default => false
+    t.date     "completed_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

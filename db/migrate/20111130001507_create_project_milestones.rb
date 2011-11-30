@@ -5,7 +5,7 @@ class CreateProjectMilestones < ActiveRecord::Migration
       t.integer :milestone_id
       t.date :planned_date
       t.boolean :active, :default => false
-
+      t.date :completed_date
       t.timestamps
     end
   end

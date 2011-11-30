@@ -9,6 +9,18 @@
 %p
   %b Active:
   = @project.active
+%h2 Milestones
+
+%ul
+  -@project.milestones.each do |milestone|
+    %li
+      =milestone.name
+
+%h2 Links
+%ul
+  -@project.links.each do |link|
+    %li
+      =link_to link.name, link.url
 
 = link_to 'Edit', edit_project_path(@project)
 \|
