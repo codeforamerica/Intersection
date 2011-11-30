@@ -1,0 +1,46 @@
+ul.menu {
+  list-style: none;
+}
+
+a#logo {
+  width: 250px;
+  height: 101px;
+  background: url(cfa-full-logo.png) 0 0 no-repeat;
+  margin-top: 3px;
+  display:block;
+}
+
+#top_header {
+ height: 120px;
+}
+
+.gravatar img {
+  float: left;
+  padding: 10px;
+}
+
+
+#nav {
+  height: 50px;
+  margin: 0px;
+  padding:0px;
+}
+
+#nav li {
+  float: left;
+  padding-right: 3px;
+  background: url(nav-li-bg.gif) top right no-repeat;
+}
+
+#nav li a {
+  padding: 0 14px;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: #ccc 1px 1px 1px;
+}
+
+
