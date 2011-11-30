@@ -40,7 +40,7 @@
               - if !user_signed_in?
                 = link_to('Login', new_user_session_path)
             %li
-              -if current_user.admin?
+              -if current_user and current_user.admin?
                 = link_to 'Admin', rails_admin_path
       .div{:class => 'row '}
         .span16 

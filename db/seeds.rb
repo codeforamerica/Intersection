@@ -22,4 +22,14 @@ if Rails.env!='production'
   user_type.save
   puts "\t Admin #{user.email} pass something\n"
 
+#Adding Projects
+  puts "Adding projects with random start dates over the last six months"
+  50.times {
+    project = Factory(:project)
+    project.update_attributes(:created_at => rand(5).months.ago + rand(10).days)
+    5.times {Factory(:link, :project => project)}
+  }
+
 end
+
+
