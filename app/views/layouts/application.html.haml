@@ -7,11 +7,11 @@
     = csrf_meta_tags
 
   %body
-    .container 
+    .container
       .div{:class => 'row', :id=> "top_header"}
         .span-one-third
           =link_to(image_tag("cfa-full-logo.png"), root_url)
-        .span-one-third 
+        .span-one-third
           %h1 Intersection
           %h2 Project Dashboard
         .span-one-third
@@ -19,8 +19,8 @@
             .gravatar
               =gravatar_image_tag(current_user.email, :alt => current_user.profile.name)
             .profile
-              %h2 
-                Welcome Dan
+              %h2
+                = "Welcome #{current_user.profile.name}"
               .links
                 = link_to('Logout', destroy_user_session_path, :method => :delete)
                 |
@@ -40,10 +40,10 @@
               - if !user_signed_in?
                 = link_to('Login', new_user_session_path)
             %li
-              -if current_user and current_user.admin?
+              -if current_user.try(:admin?)
                 = link_to 'Admin', rails_admin_path
       .div{:class => 'row '}
-        .span16 
+        .span16
           - if flash[:notice]
             .div{:class => 'alert-message success fade in', 'data-alert' => 'alert'}
               %a.close{:href => '#'} x
