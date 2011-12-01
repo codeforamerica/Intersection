@@ -1,0 +1,23 @@
+<% milestone_status_data = @projects.map { |x| x.active_milestone.milestone}.group_by(&:id).map{|k,v| [k, v.length]}.sort!%> 
+<% milestone_chart_data = milestone_status_data.map { |x| ["#{Milestone.find(x[0]).name}", x[1]] }%>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Milestone');
+    data.addColumn('number', 'projects');
+    data.addRows(<%=raw(milestone_chart_data)%>);
+    var options = {'title':'Project Milestone Status','width':600,'height':300};
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+    var pie_chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+    pie_chart.draw(data, options); 
+  }
+</script>
+<div class="row">
+<div id="chart_div" class="span8"></div>
+<div id="pie_chart" class="span8"></div>
+</div>

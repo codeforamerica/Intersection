@@ -5,4 +5,9 @@ class Project < ActiveRecord::Base
   
   accepts_nested_attributes_for :links, :allow_destroy => true
   accepts_nested_attributes_for :project_milestones, :allow_destroy => true
+
+  def active_milestone
+    project_milestones.where(:active => true).first
+  end
+
 end

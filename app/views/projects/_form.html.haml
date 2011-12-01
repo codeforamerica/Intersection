@@ -5,27 +5,6 @@
       %ul
         - @project.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :impact_statement
-    = f.text_area :impact_statement
-  .field
-    = f.label :active
-    = f.check_box :active
-  -if !@project.new_record?
-    =f.fields_for :links do |link|
-      = link.label :name
-      = link.text_field :name
-      = link.label :url
-      = link.text_field :url
-      = link.select(:link_type_id, LinkType.all.collect {|p| [ p.name, p.id ] }, {:include_blank => false})
-      = link.link_to_remove "Remove"
-    =f.link_to_add "Add Link",:links
     =f.fields_for :project_milestones do |pm|
       = pm.label :milestone_id, "Select a Milestone"
       = pm.select(:milestone_id, Milestone.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
@@ -39,3 +18,46 @@
     = f.link_to_add "Add Milestone",:project_milestones
   .actions
     = f.submit 'Save'
+
+  .fieldset
+    .legend
+    .clearfix
+      = f.label :name
+      .input
+        = f.text_field :name
+    .clearfix
+      = f.label :description
+      .input
+        = f.text_area :description
+    .clearfix
+      = f.label :impact_statement
+      .input
+        = f.text_area :impact_statement
+    .clearfix
+      = f.label :active
+      .input
+        = f.check_box :active
+    - if !@project.new_record?
+      =f.fields_for :links do |link|
+        .clearfix
+          = link.label :name
+          .input
+            = link.text_field :name
+            = link.label :url
+            = link.text_field :url
+            = link.select(:link_type_id, LinkType.all.collect {|p| [ p.name, p.id ] }, {:include_blank => false})
+            = link.link_to_remove "Remove"
+      =f.link_to_add "Add Link",:links
+      =f.fields_for :project_milestones do |pm|
+        = pm.label :milestone_id, "Select a Milestone"
+        = pm.select(:milestone_id, Milestone.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
+        = pm.label :planned_date, "Planned Completion Date"
+        = pm.date_select("planned_date", :start_year => Time.now.year)
+        = pm.label :completed_date, "Completed On"
+        = pm.date_select("completed_date", :start_year => Time.now.year, :include_blank => true)
+        = pm.label :active, "Currently On:"
+        = pm.check_box("active")
+        = pm.link_to_remove "Remove"
+      =f.link_to_add "Add Milestone",:project_milestones
+    .actions
+      = f.submit 'Save',{:class => "btn primary"}

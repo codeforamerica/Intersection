@@ -22,3 +22,37 @@ textarea#project_impact_statement {
 input#project_active {
   margin: 15px;
 }
+
+.bar_graph {
+  width: 100px;
+  height: 20px;
+  border: solid 1px grey;
+}
+
+.size_5 {
+  width: 100px;
+  height: 20px;
+  background-color: green;
+}
+
+.size_4 {
+  width: 80px;
+  height: 20px;
+  background-color: green;
+}
+
+.size_3 {
+  width: 60px;
+  background-color: green;
+}
+
+.size_2 {
+  width: 40px;
+  background-color: green;
+}
+
+.size_1 {
+  width: 20px;
+  height: 20px;
+  background-color: green;
+}

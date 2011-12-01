@@ -1,10 +1,6 @@
-/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require_tree .
-*/
+ul.menu {
+  list-style: none;
+}
 
 a#logo {
   width: 250px;
@@ -15,7 +11,7 @@ a#logo {
 }
 
 #top_header {
- height: 120px; 
+ height: 120px;
 }
 
 .gravatar img {
@@ -47,6 +43,4 @@ a#logo {
   text-shadow: #ccc 1px 1px 1px;
 }
 
-label {
-  float:none;
-}
+

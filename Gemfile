@@ -24,7 +24,6 @@ end
 
 group :development, :test do
   gem 'faker'
-  gem 'activerecord-spatialite-adapter'
   gem 'nifty-generators'
   gem 'rspec-rails'
   gem 'simplecov'

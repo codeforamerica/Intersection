@@ -1,13 +1,16 @@
 
 #--[ User ]---------------------------------------------------------------------
-Factory.define :user do |u|
-  u.email { Faker::Internet.email }
-  u.admin false
-  u.password "something"
-  u.after_build do |user|
-    user.profile = Factory.create(:profile)
+FactoryGirl.define do
+  factory :user do
+    sequence(:email){|n| "email#{n}@test.com" }
+    admin false
+    password "something"
+    after_build do |user|
+      user.profile = Factory.create(:profile)
+    end
   end
 end
+
 
 Factory.define :admin_user, :parent => :user do |u|
   u.admin true
