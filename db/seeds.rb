@@ -31,11 +31,13 @@ if Rails.env!='production'
   }
   
 #Adding Projects
-  puts "Adding projects with random start dates over the last six months"
+  puts "Adding projects with random start dates over the last six months and random teams"
+  teams = Team.all
   50.times {
     project = Factory(:project)
     project.update_attributes(:created_at => rand(8).months.ago + rand(10).days)
     5.times {Factory(:link, :project => project)}
+    teams.shuffle.first.projects << project
   }
 
   puts "Adding milestones with completion dates"
