@@ -10,6 +10,12 @@
   %b Impact statement:
   = @project.impact_statement
 %p
+  %b Teams:
+  %ul
+    -@project.teams.each do |team|
+      %li
+        =link_to team.name, team_path(team)      
+%p
   %b Active:
   = @project.active
 %h2 Milestones

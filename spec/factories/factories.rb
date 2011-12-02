@@ -55,3 +55,10 @@ Factory.define :project_milestone do |pm|
   pm.project {Factory(:project)}
   pm.planned_date {rand(6).months.ago}
 end
+
+Factory.define :team do |team|
+  team.name {Faker::Address.city}
+end
+
+
+

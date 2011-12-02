@@ -9,8 +9,8 @@ if Rails.env!='production'
   fellow = Factory(:user_type, :name => "Fellow")
 
 #Add Fellows
-  puts "Adding 15 Fellows"
-    15.times do |i|
+  puts "Adding 24 Fellows"
+    24.times do |i|
       user = Factory(:user)
     end
 
@@ -22,6 +22,14 @@ if Rails.env!='production'
   user_type.save
   puts "\t Admin #{user.email} pass something\n"
 
+#Adding Teams
+  puts "Adding teams and 3 users per team"
+  users = User.all
+  8.times {
+    team = Factory(:team)
+    team.users <<  users.shift(3)
+  }
+  
 #Adding Projects
   puts "Adding projects with random start dates over the last six months"
   50.times {

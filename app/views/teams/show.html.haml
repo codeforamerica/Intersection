@@ -7,6 +7,18 @@
   %b Active:
   = @team.active
 
+%h2 Team Members
+%ul
+  -@team.users.each do |user|
+    %li
+      =link_to user.profile.name, user.profile
+
+%h2 Projects
+%ul
+  -@team.projects.each do |project|
+    %li
+      =link_to project.name, project
+
 = link_to 'Edit', edit_team_path(@team)
 \|
 = link_to 'Back', teams_path

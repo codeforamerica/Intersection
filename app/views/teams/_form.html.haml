@@ -1,4 +1,4 @@
-= form_for @team do |f|
+= nested_form_for @team do |f|
   -if @team.errors.any?
     #error_explanation
       %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
@@ -12,5 +12,20 @@
   .field
     = f.label :active
     = f.check_box :active
+  %fieldset
+    %legend
+      Team Members
+    =f.fields_for :team_users do |u|
+      = u.select(:user_id, User.all.collect { |p| [p.profile.name, p.id]}, {:include_blank => false})
+      = u.link_to_remove "Remove"
+    = f.link_to_add "Add User",:team_users
+  %fieldset
+    %legend
+      Projects 
+    =f.fields_for :team_projects do |u|
+      = u.select(:project_id, Project.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
+      = u.link_to_remove "Remove"
+    = f.link_to_add "Add Project", :team_projects
+
   .actions
     = f.submit 'Save'

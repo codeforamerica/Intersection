@@ -4,17 +4,22 @@
   %tr
     %th Name
     %th Active
-    %th
-    %th
-    %th
+    %th Projects
+    %th Team Members
+    -if current_user and current_user.admin?
+      %th
 
   - @teams.each do |team|
     %tr
       %td= team.name
-      %td= team.active
-      %td= link_to 'Show', team
-      %td= link_to 'Edit', edit_team_path(team)
-      %td= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete
+      %td= team.active? ? raw('<span class="label success">Yes</span>') : raw('<span class="label important">No</span>')
+      %td= team.projects.size
+      %td= team.users.size
+      -if current_user and current_user.admin?
+        %td 
+          =link_to 'Show', team
+          =link_to 'Edit', edit_team_path(team)
+          =link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
