@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :team_users
   has_many :teams, :through => :team_users
+  has_many :project_users
+  has_many :projects, :through => :project_users
 end

@@ -15,6 +15,12 @@
     -@project.teams.each do |team|
       %li
         =link_to team.name, team_path(team)      
+%p 
+  %b Team Members
+  %ul
+    -@project.users.each do |u|
+      %li
+        =link_to u.profile.name, u.profile
 %p
   %b Active:
   = @project.active
