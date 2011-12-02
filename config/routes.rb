@@ -1,4 +1,6 @@
 Intersection::Application.routes.draw do
+  resources :teams
+
   resources :links
 
   resources :projects do 
