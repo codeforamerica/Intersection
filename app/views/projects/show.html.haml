@@ -21,9 +21,20 @@
 %h2 Milestones
 
 %ul
-  -@project.milestones.each do |milestone|
-    %li
-      =milestone.name
+  -@project.project_milestones.each do |milestone|
+    %li{:class => "#{milestone.active? ? 'active' : 'inactive'}"}
+      %span.name
+        =milestone.milestone.name 
+      %br
+      -if milestone.completed_date? 
+        %span.completed
+          Completed On
+          =milestone.completed_date.strftime("%m-%d-%y")
+      -else
+        %span.planned
+          Planned
+          =milestone.planned_date.strftime("%m-%d-%y")
+
 
 %h2 Links
 %ul
