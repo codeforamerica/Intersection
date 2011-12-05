@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'inherited_resources'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
+gem 'meta_search'
 group :development do
   gem 'ZenTest'
 end
