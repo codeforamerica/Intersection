@@ -4,23 +4,16 @@
 
 textarea#project_description {
   width: 400px;
-  height: 250px;
-  margin: 15px;
+  height: 150px;
 }
 
 input#project_name {
   width: 400px;
-  margin: 15px;
 }
 
 textarea#project_impact_statement {
   width: 400px;
-  height: 250px;
-  margin: 15px;
-}
-
-input#project_active {
-  margin: 15px;
+  height: 150px;
 }
 
 .bar_graph {
@@ -66,3 +59,6 @@ li.active {
   width: 70px;
 }
 
+form h2 {
+margin:15px 0px 15px 0px;
+}

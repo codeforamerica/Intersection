@@ -5,61 +5,58 @@
       %ul
         - @project.errors.full_messages.each do |msg|
           %li= msg
-  .actions
-    = f.submit 'Save'
-
-  .fieldset
-    .legend
-    .clearfix
-      = f.label :name
-      .input
-        = f.text_field :name
-    .clearfix
-      = f.label :description
-      .input
-        = f.text_area :description
-    .clearfix
-      = f.label :impact_statement
-      .input
-        = f.text_area :impact_statement
-    .clearfix
-      = f.label :active
-      .input
-        = f.check_box :active
-    - if !@project.new_record?
-      %fieldset
-        %legend
-          Project Links
-        =f.fields_for :links do |link|
-          .clearfix
-            = link.label :name
-            .input
-              = link.text_field :name
-              = link.label :url
-              = link.text_field :url
-              = link.select(:link_type_id, LinkType.all.collect {|p| [ p.name, p.id ] }, {:include_blank => false})
-              = link.link_to_remove "Remove"
-        =f.link_to_add "Add Link",:links
-      %fieldset
-        %legend
-          Milestones
+  .clearfix
+    = f.label :name
+    .input
+      = f.text_field :name
+  .clearfix
+    = f.label :description
+    .input
+      = f.text_area :description
+  .clearfix
+    = f.label :impact_statement
+    .input
+      = f.text_area :impact_statement
+  .clearfix
+    = f.label :active
+    .input
+      = f.check_box :active
+  - if !@project.new_record?
+    %h2 Project Links
+    =f.link_to_add "Add Link",:links
+    %p
+    =f.fields_for :links do |link|
+      = link.text_field :name
+      = link.text_field :url
+      = link.select(:link_type_id, LinkType.all.collect {|p| [ p.name, p.id ] }, {:include_blank => false})
+      = link.link_to_remove "Remove"
+    %h2
+      Project Milestones
+    =f.link_to_add "Add Milestone",:project_milestones
+    %p
+    %table
+      %thead
+        %tr
+          %td="Milestone"
+          %td="Planned date"
+          %td="Completed On"
+          %td="Active"
+          %td    
+      %tbody
         =f.fields_for :project_milestones do |pm|
-          = pm.label :milestone_id, "Select a Milestone"
-          = pm.select(:milestone_id, Milestone.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
-          = pm.label :planned_date, "Planned Completion Date"
-          = pm.date_select("planned_date", :start_year => Time.now.year)
-          = pm.label :completed_date, "Completed On"
-          = pm.date_select("completed_date", :start_year => Time.now.year, :include_blank => true)
-          = pm.label :active, "Currently On:"
-          = pm.check_box("active")
-          = pm.link_to_remove "Remove"
-        =f.link_to_add "Add Milestone",:project_milestones
-      %fieldset
-        %legend
-          Project Members
-        =f.fields_for :project_users do |u|
-          = u.select(:user_id, User.all.collect { |p| [p.profile.name, p.id]}, {:include_blank => false})
-          = u.link_to_remove "Remove"
-        = f.link_to_add "Add Member",:project_users
-    .actions
-      = f.submit 'Save',{:class => "btn primary"}
+          %tr
+            %td=pm.select(:milestone_id, Milestone.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
+
+            %td=pm.text_field :planned_date, :class => "datepicker", :value => (pm.object.planned_date.strftime("%Y-%m-%d") unless pm.object.planned_date.nil?)
+            %td=pm.text_field :completed_date, :class => "datepicker", :value => (pm.object.completed_date.strftime("%Y-%m-%d") unless pm.object.completed_date.nil?)
+            %td= pm.check_box("active")
+            %td= pm.link_to_remove "Remove"
+    %h2
+      Project Members
+    = f.link_to_add "Add Member",:project_users
+    %p  
+    =f.fields_for :project_users do |u|
+      = u.select(:user_id, User.all.collect { |p| [p.profile.name, p.id]}, {:include_blank => false})
+      = u.link_to_remove "Remove"
+  .actions
+    = f.submit 'Save',{:class => "btn primary"}

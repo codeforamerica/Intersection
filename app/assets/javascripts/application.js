@@ -4,8 +4,9 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require bootstrap
 //= require jquery
+//= require bootstrap
 //= require nested_form
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
