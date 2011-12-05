@@ -32,6 +32,7 @@ Factory.define :project do |p|
   p.name {Faker::Company.catch_phrase}
   p.description {Faker::Lorem.sentence(3)}
   p.impact_statement {Faker::Lorem.sentence(3)}
+  p.tag_list {Faker::Lorem.words(4).join(",")}
 end
 
 Factory.define :link_type do |lt|

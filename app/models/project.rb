@@ -14,6 +14,8 @@ class Project < ActiveRecord::Base
   after_create 'create_activity("started")'
   after_update 'create_activity("updated")'
 
+  acts_as_taggable
+
   def active_milestone
     project_milestones.where(:active => true).first
   end

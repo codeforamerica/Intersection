@@ -6,6 +6,7 @@
   %table
     %tr
       %th Name
+      %th Tags
       %th Team
       %th Active
       %th Milestone
@@ -17,6 +18,8 @@
     %tr
       %td
         = f.text_field :name_contains,:class=>"search_medium"
+      %td
+        =f.text_field :taggings_tag_name_contains,:class=>"search_medium"
       %td
         = f.text_field :teams_name_contains, :class => "search_medium"  
       %td
@@ -32,6 +35,7 @@
     - @projects.each do |project|
       %tr
         %td= link_to project.name, project
+        %td= project.tag_list
         %td
           %ul
             -project.teams.each do |team|

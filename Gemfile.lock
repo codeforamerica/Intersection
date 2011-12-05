@@ -52,6 +52,8 @@ GEM
       activesupport (= 3.1.3)
     activesupport (3.1.3)
       multi_json (~> 1.0)
+    acts-as-taggable-on (2.1.1)
+      rails
     addressable (2.2.6)
     arel (2.2.1)
     bbenezech-nested_form (0.0.2)
@@ -214,6 +216,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  acts-as-taggable-on
   bootstrap-sass
   coffee-rails (~> 3.1.1)
   devise
