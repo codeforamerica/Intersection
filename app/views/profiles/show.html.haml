@@ -11,6 +11,11 @@
 %p
   %b Bio:
   = @profile.bio
+%h2 Activity
+%ul
+  -@profile.user.activities.order("updated_at DESC").each do |activity|
+    %li
+      =raw(activity.activity)
 
 = link_to 'Edit', edit_profile_path(@profile) if (current_user.try(:profile) == @profile or current_user.try(:admin?))
 \|

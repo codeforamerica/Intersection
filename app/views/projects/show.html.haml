@@ -41,12 +41,17 @@
           Planned
           =milestone.planned_date.strftime("%m-%d-%y")
 
-
 %h2 Links
 %ul
   -@project.links.each do |link|
     %li
       =link_to link.name, link.url
+
+%h2 Activity
+%ul
+  -@project.activities.order("updated_at DESC").each do |activity|
+    %li
+      =raw(activity.activity)
 
 = link_to 'Edit', edit_project_path(@project)
 \|

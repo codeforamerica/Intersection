@@ -19,6 +19,12 @@
     %li
       =link_to project.name, project
 
+%h2 Activity
+
+%ul
+  -@team.project_activities.order("updated_at DESC").each do |activity|
+    %li
+      =raw(activity.activity)
 = link_to 'Edit', edit_team_path(@team)
 \|
 = link_to 'Back', teams_path

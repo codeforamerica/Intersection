@@ -8,7 +8,8 @@ class Team < ActiveRecord::Base
   accepts_nested_attributes_for :team_users, :allow_destroy => true
 
   def project_activities
-    
+    ids = self.projects.map(&:id)
+    Activity.where("project_id in (#{ids.join(',')})").order("created_at DESC")    
   end
 
   def to_url
