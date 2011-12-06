@@ -6,7 +6,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.integer :scale
       t.date :start_date
       t.date :end_date
-      t.string :frequency
+      t.integer :frequency
 
       t.timestamps
     end

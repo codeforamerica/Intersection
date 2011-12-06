@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_one :profile
-  has_many :team_users
+  has_many :team_users, :dependent => :destroy
   has_many :teams, :through => :team_users
-  has_many :project_users
+  has_many :project_users, :dependent => :destroy
   has_many :projects, :through => :project_users
   has_many :activities
-  has_many :survey_responses
-  has_many :surveys, :as => :surveyable
+  has_many :survey_responses, :dependent => :destroy
+  has_many :surveys, :as => :surveyable, :class_name => "SurveyResponse"
 end

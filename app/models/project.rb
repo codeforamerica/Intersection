@@ -1,16 +1,17 @@
 class Project < ActiveRecord::Base
-  has_many :links
-  has_many :project_milestones
+  has_many :links, :dependent => :destroy
+  has_many :project_milestones, :dependent => :destroy
   has_many :milestones, :through => :project_milestones
-  has_many :team_projects 
+  has_many :team_projects, :dependent => :destroy 
   has_many :teams, :through => :team_projects
-  has_many :project_users
+  has_many :project_users, :dependent => :destroy
   has_many :users, :through => :project_users
   has_many :activities
-  has_many :surveys, :as => :surveyable
+  has_many :survey_responses, :as => :surveyable
   accepts_nested_attributes_for :links, :allow_destroy => true
   accepts_nested_attributes_for :project_milestones, :allow_destroy => true
   accepts_nested_attributes_for :project_users, :allow_destroy => true
+  scope :active, where(:active => true)
 
   after_create 'create_activity("started")'
   after_update 'create_activity("updated")'

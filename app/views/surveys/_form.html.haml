@@ -6,23 +6,37 @@
         - @survey.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .clearfix
     = f.label :name
-    = f.text_field :name
-  .field
+    .input
+      = f.text_field :name
+      %span.help-block
+        This name will appear on the survey response page
+  .clearfix
     = f.label :survey_type
-    = f.text_field :survey_type
-  .field
+    .input
+      = select(:survey, :survey_type, ["Fellow","Team","Project","Client","Staff"])
+      %span.help-block
+        Who or What is this survey about. I.e. Choose 'Fellow' if its about a fellow 
+  .clearfix
     = f.label :scale
-    = f.number_field :scale
-  .field
+    .input
+      = f.text_field :scale
+      %span.help-block
+        Enter an integer like 6 for a scale of 0 to 6.
+  .clearfix
     = f.label :start_date
-    = f.date_select :start_date
-  .field
+    .input
+      = f.text_field :start_date, :class => "datepicker"
+  .clearfix
     = f.label :end_date
-    = f.date_select :end_date
-  .field
+    .input
+      = f.text_field :end_date, :class => "datepicker"
+  .clearfix
     = f.label :frequency
-    = f.text_field :frequency
+    .input
+      = select(:survey, :frequency, [["1.weeks",1], ["2.weeks",2], ["3.weeks",3],["4.weeks",4],["5.weeks",5],["6.weeks",6],["7.weeks",7],["8.weeks",8]])
+      %span.help-block
+        The survey will get deployed every X numbers of weeks from the start date
   .actions
     = f.submit 'Save'
