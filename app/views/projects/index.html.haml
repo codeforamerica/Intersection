@@ -1,8 +1,8 @@
-%h1 
+%h1
   ="Projects (#{@projects.size})"
 
 =render "charts"
-=form_for @search do |f| 
+=form_for @search do |f|
   %table
     %tr
       %th Name
@@ -14,14 +14,14 @@
       %th Started Date
       %th Last Updated
       %th
-        
+
     %tr
       %td
         = f.text_field :name_contains,:class=>"search_medium"
       %td
         =f.text_field :taggings_tag_name_contains,:class=>"search_medium"
       %td
-        = f.text_field :teams_name_contains, :class => "search_medium"  
+        = f.text_field :teams_name_contains, :class => "search_medium"
       %td
         = f.check_box :active_equals, :checked => true
       %td
@@ -30,7 +30,7 @@
       %td
       %td
       %td
-        =f.submit "Submit", :value=>"Search", :class=>"softButton"
+        =f.submit "Submit", :value=>"Search", :class=>"btn info"
         =link_to "Clear", projects_path
     - @projects.each do |project|
       %tr
