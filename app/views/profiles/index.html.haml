@@ -3,7 +3,6 @@
 %table
   %tr
     %th Name
-    %th Email
     %th Bio
     %th
     %th
@@ -12,7 +11,6 @@
   - @profiles.each do |profile|
     %tr
       %td= profile.name
-      %td= profile.user.email
       %td= profile.bio
       %td= link_to 'Show', profile
       %td= link_to 'Edit', edit_profile_path(profile) if (current_user.try(:profile) == profile or current_user.try(:admin?))
