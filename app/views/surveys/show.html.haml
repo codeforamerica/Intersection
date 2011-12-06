@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @survey.name
+%p
+  %b Survey type:
+  = @survey.survey_type
+%p
+  %b Scale:
+  = @survey.scale
+%p
+  %b Start date:
+  = @survey.start_date
+%p
+  %b End date:
+  = @survey.end_date
+%p
+  %b Frequency:
+  = @survey.frequency
+
+= link_to 'Edit', edit_survey_path(@survey)
+\|
+= link_to 'Back', surveys_path

@@ -61,5 +61,15 @@ Factory.define :team do |team|
   team.name {Faker::Address.city}
 end
 
+#------Surveys---------------
+
+Factory.define :survey do |s|
+  s.name {Faker::Company.catch_phrase}
+  s.start_date {Time.now}
+  s.end_date {Time.now + 8.weeks}
+  s.frequency "1.weeks"
+  s.survey_type "Project"
+  s.scale 6
+end
 
 

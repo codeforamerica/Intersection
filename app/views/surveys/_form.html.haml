@@ -1,0 +1,28 @@
+= form_for @survey do |f|
+  -if @survey.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@survey.errors.count, "error")} prohibited this survey from being saved:"
+      %ul
+        - @survey.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :survey_type
+    = f.text_field :survey_type
+  .field
+    = f.label :scale
+    = f.number_field :scale
+  .field
+    = f.label :start_date
+    = f.date_select :start_date
+  .field
+    = f.label :end_date
+    = f.date_select :end_date
+  .field
+    = f.label :frequency
+    = f.text_field :frequency
+  .actions
+    = f.submit 'Save'
