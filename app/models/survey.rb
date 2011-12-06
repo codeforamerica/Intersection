@@ -4,19 +4,11 @@ class Survey < ActiveRecord::Base
   scope :active_surveys, where("start_date < ? and end_date > ?", Time.now, Time.now)
 
   def survey_today?
-    survey_date_array.include?(Time.now.to_date)
+    schedule = IceCube::Schedule.new(self.start_date.to_time, {:end_time => self.end_date.to_time})
+    schedule.add_recurrence_rule IceCube::Rule.weekly(self.frequency.to_i).day(self.start_date.wday)
+    schedule.occurs_on?(Time.now)
   end
 
-  def survey_date_array
-    dates = [self.start_date]
-    new_date = start_date
-    frequency_weeks = (self.frequency.to_i).weeks
-    while new_date < end_date
-      new_date =  new_date + frequency_weeks
-      dates << new_date unless new_date > self.end_date
-    end
-    return dates
-  end
 
   def generate_survey_responses
     case self.survey_type
@@ -31,14 +23,14 @@ class Survey < ActiveRecord::Base
 
   def generate_fellow_survey_responses
     UserType.where(:name => "Fellow").first.profiles.each do |p|
-      self.survey_responses.create(:user => p.user, :expires_on => Time.now + (self.frequency).weeks, :surveyable_type => "User", :surveyable_id => p.user.id)
+      self.survey_responses.create(:user => p.user, :expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "User", :surveyable_id => p.user.id)
     end
   end
   
   def generate_team_survey_responses
     Team.active_teams.each do |team|
       team.users.each do |u|
-        self.survey_responses.create(:user => u, :expires_on => Time.now + (self.frequency).weeks, :surveyable_type => "Team", :surveyable_id => team.id)
+        self.survey_responses.create(:user => u, :expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "Team", :surveyable_id => team.id)
       end
     end
   end
@@ -46,7 +38,7 @@ class Survey < ActiveRecord::Base
   def generate_project_survey_responses
     Project.active.each do |project|
       project.users.each do |u|
-        self.survey_responses.create(:user => u, :expires_on => Time.now + (self.frequency).weeks, :surveyable_type => "Project", :surveyable_id => project.id)
+        self.survey_responses.create(:user => u, :expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "Project", :surveyable_id => project.id)
       end
     end
   end

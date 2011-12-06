@@ -8,15 +8,6 @@ describe Survey do
     Survey.active_surveys.size.should == 1
   end
 
-  it "should return a surveys date array" do
-    Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1)
-    Survey.last.survey_date_array.size.should == 3
-    Factory(:survey, :start_date => 3.weeks.ago, :end_date => Time.now + 1.week, :frequency => 2)
-    Survey.last.survey_date_array.size.should == 3  
-    Factory(:survey, :start_date => 8.weeks.ago, :end_date => Time.now + 1.week, :frequency => 8)
-    Survey.last.survey_date_array.size.should == 2  
-  end
-
   it :generate_fellow_survey_responses do
     ut = Factory(:user_type, :name => "Fellow")
     2.times {Factory(:profile, :user_type => ut, :user => Factory(:user))}
