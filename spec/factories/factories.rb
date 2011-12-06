@@ -72,4 +72,21 @@ Factory.define :survey do |s|
   s.scale 6
 end
 
+Factory.define :survey_response do |r|
+  r.expires_on {Time.now + 1.week}
+  r.response 6
+  r.note {Faker::Lorem.sentence(2)}
+  r.survey {Factory(:survey)}
+end
 
+Factory.define :user_survey_response do |u|
+  u.surveyable {Factory(:user)}
+end
+
+Factory.define :project_survey_response do |u|
+  u.surveyable {Factory(:project)}
+end
+
+Factory.define :team_survey_response do |u|
+  u.surveyable {Factory(:team)}
+end

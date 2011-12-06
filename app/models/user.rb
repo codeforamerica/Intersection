@@ -13,4 +13,6 @@ class User < ActiveRecord::Base
   has_many :project_users
   has_many :projects, :through => :project_users
   has_many :activities
+  has_many :survey_responses
+  has_many :surveys, :as => :surveyable
 end
