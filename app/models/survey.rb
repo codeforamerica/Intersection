@@ -4,6 +4,9 @@ class Survey < ActiveRecord::Base
   scope :active_surveys, where("start_date < ? and end_date > ?", Time.now, Time.now)
 
   def survey_today?
+    puts survey_date_array
+    puts Time.now.to_date
+    puts "\n"
     survey_date_array.include?(Time.now.to_date)
   end
 

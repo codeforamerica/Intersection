@@ -20,6 +20,7 @@ gem 'inherited_resources'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 gem 'meta_search'
 gem 'acts-as-taggable-on'
+gem 'ice_cube'
 group :development do
   gem 'ZenTest'
 end
@@ -31,6 +32,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'sqlite3'
   gem 'spork', '0.9.0.rc9'
+  gem 'timecop'
 end
 
 group :test do
