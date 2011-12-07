@@ -21,6 +21,7 @@ gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 gem 'meta_search'
 gem 'acts-as-taggable-on'
 gem 'ice_cube'
+gem 'delayed_job'
 group :development do
   gem 'ZenTest'
 end
