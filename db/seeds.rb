@@ -28,11 +28,12 @@ if Rails.env!='production'
 #Adding Projects
   puts "Adding projects with random start dates over the last six months and random teams"
   teams = Team.all
-  125.times {
+  15.times {
     project = Factory(:project)
     project.update_attributes(:created_at => rand(8).months.ago + rand(10).days)
     5.times {Factory(:link, :project => project)}
     teams.shuffle.first.projects << project
+    project.users << User.all.shuffle[0..3]
   }
 
   puts "Adding milestones with completion dates"
@@ -77,6 +78,11 @@ if Rails.env!='production'
     end
   end
 
+  puts "Adding surveys"
+  Factory(:survey, :name => "How do you feel about your professional development?",:survey_type => "Fellow", :start_date => Time.now, :end_date => Time.now + 1.month, :frequency => 1)
+  Factory(:survey, :name => "How are  #team clients feeling?",:survey_type => "Team", :start_date => Time.now, :end_date => Time.now + 1.month, :frequency => 1)
+  Factory(:survey, :name => "How are you feeling about your team mates on #team?",:survey_type => "Team", :start_date => Time.now, :end_date => Time.now + 1.month, :frequency => 1)
+  Factory(:survey, :name => "How are things progressing on #project?",:survey_type => "Project", :start_date => Time.now, :end_date => Time.now + 1.month, :frequency => 1)
 end
 
 

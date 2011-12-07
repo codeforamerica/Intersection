@@ -5,7 +5,7 @@
 -@surveys.each do |survey|
   =form_for(survey, :remote => true) do |f|
     %h3
-      =survey.survey.name
+      =survey_name(survey)
     .row
       .span2{:class => "trafficlight red #{'on' if survey.response==0}", :data => survey.id}
       .span2{:class => "trafficlight yellow #{'on' if survey.response==1}", :data => survey.id}
