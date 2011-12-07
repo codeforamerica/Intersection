@@ -5,6 +5,7 @@
 -@surveys.each do |survey|
   =form_for(survey, :remote => true) do |f|
     %h3
+      =survey.updated_at.strftime('%m/%d/%y')
       =survey_name(survey)
     .row
       .span2{:class => "trafficlight red #{'on' if survey.response==1}", :data => survey.id}
