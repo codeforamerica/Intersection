@@ -4,6 +4,9 @@
   %tr
     %th Name
     %th Bio
+    -if current_user
+      %th Self Survey
+      %th All Surveys
     %th
     %th
     %th
@@ -12,6 +15,11 @@
     %tr
       %td= profile.name
       %td= profile.bio
+      - if current_user
+        %td
+          =raw(r_y_g(profile.user.self_survey_average))
+        %td
+          =raw(r_y_g(profile.user.all_survey_average))
       %td= link_to 'Show', profile
       %td= link_to 'Edit', edit_profile_path(profile) if (current_user.try(:profile) == profile or current_user.try(:admin?))
       %td= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete if current_user.try(:admin?)

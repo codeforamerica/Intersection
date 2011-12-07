@@ -9,7 +9,7 @@ module ApplicationHelper
     when 3
       "<div id='green'>3</div>"
     when 0
-      "Not Taken"
+      ""
     end
   end
 
