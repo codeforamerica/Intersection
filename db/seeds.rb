@@ -83,6 +83,12 @@ if Rails.env!='production'
   Factory(:survey, :name => "How are  #team clients feeling?",:survey_type => "Team", :start_date => Time.now, :end_date => Time.now + 1.month, :frequency => 1)
   Factory(:survey, :name => "How are you feeling about your team mates on #team?",:survey_type => "Team", :start_date => Time.now, :end_date => Time.now + 1.month, :frequency => 1)
   Factory(:survey, :name => "How are things progressing on #project?",:survey_type => "Project", :start_date => Time.now, :end_date => Time.now + 1.month, :frequency => 1)
+  
+  puts "Randomly updating Responses"
+  response = [1,2,3]
+  SurveyResponse.all.each do |sr|
+    sr.update_attributes(:response => response.shuffle[0], :note => Faker::Lorem.sentence(1))
+  end
 end
 
 
