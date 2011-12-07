@@ -26,6 +26,15 @@ class Project < ActiveRecord::Base
     "<a href='/projects/#{self.name}'>#{self.name}</a>"
   end
 
+  def survey_average(time1=1.month.ago, time2=Time.now)
+  resp_array = self.survey_responses.taken.during(time1, time2)
+  if resp_array.size > 0
+    resp_array.collect(&:response).sum/resp_array.size
+  else
+    0
+  end
+  end
+  
   def create_activity(activity)
   
     if $current_user

@@ -8,6 +8,8 @@
       %th Name
       %th Tags
       %th Team
+      -if current_user
+        %th Survey
       %th Active
       %th Milestone
       %th Progress
@@ -22,6 +24,7 @@
         =f.text_field :taggings_tag_name_contains,:class=>"search_medium"
       %td
         = f.text_field :teams_name_contains, :class => "search_medium"
+      %td
       %td
         = f.check_box :active_equals, :checked => true
       %td
@@ -41,6 +44,8 @@
             -project.teams.each do |team|
               %li
                 =link_to team.name, team_path(team)
+        %td
+          =raw(r_y_g(project.survey_average)) if project.active?  
         %td= project.active? ? raw('<span class="label success">Yes</span>') : raw('<span class="label important">No</span>')
         %td
           =project.project_milestones.where(:active => true).first.milestone.name

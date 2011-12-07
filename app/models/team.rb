@@ -15,6 +15,15 @@ class Team < ActiveRecord::Base
     Activity.where("project_id in (#{ids.join(',')})").order("created_at DESC")    
   end
 
+  def survey_average(time1=1.month.ago, time2=Time.now)
+    resp_array = self.survey_responses.taken.during(time1, time2)
+    if resp_array.size > 0
+      resp_array.collect(&:response).sum/resp_array.size
+    else
+      0
+    end
+  end
+
   def to_url
     "<a href='/teams/#{self.name}'>#{self.name}</a>"
   end
