@@ -7,9 +7,9 @@
     %h3
       =survey_name(survey)
     .row
-      .span2{:class => "trafficlight red #{'on' if survey.response==0}", :data => survey.id}
-      .span2{:class => "trafficlight yellow #{'on' if survey.response==1}", :data => survey.id}
-      .span2{:class => "trafficlight green #{'on' if survey.response==2}", :data => survey.id}
+      .span2{:class => "trafficlight red #{'on' if survey.response==1}", :data => survey.id}
+      .span2{:class => "trafficlight yellow #{'on' if survey.response==2}", :data => survey.id}
+      .span2{:class => "trafficlight green #{'on' if survey.response==3}", :data => survey.id}
       .span6
         =f.text_area :note, :id => "#{survey.id}_note", :class => "note"
         %span{:class=>"help-block"}

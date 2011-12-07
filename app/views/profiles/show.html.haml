@@ -16,6 +16,21 @@
   -@profile.user.activities.order("updated_at DESC").each do |activity|
     %li
       =raw(activity.activity)
+-if current_user and (current_user.profile==@profile or current_user.admin?)
+  %h2 Surveys
+  %table
+    %tr
+      %th Name
+      %th Value
+      %th Date
+      %th Comments
+    -@profile.user.survey_responses.order("updated_at DESC").each do |sr|
+      %tr
+        %td=survey_name(sr)
+        %td=raw(r_y_g(sr.response))
+        %td=sr.updated_at.strftime("%m/%d/%y")
+        %td=sr.note
+
 
 = link_to 'Edit', edit_profile_path(@profile) if (current_user.try(:profile) == @profile or current_user.try(:admin?))
 \|

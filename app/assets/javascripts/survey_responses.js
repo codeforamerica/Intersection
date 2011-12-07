@@ -3,19 +3,19 @@ $(document).ready(function() {
    val_id = $(this).attr('data');
    remove_on_class(val_id);
    $(this).addClass('on');
-   change_hidden_value(val_id, 0);
+   change_hidden_value(val_id, 1);
     }),
   $('.yellow').click(function(){
    val_id = $(this).attr('data');
    remove_on_class(val_id);
    $(this).addClass('on');
-   change_hidden_value(val_id, 1);
+   change_hidden_value(val_id, 2);
     }),
   $('.green').click(function(){
    val_id = $(this).attr('data');
    remove_on_class(val_id);
    $(this).addClass('on');
-   change_hidden_value(val_id, 2);
+   change_hidden_value(val_id, 3);
     }),
   $('.comment').click(function(){
     val_id = $(this).attr('data');

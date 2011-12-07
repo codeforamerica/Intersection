@@ -50,3 +50,30 @@ a#logo {
 label {
   float:none;
 }
+
+table div#red {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  color: red;
+}
+
+table div#yellow {
+  background-color: yellow;
+  width: 20px;
+  height: 20px;
+  color: yellow;
+}
+
+table div#green {
+  background-color: green;
+  width: 20px;
+  height: 20px;
+  color: green;
+}
+
+
+
+
+
+
