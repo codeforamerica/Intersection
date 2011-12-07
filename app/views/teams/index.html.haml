@@ -13,7 +13,7 @@
 
   - @teams.each do |team|
     %tr
-      %td= team.name
+      %td=link_to team.name, team
       -if current_user
         %td
           =raw(r_y_g(team.survey_average)) if team.active?
