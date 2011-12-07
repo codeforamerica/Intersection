@@ -1,11 +1,16 @@
 class Survey < ActiveRecord::Base
   validates_presence_of :survey_type, :name, :scale, :start_date, :end_date, :frequency
   has_many :survey_responses, :dependent => :destroy
+  after_save :check_and_add_responses
   
   def survey_today?
     schedule = IceCube::Schedule.new(self.start_date, {:end_time => self.end_date})
     schedule.add_recurrence_rule IceCube::Rule.weekly(self.frequency.to_i).day(self.start_date.wday)
     schedule.occurs_on?(Time.now)
+  end
+
+  def check_and_add_responses
+   generate_survey_responses if self.survey_today?
   end
 
 

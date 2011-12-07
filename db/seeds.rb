@@ -4,22 +4,17 @@ require 'factory_girl_rails'
 
 if Rails.env!='production'
 
-#Add User Types
-  staff = Factory(:user_type, :name => "Staff")
-  fellow = Factory(:user_type, :name => "Fellow")
-
 #Add Fellows
   puts "Adding 24 Fellows"
     24.times do |i|
       user = Factory(:user)
+      user.profile.update_attributes(:user_type => "Fellow")
     end
 
 #Add Admin
   puts "Creating admin"
   user = Factory(:admin_user)
-  user_type = UserType.last
-  user_type.name = "Staff"
-  user_type.save
+  user.profile.update_attributes(:user_type => "Staff")
   puts "\t Admin #{user.email} pass something\n"
 
 #Adding Teams
