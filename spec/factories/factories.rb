@@ -19,12 +19,9 @@ end
 Factory.define :profile do |profile|
   profile.name { Faker::Name.name }
   profile.bio {Faker::Lorem.sentence(3)}
-  profile.user_type {Factory(:user_type)}
+  profile.user_type "Fellow"
 end
 
-Factory.define :user_type do |ut|
-  ut.name "Fellow"
-end
 
 #--[Project]-------------
 

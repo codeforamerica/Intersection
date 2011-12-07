@@ -1,10 +1,9 @@
 class Survey < ActiveRecord::Base
   validates_presence_of :survey_type, :name, :scale, :start_date, :end_date, :frequency
   has_many :survey_responses, :dependent => :destroy
-  scope :active_surveys, where("start_date < ? and end_date > ?", Time.now, Time.now)
 
   def survey_today?
-    schedule = IceCube::Schedule.new(self.start_date.to_time, {:end_time => self.end_date.to_time})
+    schedule = IceCube::Schedule.new(self.start_date, {:end_time => self.end_date})
     schedule.add_recurrence_rule IceCube::Rule.weekly(self.frequency.to_i).day(self.start_date.wday)
     schedule.occurs_on?(Time.now)
   end
@@ -22,7 +21,7 @@ class Survey < ActiveRecord::Base
   end
 
   def generate_fellow_survey_responses
-    UserType.where(:name => "Fellow").first.profiles.each do |p|
+    Profile.where(:user_type => "Fellow").each do |p|
       self.survey_responses.create(:user => p.user, :expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "User", :surveyable_id => p.user.id)
     end
   end
