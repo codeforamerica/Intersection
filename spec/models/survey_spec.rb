@@ -1,7 +1,25 @@
 require 'spec_helper'
 
 describe Survey do
+  
+  describe "various time differences for surveys with timecop" do
 
+    it "1 week out on 1 week frequency" do
+      Factory(:survey, :start_date => Time.now, :end_date => Time.now + 1.month)
+       Timecop.freeze(Time.now + 1.weeks) do
+        Survey.last.survey_today?.should be_true
+      end
+    end
+    
+    it "15 weeks out on 2 week frequency" do
+      Factory(:survey, :start_date => Time.now, :end_date => Time.now + 1.year, :frequency => "2")
+      Timecop.freeze(Time.now + 15.weeks) do
+        Survey.last.survey_today?.should be_false
+      end
+    end
+
+  end
+  
   it "should return a list of surveys currently active" do
     Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week)
     Factory(:survey, :start_date => 1.month.ago, :end_date => 1.week.ago)

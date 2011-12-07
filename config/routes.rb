@@ -1,6 +1,7 @@
 Intersection::Application.routes.draw do
   resources :surveys
-
+  resources :survey_responses
+  match "/my_surveys", :controller => :survey_responses, :action => :index
   resources :teams
 
   resources :links
