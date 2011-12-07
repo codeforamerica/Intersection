@@ -17,6 +17,10 @@ describe CronProcess do
       Factory(:survey, :frequency => 1,:survey_type => "Project", :start_date => Time.now, :end_date =>Time.now + 1.month)
       CronProcess.new.generate_survey_responses
       SurveyResponse.count.should == 10
+      #ensure that this doesn't generate duplicates
+      CronProcess.new.generate_survey_responses
+      SurveyResponse.count.should == 10
+    
     end
   end
 

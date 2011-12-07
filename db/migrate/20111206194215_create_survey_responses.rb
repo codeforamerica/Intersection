@@ -8,7 +8,7 @@ class CreateSurveyResponses < ActiveRecord::Migration
       t.date :expires_on
       t.string :surveyable_type
       t.integer :surveyable_id
-
+      t.string :code
       t.timestamps
     end
   end

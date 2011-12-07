@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20111206235738) do
     t.date     "expires_on"
     t.string   "surveyable_type"
     t.integer  "surveyable_id"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
