@@ -71,6 +71,8 @@ if Rails.env!='production'
           i==1 ? active = false : active = true
           i=1
           completed_date = nil
+        #randomly make a project late
+          rand(2) == 1 ? planned_date = Time.now - rand(20).days : nil
         end
         #add the milestone
         ProjectMilestone.create(:project => project, :milestone => milestone, :planned_date => planned_date,:completed_date => completed_date, :active => active)
