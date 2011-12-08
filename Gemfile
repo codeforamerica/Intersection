@@ -22,6 +22,7 @@ gem 'meta_search'
 gem 'acts-as-taggable-on'
 gem 'ice_cube'
 gem 'delayed_job'
+gem 'ox'
 gem 'faraday'
 group :development do
   gem 'ZenTest'
