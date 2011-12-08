@@ -6,4 +6,10 @@ class ProjectsController < InheritedResources::Base
     @search = Project.search(params[:search])
     @projects = @search.order(:created_at => "DESC")
   end
+
+  def show
+    @project = params[:id].to_i==0 ? Project.where(:name => params[:id]).first : Project.find(params[:id])
+  end
+
+
 end
