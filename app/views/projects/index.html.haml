@@ -52,7 +52,8 @@
           =project.project_milestones.where(:active => true).first.milestone.name
         %td
           %div.bar_graph
-            %div{:class => "size_#{project.project_milestones.where(:active => true).first.milestone.id}"}
+            -active_milestone = project.project_milestones.where(:active => true).first
+            %div{:class => "size_#{active_milestone.milestone.id} #{on_schedule(active_milestone)}"}
         %td
           =project.created_at.strftime("%m-%d-%Y")
         %td
