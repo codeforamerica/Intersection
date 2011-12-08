@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lists type="array">
+  <list>
+    <id type="integer">52763</id>
+    <name>Funder Prospects and Targets</name>
+    <description></description>
+    <num_records>34</num_records>
+  </list>
+  <list>
+    <id type="integer">52699</id>
+    <name>Open House Donors</name>
+    <description>Donors who gave through eventbrite in 2011</description>
+    <num_records>21</num_records>
+  </list>
+  <list>
+    <id type="integer">52698</id>
+    <name>gov_111011</name>
+    <description>as of 111011</description>
+    <num_records>450</num_records>
+  </list>
+  <list>
+    <id type="integer">52586</id>
+    <name>Gov contacts</name>
+    <description>Oct 2011</description>
+    <num_records>450</num_records>
+  </list>
+  <list>
+    <id type="integer">52542</id>
+    <name>Active Funder List</name>
+    <description></description>
+    <num_records>7</num_records>
+  </list>
+  <list>
+    <id type="integer">52541</id>
+    <name>Active Corp Donor List</name>
+    <description></description>
+    <num_records>12</num_records>
+  </list>
+  <list>
+    <id type="integer">52470</id>
+    <name>Active Donor List</name>
+    <description></description>
+    <num_records>35</num_records>
+  </list>
+  <list>
+    <id type="integer">52453</id>
+    <name>Donation</name>
+    <description></description>
+    <num_records>112</num_records>
+  </list>
+  <list>
+    <id type="integer">52381</id>
+    <name>All Backup</name>
+    <description></description>
+    <num_records>6984</num_records>
+  </list>
+  <list>
+    <id type="integer">52343</id>
+    <name>Major Donor Prospects</name>
+    <description></description>
+    <num_records>96</num_records>
+  </list>
+</lists>
