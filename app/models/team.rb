@@ -35,12 +35,13 @@ class Team < ActiveRecord::Base
     current = 0
     self.batchbook_lists.each do |list|
       histories = list.batchbook_list_histories.during(time1, time2).order("created_at DESC")
+      puts histories.inspect
       if !histories.blank?
-      previous =+ histories.last.contact_number
-      current =+ histories.first.contact_number
+      previous += histories.last.contact_number
+      current += histories.first.contact_number
       end
     end
     #return the current number, and put up or down the amount
-    current==0 ? [0, 0, 0] : [current, 100*((current-previous).to_f/current.to_f), current - previous]
+    current==0 ? [0, 0, 0] : [current, 100*((current-previous).to_f/previous.to_f), current - previous]
   end
 end

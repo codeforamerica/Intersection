@@ -13,6 +13,18 @@
     %li
       =link_to user.profile.name, user.profile
 
+%h2 Network Growth
+%ul
+  -network_growth = @team.network_growth(1.years.ago, Time.now)
+  %li 
+    Current Network Size: 
+    %span.growth
+      =network_growth[0]
+  %li 
+    Year to Date Growth: 
+    %span.percent_growth
+      =number_to_percentage(network_growth[1],:precision => 1)
+
 %h2 Projects
 %ul
   -@team.projects.each do |project|
