@@ -22,12 +22,21 @@ class Survey < ActiveRecord::Base
       generate_team_survey_responses
     when "Project"
       generate_project_survey_responses
+    when "Staff"
+      generate_staff_survey_responses
     end
+    
   end
 
   def generate_fellow_survey_responses
     Profile.where(:user_type => "Fellow").each do |p|
       self.survey_responses.create(:user => p.user, :code =>"#{p.user.id}fellow#{Time.now.strftime('%d%m%y')}" ,:expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "User", :surveyable_id => p.user.id)
+    end
+  end
+ 
+  def generate_staff_survey_responses
+    Profile.where(:user_type => "Staff").each do |p|
+      self.survey_responses.create(:user => p.user, :code =>"#{p.user.id}staff#{Time.now.strftime('%d%m%y')}" ,:expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "User", :surveyable_id => p.user.id)
     end
   end
   

@@ -3,6 +3,7 @@
 %table
   %tr
     %th Name
+    %th Type
     %th Bio
     -if current_user
       %th Self Survey
@@ -14,6 +15,7 @@
   - @profiles.each do |profile|
     %tr
       %td= profile.name
+      %td= profile.user_type
       %td= profile.bio
       - if current_user
         %td
