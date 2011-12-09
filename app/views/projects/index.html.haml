@@ -51,7 +51,7 @@
         %td
           -active_milestone = project.project_milestones.where(:active => true)
           -if !active_milestone.blank?
-            =active_milestone.name
+            =active_milestone.first.milestone.name
         %td
           %div.bar_graph
             -if !active_milestone.blank?
