@@ -1,6 +1,6 @@
 class BatchbookList < ActiveRecord::Base
   belongs_to :team
-  has_many :batchbook_list_histories
+  has_many :batchbook_list_histories, :dependent => :destroy
 
   def update_lists
     all_ids = BatchbookList.all.map(&:batchbook_id).uniq

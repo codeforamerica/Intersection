@@ -5,8 +5,10 @@ class Team < ActiveRecord::Base
   has_many :users, :through => :team_users
   has_many :activities
   has_many :survey_responses, :as => :surveyable
+  has_many :batchbook_lists, :dependent => :destroy
   accepts_nested_attributes_for :team_projects, :allow_destroy => true
   accepts_nested_attributes_for :team_users, :allow_destroy => true
+  accepts_nested_attributes_for :batchbook_lists, :allow_destroy => true
   
   scope :active_teams, where(:active => true)
 

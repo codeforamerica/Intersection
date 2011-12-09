@@ -5,27 +5,52 @@
       %ul
         - @team.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :active
-    = f.check_box :active
+  %fieldset
+    .clearfix
+      = f.label :name
+      .input
+        = f.text_field :name
+    .clearfix
+      = f.label :active
+      .input
+        = f.check_box :active
   %fieldset
     %legend
       Team Members
     =f.fields_for :team_users do |u|
-      = u.select(:user_id, User.all.collect { |p| [p.profile.name, p.id]}, {:include_blank => false})
-      = u.link_to_remove "Remove"
+      .clearfix
+        =u.label "User"
+        .input
+          = u.select(:user_id, User.all.collect { |p| [p.profile.name, p.id]}, {:include_blank => false})
+          %span.help-block
+            = u.link_to_remove "Remove"
     = f.link_to_add "Add User",:team_users
   %fieldset
     %legend
       Projects 
     =f.fields_for :team_projects do |u|
-      = u.select(:project_id, Project.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
-      = u.link_to_remove "Remove"
+      .clearfix
+        =u.label "Project:" 
+        .input
+          = u.select(:project_id, Project.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
+          %span.help-block 
+            = u.link_to_remove "Remove"
     = f.link_to_add "Add Project", :team_projects
 
+  %fieldset
+    %legend
+      Batchbook Lists
+    =f.fields_for :batchbook_lists do |u|
+      .clearfix
+        = u.label :name
+        .input
+          = u.text_field :name
+      .clearfix
+        = u.label "Batchbook List ID"
+        .input
+          = u.text_field :batchbook_id
+          %span.help-block
+            = u.link_to_remove "Remove"
+    = f.link_to_add "Add Batchbook List", :batchbook_lists
   .actions
     = f.submit 'Save'
