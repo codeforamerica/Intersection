@@ -5,9 +5,6 @@ FactoryGirl.define do
     sequence(:email){|n| "email#{n}@test.com" }
     admin false
     password "something"
-    after_build do |user|
-      user.profile = Factory.create(:profile)
-    end
   end
 end
 

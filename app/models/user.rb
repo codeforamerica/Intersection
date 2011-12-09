@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :make_profile
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
@@ -32,5 +33,9 @@ class User < ActiveRecord::Base
     else
       0
     end
+  end
+
+  def make_profile
+    self.create_profile(:name => 'Change Me', :user_type => 'Fellow') unless self.profile
   end
 end
