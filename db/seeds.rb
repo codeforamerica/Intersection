@@ -25,6 +25,17 @@ if Rails.env!='production'
     team.users <<  users.shift(3)
   }
 
+#Adding BatchBook Stats
+  puts "Adding Batchbook histories"
+  Team.all.each do |team|
+    2.times {
+      list = Factory(:batchbook_list, :team => team)
+      bh1 = Factory(:batchbook_list_history, :batchbook_list => list)
+      bh1.update_attributes(:created_at => 2.weeks.ago)
+      bh2 = Factory(:batchbook_list_history, :batchbook_list => list, :contact_number => bh1.contact_number + rand(1000) )
+    }
+  end
+
 #Adding Projects
   puts "Adding projects with random start dates over the last six months and random teams"
   teams = Team.all

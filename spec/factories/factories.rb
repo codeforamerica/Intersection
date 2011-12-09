@@ -87,3 +87,14 @@ end
 Factory.define :team_survey_response do |u|
   u.surveyable {Factory(:team)}
 end
+
+Factory.define :batchbook_list do |l|
+  l.team {Factory(:team)}
+  l.batchbook_id {rand(100000)}
+end
+
+Factory.define :batchbook_list_history do |h|
+  h.contact_number {rand(10000)}
+  h.batchbook_list {Factory(:batchbook_list)}
+end
+
