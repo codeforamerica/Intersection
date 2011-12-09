@@ -19,7 +19,12 @@ class Project < ActiveRecord::Base
   acts_as_taggable
 
   def active_milestone
-    project_milestones.where(:active => true).first
+    am = project_milestones.where(:active => true)
+    if am.blank?
+      am
+    else
+      am.first
+    end
   end
 
   def to_url
