@@ -14,7 +14,11 @@ class Team < ActiveRecord::Base
 
   def project_activities
     ids = self.projects.map(&:id)
-    Activity.where("project_id in (#{ids.join(',')})").order("created_at DESC")    
+    if ids.blank?
+      []
+    else
+      Activity.where("project_id in (#{ids.join(',')})").order("created_at DESC")    
+    end
   end
 
   def survey_average(time1=1.month.ago, time2=Time.now)
