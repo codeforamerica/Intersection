@@ -50,7 +50,7 @@
 %h2 Activity
 
 %ul
-  -@team.project_activities.order("updated_at DESC").each do |activity|
+  -@team.project_activities.each do |activity|
     %li
       =raw(activity.activity)
 = link_to 'Back', teams_path
