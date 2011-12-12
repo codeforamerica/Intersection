@@ -2,6 +2,7 @@ class CronProcess
   def run_jobs
     self.delay.generate_survey_responses
     self.delay.update_batchbook_lists
+    self.delay.delete_expired_survey_responses
   end
   
   def generate_survey_responses
@@ -12,6 +13,10 @@ class CronProcess
   
   def update_batchbook_lists
     BatchbookList.new.update_lists
+  end
+
+  def delete_expired_survey_responses
+    Survey.all.each { |x| x.delete_expired_responses}
   end
 
 end

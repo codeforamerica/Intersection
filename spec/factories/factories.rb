@@ -71,9 +71,10 @@ Factory.define :survey_response do |r|
   r.response 6
   r.note {Faker::Lorem.sentence(2)}
   r.survey {Factory(:survey)}
+  r.user {Factory(:user)}
 end
 
-Factory.define :user_survey_response do |u|
+Factory.define :user_survey_response, :parent => :survey_response do |u|
   u.surveyable {Factory(:user)}
 end
 

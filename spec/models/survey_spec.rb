@@ -19,7 +19,18 @@ describe Survey do
     end
 
   end
-  
+
+  it "should delete expired survey responses where note and response are nil" do
+    survey = Factory(:survey)
+    sr = Factory(:user_survey_response, :response => 1, :note => nil, :expires_on => 1.week.ago, :survey => survey)
+    sr = Factory(:user_survey_response, :note => "something", :response => nil, :expires_on => 1.week.ago, :survey => survey)
+    sr = Factory(:user_survey_response, :note => nil, :response => nil, :expires_on => 1.week.ago, :survey => survey)
+    SurveyResponse.count.should == 3
+    sr.survey.delete_expired_responses
+    SurveyResponse.count.should == 2
+
+  end
+
   it "should return a list of surveys currently active" do
     Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week)
     Factory(:survey, :start_date => 1.month.ago, :end_date => 1.week.ago)
@@ -27,11 +38,10 @@ describe Survey do
   end
 
   it :generate_fellow_survey_responses do
-    ut = Factory(:user_type, :name => "Fellow")
-    2.times {Factory(:profile, :user_type => ut, :user => Factory(:user))}
-    survey = Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Fellow")
+    2.times {Factory(:user)}
+    survey = Factory(:survey, :start_date => Time.now, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Fellow")
     survey.generate_fellow_survey_responses
-    survey.survey_responses.size.should == 2
+    survey.reload.survey_responses.size.should == 2
     User.first.survey_responses.size.should == 1
     User.first.surveys.size.should == 1
   end
@@ -42,7 +52,7 @@ describe Survey do
     Team.all.each { |x| x.users << User.all }
     survey = Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Team")
     survey.generate_team_survey_responses
-    survey.survey_responses.size.should == 4
+    survey.reload.survey_responses.size.should == 4
     Team.first.survey_responses.size.should == 2
   end
   
@@ -52,7 +62,7 @@ describe Survey do
     Project.all.each { |x| x.users << User.all }
     survey = Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Project")
     survey.generate_project_survey_responses
-    survey.survey_responses.size.should == 4
+    survey.reload.survey_responses.size.should == 4
     Project.first.survey_responses.size.should == 2
   end
 
@@ -62,7 +72,7 @@ describe Survey do
     Project.all.each { |x| x.users << User.all }
     survey = Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Project")
     survey.generate_survey_responses
-    survey.survey_responses.size.should == 4
+    survey.reload.survey_responses.size.should == 4
     Project.first.survey_responses.size.should == 2
   end
   
@@ -72,16 +82,15 @@ describe Survey do
     Team.all.each { |x| x.users << User.all }
     survey = Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Team")
     survey.generate_survey_responses
-    survey.survey_responses.size.should == 4
+    survey.reload.survey_responses.size.should == 4
     Team.first.survey_responses.size.should == 2
   end
 
   it " generate fellow survey responses" do
-    ut = Factory(:user_type, :name => "Fellow")
-    2.times {Factory(:profile, :user_type => ut, :user => Factory(:user))}
+    2.times {Factory(:profile, :user_type => "Fellow", :user => Factory(:user))}
     survey = Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Fellow")
     survey.generate_survey_responses
-    survey.survey_responses.size.should == 2
+    survey.reload.survey_responses.size.should == 2
     User.first.survey_responses.size.should == 1
     User.first.surveys.size.should == 1
   end
