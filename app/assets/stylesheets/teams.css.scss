@@ -1,3 +1,14 @@
 // Place all the styles related to the teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.team_members li { 
+  float: left;
+  margin: 5px;
+}
+
+ul.team_members {
+  list-style: none;
+}
+
+

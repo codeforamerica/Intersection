@@ -34,6 +34,14 @@ class Team < ActiveRecord::Base
     "<a href='/teams/#{self.name}'>#{self.name}</a>"
   end
 
+  def all_members
+    members = self.users
+    self.projects.each do |project|
+      members << project.users
+    end
+    members.uniq
+  end
+
   def network_growth(time1=4.weeks.ago, time2=Time.now)
     previous = 0
     current = 0

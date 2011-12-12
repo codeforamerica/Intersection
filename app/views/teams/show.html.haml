@@ -3,16 +3,15 @@
 %p
   %b Name:
   = @team.name
-%p
-  %b Active:
-  = @team.active
-
-%h2 Team Members
-%ul
-  -@team.users.each do |user|
-    %li
-      =link_to user.profile.name, user.profile
-
+.row
+  .span12
+    %h2 Team Members
+    %ul.team_members
+      -@team.all_members.each do |user|
+        %li
+          =link_to gravatar_image_tag(user.email, :alt => user.profile.name), user.profile
+          %br
+          =link_to user.profile.name, user.profile
 %h2 Network Growth
 %ul
   -network_growth = @team.network_growth(1.years.ago, Time.now)
