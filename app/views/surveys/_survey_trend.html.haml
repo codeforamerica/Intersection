@@ -1,0 +1,4 @@
+%ul.trends
+  -trends.reverse[0..12].each do |trend|
+    %li
+      =raw(r_y_g(rand(trend[1])))

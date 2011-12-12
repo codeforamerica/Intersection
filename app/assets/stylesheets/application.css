@@ -72,6 +72,17 @@ table div#green {
   color: green;
 }
 
+ul.trends {
+  list-style: none;
+  margin: 0px;
+}
+
+ul.trends li {
+  float: left;
+  margin-right: 5px;
+}
+
+
 
 
 

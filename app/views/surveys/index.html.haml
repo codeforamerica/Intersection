@@ -4,26 +4,26 @@
   %tr
     %th Name
     %th Survey type
-    %th Scale
     %th Start date
     %th End date
     %th Frequency
     %th
-    %th
-    %th
 
   - @surveys.each do |survey|
     %tr
-      %td= survey.name
+      %td
+        =link_to survey.name, survey
+        %br
+        =render :partial => "survey_trend", :locals => {:trends => survey.survey_responses.trending}
       %td= survey.survey_type
-      %td= survey.scale
-      %td= survey.start_date
-      %td= survey.end_date
-      %td= survey.frequency
-      %td= link_to 'Show', survey
-      %td= link_to 'Edit', edit_survey_path(survey)
-      %td= link_to 'Destroy', survey, :confirm => 'Are you sure?', :method => :delete
-
+      %td= survey.start_date.strftime("%m/%d/%y")
+      %td= survey.end_date.strftime("%m/%d/%y")
+      %td
+        ="#{survey.frequency} weeks"
+      %td
+        = link_to 'Show', survey
+        = link_to 'Edit', edit_survey_path(survey)
+        = link_to 'Destroy', survey, :confirm => 'Are you sure?', :method => :delete
 %br
 
 = link_to 'New Survey', new_survey_path

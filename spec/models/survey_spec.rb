@@ -94,5 +94,21 @@ describe Survey do
     User.first.survey_responses.size.should == 1
     User.first.surveys.size.should == 1
   end
+  
+  it 'generates a trending by date group average hash' do
+    2.times {Factory(:profile, :user_type => "Fellow", :user => Factory(:user))}
+    survey1 = Factory(:survey, :start_date => 1.week.ago, :end_date => Time.now + 1.week, :frequency => 1, :survey_type => "Fellow")
+    sr1 = Factory(:user_survey_response, :response => 3, :survey => survey1, :user => User.first) 
+    sr2 = Factory(:user_survey_response, :response => 1, :survey => survey1, :user => User.first) 
+    sr1.update_attributes(:created_at => 1.week.ago)
+    sr2.update_attributes(:created_at => 1.week.ago)
+    Factory(:user_survey_response, :response => 1, :survey => survey1, :user => User.first, :created_at => Time.now) 
+    Factory(:user_survey_response, :response => 1, :survey => survey1, :user => User.first, :created_at => Time.now)
+    trends = survey1.reload.survey_responses.trending
+    puts trends
+    trends.size.should == 2
+    trends.first[1].to_f.should == 1.0
+    trends.last[1].to_f.should == 2.0
+  end
 
 end
