@@ -25,10 +25,20 @@
       =number_to_percentage(network_growth[1],:precision => 1)
 
 %h2 Projects
-%ul
-  -@team.projects.each do |project|
-    %li
-      =link_to project.name, project
+%table
+  %tr
+    %th Name
+    %th Tags
+    %th Team
+    -if current_user
+      %th Survey
+    %th Active
+    %th Milestone
+    %th Progress
+    %th Last Updated
+    %th
+    =render @team.projects
+  
 -if current_user and current_user.admin?
   %h2 Surveys
   %table

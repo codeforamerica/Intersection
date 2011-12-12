@@ -13,7 +13,6 @@
       %th Active
       %th Milestone
       %th Progress
-      %th Started Date
       %th Last Updated
       %th
 
@@ -32,40 +31,9 @@
       %td
       %td
       %td
-      %td
         =f.submit "Submit", :value=>"Search", :class=>"btn info"
         =link_to "Clear", projects_path
-    - @projects.each do |project|
-      %tr
-        %td= link_to project.name, "/projects/#{project.name}"
-        %td= project.tag_list
-        %td
-          %ul
-            -project.teams.each do |team|
-              %li
-                =link_to team.name, team_path(team)
-        -if current_user
-          %td
-            =raw(r_y_g(project.survey_average)) if project.active?  
-        %td= project.active? ? raw('<span class="label success">Yes</span>') : raw('<span class="label important">No</span>')
-        %td
-          -active_milestone = project.project_milestones.where(:active => true)
-          -if !active_milestone.blank?
-            =active_milestone.first.milestone.name
-        %td
-          %div.bar_graph
-            -if !active_milestone.blank?
-              %div{:class => "size_#{active_milestone.first.milestone.id} #{on_schedule(active_milestone.first)}"}
-        %td
-          =project.created_at.strftime("%m-%d-%Y")
-        %td
-          -if !project.project_milestones.blank?
-            =project.project_milestones.order("updated_at DESC").first.updated_at.strftime("%m-%d-%Y")
-        -if current_user
-          %td
-            = link_to 'Edit', edit_project_path(project)
-            |
-            =link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+    =render @projects
 
 %br
 
