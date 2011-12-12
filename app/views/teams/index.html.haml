@@ -5,7 +5,6 @@
     %th Name
     -if current_user
       %th Survey
-    %th Active
     %th Projects
     %th Network Size
     %th % Growth
@@ -19,7 +18,6 @@
       -if current_user
         %td
           =raw(r_y_g(team.survey_average)) if team.active?
-      %td= team.active? ? raw('<span class="label success">Yes</span>') : raw('<span class="label important">No</span>')
       %td= team.projects.size
       %td
         -network_growth = team.network_growth
