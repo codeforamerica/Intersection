@@ -1,4 +1,6 @@
 %ul.trends
   -trends.reverse[0..12].each do |trend|
-    %li
-      =raw(r_y_g(rand(trend[1])))
+    %li.show_date
+      =raw(r_y_g(trend[1]))
+      %span.date{:style => "display:none"}
+        =trend[0].to_date.strftime("%m-%d")

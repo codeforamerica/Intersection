@@ -24,6 +24,12 @@ $(document).ready(function() {
   $("input[name='commit']").click(function() {
     $(this).val("Saved");
   })
+  $("li.show_date").hover(function() {
+      $(this).children('span').show();
+      }, function() {
+      $(this).children('span').hide();
+      }
+      );
 });  
 
 function remove_on_class(val_id) { 
