@@ -3,6 +3,10 @@
 %p
   %b Name:
   = @team.name
+-if current_user
+  .row
+    .span16    
+      =render :partial => "surveys/survey_trend", :locals => {:trends => @team.survey_responses.trending}
 .row
   .span12
     %h2 Team Members

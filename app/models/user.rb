@@ -38,4 +38,8 @@ class User < ActiveRecord::Base
   def make_profile
     self.create_profile(:name => 'Change Me', :user_type => 'Fellow') unless self.profile
   end
+
+  def name
+    self.profile.name
+  end
 end

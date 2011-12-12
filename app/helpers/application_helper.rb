@@ -5,7 +5,7 @@ module ApplicationHelper
     when 1
       "<div id='red'>1</div>"
     when 2
-      "<div id='yellow'>3</div>"
+      "<div id='yellow'>2</div>"
     when 3
       "<div id='green'>3</div>"
     when 0

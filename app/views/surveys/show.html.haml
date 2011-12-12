@@ -1,24 +1,32 @@
 %p#notice= notice
 
+.row
+  .span16
+    %h2= @survey.name
+    ="Administered between #{@survey.start_date.strftime('%m-%d-%y')} and #{@survey.end_date.strftime('%m-%d-%y')} every #{@survey.frequency} weeks"
+.row
+  .span16       
+    %h3 Trends
+    =render :partial => "surveys/survey_trend", :locals => {:trends => @survey.survey_responses.trending}
 %p
-  %b Name:
-  = @survey.name
-%p
-  %b Survey type:
-  = @survey.survey_type
-%p
-  %b Scale:
-  = @survey.scale
-%p
-  %b Start date:
-  = @survey.start_date
-%p
-  %b End date:
-  = @survey.end_date
-%p
-  %b Frequency:
-  = @survey.frequency
-
-= link_to 'Edit', edit_survey_path(@survey)
-\|
-= link_to 'Back', surveys_path
+.rowi
+  .span16
+    -if current_user and current_user.admin?
+      %h3 Survey Responses
+      %table
+        %tr
+          %th Date
+          %th About
+          %th Value
+          %th Submitted By
+          %th Comments
+        -@survey.survey_responses.order("updated_at DESC").each do |sr|
+          %tr
+            %td=sr.created_at.strftime("%m/%d/%y")
+            -if sr.surveyable_type== "User"
+              %td=link_to sr.surveyable.name, "/profiles/#{sr.surveyable.profile.id}"
+            -else
+              %td=link_to sr.surveyable.name, sr.surveyable
+            %td=raw(r_y_g(sr.response))
+            %td=link_to sr.user.profile.name, sr.user.profile
+            %td=sr.note

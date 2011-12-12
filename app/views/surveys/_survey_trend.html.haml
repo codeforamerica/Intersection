@@ -1,5 +1,5 @@
 %ul.trends
-  -trends.reverse[0..12].each do |trend|
+  -trends[0..12].each do |trend|
     %li.show_date
       =raw(r_y_g(trend[1]))
       %span.date{:style => "display:none"}

@@ -1,7 +1,10 @@
 %p#notice= notice
 
-%h1
-  = @project.name
+%h1=@project.name
+-if current_user
+  .row
+    .span16    
+      =render :partial => "surveys/survey_trend", :locals => {:trends => @project.survey_responses.trending}
 
 %p
   %b Description:
@@ -13,7 +16,6 @@
 %p
   %b Tags:
   =@project.tag_list
-
 %p
   %b Teams:
   %ul
