@@ -37,7 +37,7 @@
         =link_to "Clear", projects_path
     - @projects.each do |project|
       %tr
-        %td= link_to project.name, project
+        %td= link_to project.name, "/projects/#{project.name}"
         %td= project.tag_list
         %td
           %ul

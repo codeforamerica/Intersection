@@ -1,30 +1,9 @@
-%h1 Fellows
-
-%table
-  %tr
-    %th Name
-    %th Type
-    %th Bio
-    -if current_user
-      %th Self Survey
-      %th All Surveys
-    %th
-    %th
-    %th
-
-  - @profiles.each do |profile|
-    %tr
-      %td= profile.name
-      %td= profile.user_type
-      %td= profile.bio
-      - if current_user
-        %td
-          =raw(r_y_g(profile.user.self_survey_average))
-        %td
-          =raw(r_y_g(profile.user.all_survey_average))
-      %td= link_to 'Show', profile
-      %td= link_to 'Edit', edit_profile_path(profile) if (current_user.try(:profile) == profile or current_user.try(:admin?))
-      %td= link_to 'Destroy', profile, :confirm => 'Are you sure?', :method => :delete if current_user.try(:admin?)
-
-%br
-
+%h1 Code for America People
+.row
+  .span12
+    %ul.profiles
+      -@profiles.each do |profile|
+        %li
+          =link_to gravatar_image_tag(profile.user.email, :alt => profile.name), "/profiles/#{profile.name}"
+          %br
+          =link_to profile.name, "/profiles/#{profile.name}"

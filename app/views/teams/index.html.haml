@@ -1,10 +1,10 @@
-%h1 Listing teams
+%h1 2012 Code for America Cities
 
 %table
   %tr
     %th Name
     -if current_user
-      %th Survey
+      %th Last Survey
     %th Projects
     %th Network Size
     %th % Growth
@@ -14,7 +14,7 @@
 
   - @teams.each do |team|
     %tr
-      %td=link_to team.name, team
+      %td=link_to team.name, "/teams/#{team.name}"
       -if current_user
         %td
           =raw(r_y_g(team.survey_average)) if team.active?
@@ -28,9 +28,8 @@
         =network_growth[2]
       -if current_user and current_user.admin?
         %td 
-          =link_to 'Show', team
           =link_to 'Edit', edit_team_path(team)
-          =link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete
+          =link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete 
 
 %br
 

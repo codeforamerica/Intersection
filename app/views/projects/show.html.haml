@@ -50,7 +50,9 @@
 %ul
   -@project.links.each do |link|
     %li
-      =link_to link.name, link.url
+      =link.name + ":"
+      =link_to link.url
+      ="(#{link.link_type.name})"
 
 -if current_user and current_user.admin?
   %h2 Surveys
