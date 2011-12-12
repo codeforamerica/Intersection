@@ -19,4 +19,15 @@ class CronProcess
     Survey.all.each { |x| x.delete_expired_responses}
   end
 
+  def is_it_friday?
+    if Time.friday?
+      User.all.each do |u|
+        if u.new_surveys?
+          UserMailer.delay.reminder_email(u)
+        end
+      end
+
+    end
+  end
+
 end

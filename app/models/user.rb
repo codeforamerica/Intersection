@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
   def name
     self.profile.name
   end
+
+  def new_surveys?
+    !self.survey_responses.active.not_taken.blank?
+  end
 end
