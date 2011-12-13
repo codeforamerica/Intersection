@@ -1,0 +1,20 @@
+-network = team.network_growth
+%h2 City Stats
+%ul
+  %li
+    %strong 
+      =network[0]
+    Network Size
+  %li
+    %strong 
+      =number_to_percentage(network[1], :precision => 1)
+    Network Growth
+  %li
+    %strong 
+      =link_to team.projects.size, "/teams/#{team.name}"
+    Projects
+  %li
+    %strong 
+      =team.all_members.size
+    Team Members
+  

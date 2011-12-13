@@ -1,32 +1,26 @@
 %p#notice= notice
-
-%p
-  %b Name:
-  = @team.name
--if current_user
-  .row
-    .span16    
-      =render :partial => "surveys/survey_trend", :locals => {:trends => @team.survey_responses.trending}
 .row
+  .span16
+    %h1=@team.name
+.row
+  .span4.stats
+    =render :partial => "team_summary", :locals => {:team => @team}
   .span12
-    %h2 Team Members
-    %ul.team_members
-      -@team.all_members.each do |user|
-        %li
-          =link_to gravatar_image_tag(user.email, :alt => user.profile.name), user.profile
-          %br
-          =link_to user.profile.name, user.profile
-%h2 Network Growth
-%ul
-  -network_growth = @team.network_growth(1.years.ago, Time.now)
-  %li 
-    Current Network Size: 
-    %span.growth
-      =network_growth[0]
-  %li 
-    Year to Date Growth: 
-    %span.percent_growth
-      =number_to_percentage(network_growth[1],:precision => 1)
+    -if current_user
+      .row
+        .span12.stats
+          -if current_user
+            %h2 Survey Trends
+            =render :partial => "surveys/survey_trend", :locals => {:trends => @team.survey_responses.trending}
+    .row
+      .span12.stats
+        %h2 Team Members
+        %ul.team_members
+          -@team.all_members.each do |user|
+            %li
+              =link_to gravatar_image_tag(user.email, :alt => user.profile.name), user.profile
+              %br
+              =link_to user.profile.name, user.profile
 
 %ul.tabs{"data-tabs" => "tabs"}
   %li.active
@@ -60,7 +54,8 @@
       -@team.project_activities.each do |activity|
         %li
           =raw(activity.activity)
-  %div.tab-pane{:id => "surveys"}  
+-if current_user and current_user.admin 
+  %div.tab-pane{:id => "surveys"}
     %table
       %tr
         %th Date
