@@ -28,42 +28,51 @@
     %span.percent_growth
       =number_to_percentage(network_growth[1],:precision => 1)
 
-%h2 Projects
-%table
-  %tr
-    %th Name
-    %th Tags
-    %th Team
-    -if current_user
-      %th Survey
-    %th Active
-    %th Milestone
-    %th Progress
-    %th Last Updated
-    %th
-    =render @team.projects
-  
--if current_user and current_user.admin?
-  %h2 Surveys
-  %table
-    %tr
-      %th Date
-      %th Survey
-      %th Value
-      %th Name
-      %th Comments
-      -@team.survey_responses.order("updated_at DESC").each do |sr|
-        %tr
-          %td=sr.updated_at.strftime("%m/%d/%y")
-          %td=survey_name(sr)
-          %td=raw(r_y_g(sr.response))
-          %td=link_to sr.user.profile.name, sr.user.profile
+%ul.tabs{"data-tabs" => "tabs"}
+  %li.active
+    %a{:href=>"#projects"}
+      Projects
+  %li
+    %a{:href=>"#activity"}
+      Activity
+  -if current_user and current_user.admin?
+    %li
+      %a{:href=>"#surveys"}
+        Surveys
+
+.my-tab-content
+  .active.tab-pane{:id => "projects"}
+    %table
+      %tr
+        %th Name
+        %th Tags
+        %th Team
+        -if current_user
+          %th Survey
+        %th Active
+        %th Milestone
+        %th Progress
+        %th Last Updated
+        %th
+        =render @team.projects
+  %div.tab-pane{:id => "activity"}      
+    %ul
+      -@team.project_activities.each do |activity|
+        %li
+          =raw(activity.activity)
+  %div.tab-pane{:id => "surveys"}  
+    %table
+      %tr
+        %th Date
+        %th Survey
+        %th Value
+        %th Name
+        %th Comments
+        -@team.survey_responses.order("updated_at DESC").each do |sr|
+          %tr
+            %td=sr.updated_at.strftime("%m/%d/%y")
+            %td=survey_name(sr)
+            %td=raw(r_y_g(sr.response))
+            %td=link_to sr.user.profile.name, sr.user.profile
           %td=sr.note
 
-%h2 Activity
-
-%ul
-  -@team.project_activities.each do |activity|
-    %li
-      =raw(activity.activity)
-= link_to 'Back', teams_path

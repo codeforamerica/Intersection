@@ -88,6 +88,13 @@ ul.trends li {
   margin-right: 5px;
 }
 
+.tab-pane {
+  display: none;
+}
+
+.active {
+  display: block;
+}
 
 
 

@@ -10,3 +10,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
+//
+$('.tabs').tabs();
+$('.my-tab-content').pills();
