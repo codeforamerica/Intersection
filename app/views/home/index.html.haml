@@ -1,0 +1,41 @@
+.row
+  -@teams[0..3].each do |team|  
+    .span4.stats
+      =render :partial => "team_summary", :locals => {:team => team}
+.row
+  -@teams[4..7].each do |team|  
+    .span4.stats
+      =render :partial => "team_summary", :locals => {:team => team}
+.row.new_section
+  .span4.stats
+    %h2 2012 CFA Stats
+    %ul
+      %li.arrows
+        =link_to "#{@fellows.size} Fellows", profiles_path
+      %li.arrows
+        =link_to "#{@projects.size} Projects", projects_path
+      %li.arrows
+        =link_to "#{@teams.size} Cities", teams_path
+      %li.arrows
+        =link_to "#{@network_size.inject(0) {|sum, x| sum + x[0]}} network size", teams_path 
+      %li.arrows
+        =link_to "#{number_to_percentage(@network_size.inject(0) {|sum, x| sum + x[1]}/@network_size.size, :precision => 2)} network growth", teams_path
+  .span4.stats
+    %h2 Recent Projects
+    %ul
+      -@projects[0..10].each do |project|
+        %li.arrows
+          =link_to project.name, "/projects/#{project.name}"
+  .span8.stats
+    %h2 Recent Milestones
+    %ul
+      -@project_history[0..10].each do |ph|
+        %li.arrows
+          =link_to "#{ph.project.name} reached #{ph.milestone.name} on #{ph.updated_at.strftime('%m/%d/%y')}", "/projects/#{ph.project.name}"
+      
+
+
+
+
+
+

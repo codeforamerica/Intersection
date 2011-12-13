@@ -5,6 +5,12 @@
  *= require_self
  *= require_tree .
 */
+body {
+  color: #666;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
+  text-shadow: none;
+}
 
 a#logo {
   width: 250px;

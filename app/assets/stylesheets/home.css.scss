@@ -1,3 +1,78 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.stats h2 {
+color: #000;
+text-transform: uppercase;
+font-size: 1.2em;
+display: -moz-inline-stack;
+display: inline-block;
+padding-right: 18px;
+background: url(/assets/red-arrow.gif) 100% 50% no-repeat;
+text-shadow: #CCC 1px 1px 1px;
+}
+
+.stats a{
+  text-decoration: none;
+  color: #666;
+}
+
+.stats h2 a {
+  color: #000;
+}
+
+.stats ul {
+padding-top: 11px;
+margin: 0px;
+padding-left: 0px;
+list-style: none;
+background: url(/assets/horizontal-dots.gif) 0 0 repeat-x;
+background-image: url(/assets/horizontal-dots.gif);
+background-repeat-x: repeat;
+background-repeat-y: no-repeat;
+background-attachment: initial;
+background-position-x: 0px;
+background-position-y: 0px;
+background-origin: initial;
+background-clip: initial;
+background-color: initial;
+}
+
+.stats ul li {
+vertical-align: middle;
+margin-bottom: 10px;
+}
+
+.stats ul li strong {
+font-size: 35px;
+margin-left: 5px;
+color: #666;
+}
+
+.stats li img {
+  width: 20px;
+}
+
+.stats ul h4 {
+font-size: 11px;
+margin-bottom: 5px;
+background: url(/assets/horizontal-dots.gif) 0 0 repeat-x;
+}
+
+.row.new_section {
+padding-top: 15px;
+background: url(/assets/wrap-bg-t.gif) 0 0 repeat-x;
+margin-top: 10px;
+}
+
+li.arrows a { 
+padding-left: 21px;
+display: block;
+background: url(/assets/bullet-red-arrow.gif) 0 3px no-repeat;
+color: #707070;
+font-size: 1.17em;
+font-weight: bold;
+text-decoration: none;
+text-transform: uppercase;
+}
