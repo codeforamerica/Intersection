@@ -54,20 +54,20 @@
       -@team.project_activities.each do |activity|
         %li
           =raw(activity.activity)
--if current_user and current_user.admin 
-  %div.tab-pane{:id => "surveys"}
-    %table
-      %tr
-        %th Date
-        %th Survey
-        %th Value
-        %th Name
-        %th Comments
-        -@team.survey_responses.order("updated_at DESC").each do |sr|
-          %tr
-            %td=sr.updated_at.strftime("%m/%d/%y")
-            %td=survey_name(sr)
-            %td=raw(r_y_g(sr.response))
-            %td=link_to sr.user.profile.name, sr.user.profile
-          %td=sr.note
+  -if current_user and current_user.admin 
+    %div.tab-pane{:id => "surveys"}
+      %table
+        %tr
+          %th Date
+          %th Survey
+          %th Value
+          %th Name
+          %th Comments
+          -@team.survey_responses.order("updated_at DESC").each do |sr|
+            %tr
+              %td=sr.updated_at.strftime("%m/%d/%y")
+              %td=survey_name(sr)
+              %td=raw(r_y_g(sr.response))
+              %td=link_to sr.user.profile.name, sr.user.profile
+              %td=sr.note
 

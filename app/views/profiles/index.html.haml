@@ -1,8 +1,26 @@
-%h1 Code for America People
 .row
   .span12
+    %h1 Code for America Fellows
     %ul.profiles
-      -@profiles.each do |profile|
+      -@profiles.select {|x| x.user_type == "Fellow"}.each do |profile|
+        %li
+          =link_to gravatar_image_tag(profile.user.email, :alt => profile.name), "/profiles/#{profile.name}"
+          %br
+          =link_to profile.name, "/profiles/#{profile.name}"
+.row
+  .span12
+    %h1 Code for America City Partners
+    %ul.profiles
+      -@profiles.select {|x| x.user_type == "City"}.each do |profile|
+        %li
+          =link_to gravatar_image_tag(profile.user.email, :alt => profile.name), "/profiles/#{profile.name}"
+          %br
+          =link_to profile.name, "/profiles/#{profile.name}"
+.row
+  .span12
+    %h1 Code for America Staff
+    %ul.profiles
+      -@profiles.select {|x| x.user_type == "Staff"}.each do |profile|
         %li
           =link_to gravatar_image_tag(profile.user.email, :alt => profile.name), "/profiles/#{profile.name}"
           %br
