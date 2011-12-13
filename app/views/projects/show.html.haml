@@ -4,6 +4,10 @@
     %h2=@project.name
 .row
   .span8.stats
+    -if current_user
+      %h2 Survey Trends
+      =render :partial => "surveys/survey_trend", :locals => {:trends => @project.survey_responses.trending}
+    .clearfix
     %h2 Cities
     %ul
       %li
@@ -96,15 +100,5 @@
               %td=raw(r_y_g(sr.response))
               %td=link_to sr.user.profile.name, sr.user.profile
               %td=sr.note
-          
-      
-
-%h2 Links
-%ul
-  -@project.links.each do |link|
-    %li
-      =link.name + ":"
-      =link_to link.url
-      ="(#{link.link_type.name})"
 
 = link_to 'Edit', edit_project_path(@project)

@@ -1,36 +1,11 @@
-%h1 2012 Code for America Cities
+.row
+  -@teams[0..3].each do |team|  
+    .span4.stats
+      =render :partial => "home/team_summary", :locals => {:team => team}
+.row
+  -@teams[4..7].each do |team|  
+    .span4.stats
+      =render :partial => "home/team_summary", :locals => {:team => team}
 
-%table
-  %tr
-    %th Name
-    -if current_user
-      %th Last Survey
-    %th Projects
-    %th Network Size
-    %th % Growth
-    %th Network Change
-    -if current_user and current_user.admin?
-      %th
 
-  - @teams.each do |team|
-    %tr
-      %td=link_to team.name, "/teams/#{team.name}"
-      -if current_user
-        %td
-          =raw(r_y_g(team.survey_average)) if team.active?
-      %td= team.projects.size
-      %td
-        -network_growth = team.network_growth
-        =network_growth[0]
-      %td
-        =number_to_percentage(network_growth[1], :precision => 1)
-      %td
-        =network_growth[2]
-      -if current_user and current_user.admin?
-        %td 
-          =link_to 'Edit', edit_team_path(team)
-          =link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete 
 
-%br
-
-= link_to 'New Team', new_team_path
