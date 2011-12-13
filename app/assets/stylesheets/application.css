@@ -96,6 +96,9 @@ ul.trends li {
   display: block;
 }
 
+.clearfix {
+  clear:both
+}
 
 
 

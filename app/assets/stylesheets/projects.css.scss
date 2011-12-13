@@ -17,37 +17,37 @@ textarea#project_impact_statement {
 }
 
 .bar_graph {
-  width: 100px;
+  width: 100%;
   height: 20px;
   border: solid 1px grey;
 }
 
 .size_5 {
-  width: 100px;
+  width: 100%;
   height: 20px;
   background-color: green;
 }
 
 .size_4 {
-  width: 80px;
+  width: 80%;
   height: 20px;
   background-color: green;
 }
 
 .size_3 {
-  width: 60px;
+  width: 60%;
   height: 20px;
   background-color: green;
 }
 
 .size_2 {
-  width: 40px;
+  width: 40%;
   height: 20px;
   background-color: green;
 }
 
 .size_1 {
-  width: 20px;
+  width: 20%;
   height: 20px;
   background-color: green;
 }
@@ -71,4 +71,11 @@ li.active {
 
 form h2 {
 margin:15px 0px 15px 0px;
+}
+
+li.milestone {
+padding-left: 21px;
+display: block;
+background: url(/assets/bullet-red-arrow.gif) 0 3px no-repeat;
+text-transform: uppercase;
 }

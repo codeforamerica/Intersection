@@ -1,52 +1,103 @@
 %p#notice= notice
-
-%h1=@project.name
--if current_user
-  .row
-    .span16    
-      =render :partial => "surveys/survey_trend", :locals => {:trends => @project.survey_responses.trending}
-
-%p
-  %b Description:
-  = @project.description
-%p
-  %b Impact statement:
-  = @project.impact_statement
-
-%p
-  %b Tags:
-  =@project.tag_list
-%p
-  %b Teams:
-  %ul
-    -@project.teams.each do |team|
+.row
+  .span16
+    %h2=@project.name
+.row
+  .span8.stats
+    %h2 Cities
+    %ul
       %li
-        =link_to team.name, team_path(team)      
-%p 
-  %b Team Members
-  %ul
-    -@project.users.each do |u|
+        -@project.teams.each do |team|
+          -if team==@project.teams.last
+            =raw(team.to_url)
+          -else
+            =raw(team.to_url) + ", "
+    %h2 Team Members
+    %ul.team_members
+      -@project.users.each do |user|
+        %li
+          =link_to gravatar_image_tag(user.email, :alt => user.profile.name), user.profile
+          %br
+          =link_to user.profile.name, user.profile
+    .clearfix
+    %h2 Links
+    %ul
+      -@project.links.each do |link|
+        %li
+          =link.name + ":"
+          =link_to link.url
+          ="(#{link.link_type.name})"
+  .span8.stats
+    %h2 Details
+    %ul
       %li
-        =link_to u.profile.name, u.profile
-%p
-  %b Active:
-  = @project.active
-%h2 Milestones
+        %b Description: 
+        =@project.description
+      %li
+        %b Impact: 
+        =@project.impact_statement
+      %li
+        %b Tags:
+        =@project.tag_list
+    %h2 Milestones
+    -active_milestone = @project.project_milestones.where(:active => true)
+    %ul
+      %li
+        %div.bar_graph
+          -if !active_milestone.blank?
+            %div{:class => "size_#{active_milestone.first.milestone.id} #{on_schedule(active_milestone.first)}"}
+      -@project.project_milestones.each do |milestone|
+        %li.milestone{:class => "#{milestone.active? ? 'active' : 'inactive'}"}
+          %span.name
+            =milestone.milestone.name 
+          %br
+          -if milestone.completed_date? 
+            %span.completed
+              Completed On
+              =milestone.completed_date.strftime("%m-%d-%y")
+          -else
+            %span.planned
+              Planned Completion On:
+              =milestone.planned_date.strftime("%m-%d-%y")
+%ul.tabs{"data-tabs" => "tabs"}
+  %li.active
+    %a{:href=>"#activity"}
+      Activity
+  %li
+    %a{:href=>"#pivotal"}
+      Pivotal Tracker Activity
+  %li
+    %a{:href=>"#github"}
+      Github Activity
+  -if current_user and current_user.admin?
+    %li
+      %a{:href=>"#surveys"}
+        Surveys
 
-%ul
-  -@project.project_milestones.each do |milestone|
-    %li{:class => "#{milestone.active? ? 'active' : 'inactive'}"}
-      %span.name
-        =milestone.milestone.name 
-      %br
-      -if milestone.completed_date? 
-        %span.completed
-          Completed On
-          =milestone.completed_date.strftime("%m-%d-%y")
-      -else
-        %span.planned
-          Planned
-          =milestone.planned_date.strftime("%m-%d-%y")
+.my-tab-content
+  .active.tab-pane{:id => "activity"}
+    %ul
+      -@project.activities.order("updated_at DESC").each do |activity|
+        %li
+          =raw(activity.activity)
+  -if current_user and current_user.admin?
+    .tab-pane{:id => "surveys"}
+      %table
+        %tr
+          %th Date
+          %th Survey
+          %th Value
+          %th Name
+          %th Comments
+          -@project.survey_responses.order("updated_at DESC").each do |sr|
+            %tr
+              %td=sr.updated_at.strftime("%m/%d/%y")
+              %td=survey_name(sr)
+              %td=raw(r_y_g(sr.response))
+              %td=link_to sr.user.profile.name, sr.user.profile
+              %td=sr.note
+          
+      
 
 %h2 Links
 %ul
@@ -56,28 +107,4 @@
       =link_to link.url
       ="(#{link.link_type.name})"
 
--if current_user and current_user.admin?
-  %h2 Surveys
-  %table
-    %tr
-      %th Date
-      %th Survey
-      %th Value
-      %th Name
-      %th Comments
-      -@project.survey_responses.order("updated_at DESC").each do |sr|
-        %tr
-          %td=sr.updated_at.strftime("%m/%d/%y")
-          %td=survey_name(sr)
-          %td=raw(r_y_g(sr.response))
-          %td=link_to sr.user.profile.name, sr.user.profile
-          %td=sr.note
-%h2 Activity
-%ul
-  -@project.activities.order("updated_at DESC").each do |activity|
-    %li
-      =raw(activity.activity)
-
 = link_to 'Edit', edit_project_path(@project)
-\|
-= link_to 'Back', projects_path
