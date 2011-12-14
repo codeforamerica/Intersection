@@ -57,4 +57,25 @@ class Team < ActiveRecord::Base
     #return the current number, and put up or down the amount
     current==0 ? [0, 0, 0] : [current, 100*((current-previous).to_f/previous.to_f), current - previous]
   end
+
+  def network_growth_by_month
+    data = []
+    6.times { |x|
+      data << [x.months.ago.strftime('%m/%y'), self.network_growth((x+1).months.ago, x.months.ago)[0]]
+    }
+    data.reverse
+  end
+
+  def self.all_network_growth_by_month
+    data = Team.all.map { |team|
+      team.network_growth_by_month
+    }
+    new_data = data.first.map {|x| [x[0],0]}
+    data.each do |d|
+      i=0
+      d.map {|x| new_data[i][1] += x[1]; i+=1}
+    end
+    new_data
+  end
+
 end

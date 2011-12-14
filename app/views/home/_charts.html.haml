@@ -1,0 +1,43 @@
+=javascript_include_tag "https://www.google.com/jsapi"
+-team_project_data = @teams.map{|x| ["#{x.name}", x.projects.size]}
+%script{:type=>"text/javascript"}
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+  var pie_chart_data = new google.visualization.DataTable();
+  pie_chart_data.addColumn('string', 'Milestone');
+  pie_chart_data.addColumn('number', 'projects');
+  pie_chart_data.addRows(
+  =raw(team_project_data)
+  );
+  var options = {'title':'Projects by City','width':450,'height':300};
+  var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
+  chart.draw(pie_chart_data, options);
+
+  var date_data = new google.visualization.DataTable();
+  date_data.addColumn('string', 'Date');
+  date_data.addColumn('number', 'Projects');
+  date_data.addRows(
+  =raw(Project.month_group.to_a)
+  );
+  var options = {'title':'New Projects Growth','width':450,'height':150, 'vAxis':{'gridlines':{'color': '#FFF', 'count': 4}},'legend':{'position':'none'}};
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+  chart.draw(date_data, options);
+
+  var network_data = new google.visualization.DataTable();
+  network_data.addColumn('string', 'Date');
+  network_data.addColumn('number', 'Network Growth');
+  network_data.addRows(
+  =raw(Team.all_network_growth_by_month.to_a)
+  );
+  var options = {'title':'Network Growth','width':450,'height':150,'vAxis':{'gridlines':{'color': '#FFF', 'count': 4}},'legend':{'position':'none'}} 
+  var chart = new google.visualization.LineChart(document.getElementById('network_div'));
+  chart.draw(network_data, options);
+  }
+
+.row
+  .span8
+    %div{:id=>"chart_div"}
+    %div{:id=>"network_div"}
+  .span8
+    %div{:id=>"pie_div"}

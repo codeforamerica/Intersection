@@ -17,6 +17,15 @@ class Project < ActiveRecord::Base
   after_update 'create_activity("updated")'
 
   acts_as_taggable
+  
+  def self.grouped
+    group("date(projects.created_at)").size
+  end
+
+  def self.month_group
+    projects=self.grouped.map { |x| {"#{x[0].to_date.strftime("%m/%y")}" =>  x[1]} }
+    projects.inject{|memo, el| memo.merge( el ){|k, old_v, new_v| old_v + new_v}}
+  end
 
   def active_milestone
     am = project_milestones.where(:active => true)
