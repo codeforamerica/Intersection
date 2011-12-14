@@ -100,6 +100,9 @@ ul.trends li {
   clear:both
 }
 
+.no_bottom {
+  margin-bottom: 0px;
+}
 
 
 
