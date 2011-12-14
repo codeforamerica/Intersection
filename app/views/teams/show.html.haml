@@ -29,6 +29,10 @@
   %li
     %a{:href=>"#activity"}
       Activity
+  %li
+    %a{:href=>"#events"}
+      Events
+  
   -if current_user and current_user.admin?
     %li
       %a{:href=>"#surveys"}
@@ -49,6 +53,8 @@
         %th Last Updated
         %th
         =render @team.projects
+  %div.tab-pane{:id=> "events"}
+    =render :partial => "events/events_index", :locals => {:events => @team.events}
   %div.tab-pane{:id => "activity"}      
     %ul
       -@team.project_activities.each do |activity|

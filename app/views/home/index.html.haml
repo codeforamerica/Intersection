@@ -20,6 +20,8 @@
         =link_to "#{@network_size.inject(0) {|sum, x| sum + x[0]}} network size", teams_path 
       %li.arrows
         =link_to "#{number_to_percentage(@network_size.inject(0) {|sum, x| sum + x[1]}/@network_size.size, :precision => 2)} network growth", teams_path
+      %li.arrows
+        =link_to "#{@events.size} events attended" 
   .span4.stats
     %h2 Recent Projects
     %ul

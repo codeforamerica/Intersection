@@ -2,7 +2,7 @@
 
 %p
   %b Team:
-  = @event.team_id
+  = @event.team.name
 %p
   %b Name:
   = @event.name
@@ -10,15 +10,16 @@
   %b Attendance:
   = @event.attendance
 %p
-  %b Event date:
-  = @event.event_date
+  %b Event Date:
+  = @event.event_date.strftime('%d/%m%y')
 %p
   %b Url:
-  = @event.url
+  =link_to @event.url, @event.url
 %p
   %b Description:
   = @event.description
 
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+-if current_user
+  = link_to 'Edit', edit_event_path(@event)
+  \|
+  = link_to 'Back', events_path

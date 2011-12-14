@@ -25,6 +25,14 @@ if Rails.env!='production'
   }
   Team.all.each { |team| team.users << users.shift(3) }
 
+#Adding Events
+  puts "Adding rand events to teams"
+  Team.all.each do |team|
+    rand(10).times {
+      Factory(:event, :team => team)
+    }
+  end
+  
 #Adding BatchBook Stats
   puts "Adding Batchbook histories"
   Team.all.each do |team|

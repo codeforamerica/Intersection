@@ -51,8 +51,19 @@ Factory.define :project_milestone do |pm|
   pm.planned_date {rand(6).months.ago}
 end
 
+#----Teams--------
+
 Factory.define :team do |team|
   team.name {Faker::Address.city}
+end
+
+Factory.define :event do |e|
+  e.team {Factory(:team)}
+  e.name {Faker::Lorem.sentence}
+  e.attendance {rand(200)}
+  e.event_date {rand(15).weeks.ago}
+  e.url {Faker::Internet.domain_name}
+  e.description {Faker::Lorem.paragraph}
 end
 
 #------Surveys---------------

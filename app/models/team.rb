@@ -3,6 +3,7 @@ class Team < ActiveRecord::Base
   has_many :team_users, :dependent => :destroy
   has_many :projects, :through => :team_projects
   has_many :users, :through => :team_users
+  has_many :events
   has_many :activities
   has_many :survey_responses, :as => :surveyable
   has_many :batchbook_lists, :dependent => :destroy
