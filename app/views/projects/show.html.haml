@@ -68,6 +68,9 @@
     %a{:href=>"#activity"}
       Activity
   %li
+    %a{:href=>"#comments"}
+      Comment Stream
+  %li
     %a{:href=>"#pivotal"}
       Pivotal Tracker Activity
   %li
@@ -84,6 +87,10 @@
       -@project.activities.order("updated_at DESC").each do |activity|
         %li
           =raw(activity.activity)
+  .tab-pane{:id => "comments"}
+    %ul
+    -@project.survey_responses.taken.order("updated_at DESC").each do |comment|
+      %li=comment.note unless comment.note.nil?
   -if current_user and current_user.admin?
     .tab-pane{:id => "surveys"}
       %table

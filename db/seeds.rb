@@ -22,8 +22,8 @@ if Rails.env!='production'
   users = User.all
   8.times {
     team = Factory(:team)
-    team.users <<  users.shift(3)
   }
+  Team.all.each { |team| team.users << users.shift(3) }
 
 #Adding BatchBook Stats
   puts "Adding Batchbook histories"
@@ -43,7 +43,7 @@ if Rails.env!='production'
     project = Factory(:project)
     project.update_attributes(:created_at => rand(8).months.ago + rand(10).days)
     5.times {Factory(:link, :project => project)}
-    teams.shuffle.first.projects << project
+    teams.shuffle[0..3].each { |x| x.projects << project}
     project.users << User.all.shuffle[0..3]
   }
 

@@ -3,6 +3,8 @@ class TeamUser < ActiveRecord::Base
   belongs_to :user
   after_create 'create_activity("joined")'
   after_destroy 'create_activity("left")'
+  
+  validates_uniqueness_of :user_id, :on => :team_id
 
   def create_activity(activity)
     Activity.create(:user => self.user, :team => self.team, :activity => 
