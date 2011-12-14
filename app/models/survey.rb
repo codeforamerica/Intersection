@@ -28,6 +28,8 @@ class Survey < ActiveRecord::Base
       generate_project_survey_responses
     when "Staff"
       generate_staff_survey_responses
+    when "City"
+      generate_city_survey_responses
     end
     
   end
@@ -35,6 +37,12 @@ class Survey < ActiveRecord::Base
   def generate_fellow_survey_responses
     Profile.where(:user_type => "Fellow").each do |p|
       self.survey_responses.create(:user => p.user, :code =>"#{p.user.id}fellow#{Time.now.strftime('%d%m%y')}" ,:expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "User", :surveyable_id => p.user.id)
+    end
+  end
+  
+  def generate_city_survey_responses
+    Profile.where(:user_type => "City").each do |p|
+      self.survey_responses.create(:user => p.user, :code =>"#{p.user.id}city#{Time.now.strftime('%d%m%y')}" ,:expires_on => Time.now + (self.frequency.to_i).weeks, :surveyable_type => "User", :surveyable_id => p.user.id)
     end
   end
  
