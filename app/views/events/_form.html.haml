@@ -1,0 +1,35 @@
+= form_for @event do |f|
+  -if @event.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @event.errors.full_messages.each do |msg|
+          %li= msg
+  
+  .fieldset
+    .clearfix
+      = f.label :team_id
+      .input
+        = f.select(:team_id, Team.all.map { |x| [x.name,x.id]})
+    .clearfix
+      = f.label :name
+      .input
+        = f.text_field :name
+    .clearfix
+      = f.label :attendance
+      .input
+        = f.number_field :attendance
+    .clearfix
+      = f.label :event_date
+      .input
+        = f.text_field :event_date, :class => "datepicker"
+    .clearfix
+      = f.label :url
+      .input
+        = f.text_field :url
+    .clearfix
+      = f.label :description
+      .input
+        = f.text_area :description
+    .actions
+      = f.submit 'Save'

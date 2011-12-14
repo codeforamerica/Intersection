@@ -1,0 +1,28 @@
+%h1 Listing events
+
+%table
+  %tr
+    %th Team
+    %th Name
+    %th Attendance
+    %th Event date
+    %th Url
+    %th Description
+    %th
+    %th
+
+  - @events.each do |event|
+    %tr
+      %td=link_to event.team.name, "/teams/#{team.name}"
+      %td= link_to event.name, event
+      %td= event.attendance
+      %td= event.event_date.strftime('%m/%d/%y')
+      %td= link_to event.url, event.url
+      %td= event.description[0..50]
+      %td
+        =link_to 'Edit', edit_event_path(event)
+        =link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Event', new_event_path

@@ -87,6 +87,10 @@
       -@project.activities.order("updated_at DESC").each do |activity|
         %li
           =raw(activity.activity)
+  .tab-pane{:id => "pivotal"}
+    Coming soon!
+  .tab-pane{:id => "github"}
+    Coming soon!
   .tab-pane{:id => "comments"}
     %ul
     -@project.survey_responses.taken.order("updated_at DESC").each do |comment|
