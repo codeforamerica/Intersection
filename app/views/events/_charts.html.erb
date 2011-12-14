@@ -1,0 +1,27 @@
+<% team_event_data = @events.group_by(&:team_id).map{|k,v| [k, v.length]}.sort!%> 
+<% team_event_chart_data = team_event_data.map { |x| ["#{Team.find(x[0]).name}", x[1]] }%>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'City');
+    data.addColumn('number', 'events');
+    data.addRows(<%=raw(team_event_chart_data)%>);
+    var date_data = new google.visualization.DataTable();
+    date_data.addColumn('string', 'Date');
+    date_data.addColumn('number', 'events');
+    date_data.addRows(<%=raw(Event.month_group.to_a)%>);
+    var options = {'title':'Events Attended','width':600,'height':300};
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(date_data, options);
+    var pie_chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+    pie_chart.draw(data, options); 
+  }
+</script>
+<div class="row">
+<div id="chart_div" class="span8"></div>
+<div id="pie_chart" class="span8"></div>
+</div>
