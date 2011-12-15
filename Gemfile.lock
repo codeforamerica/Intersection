@@ -58,7 +58,7 @@ GEM
     arel (2.2.1)
     bbenezech-nested_form (0.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (1.4.1)
+    bootstrap-sass (1.4.2)
       sass-rails (~> 3.1.0)
     builder (3.0.0)
     coffee-rails (3.1.1)
