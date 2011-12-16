@@ -1,17 +1,4 @@
 =render :partial => "charts"
-.row.new_section
-  .span16
-    %h1.no_bottom 2012 Cities
-.row.new_section
-.row
-  -@teams[0..3].each do |team|  
-    .span4.stats
-      =render :partial => "team_summary", :locals => {:team => team}
-.row
-  -@teams[4..7].each do |team|  
-    .span4.stats
-      =render :partial => "team_summary", :locals => {:team => team}
-.row.new_section
   
 .row.new_section
   .span4.stats

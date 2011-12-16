@@ -31,9 +31,9 @@ a#logo {
 
 
 #nav {
-  height: 50px;
   margin: 0px;
   padding:0px;
+  list-style: none;
 }
 
 #nav li {
@@ -102,6 +102,22 @@ ul.trends li {
 
 .no_bottom {
   margin-bottom: 0px;
+}
+
+ul.submenu {
+  list-style: none;
+  padding: 5px;
+  margin-left: 7px;
+  display: none;
+}
+
+ul.submenu li {
+  float: left;
+  margin-right: 10px;
+}
+
+ul.submenu li a {
+  color: black;
 }
 
 

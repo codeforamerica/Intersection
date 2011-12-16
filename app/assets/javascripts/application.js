@@ -11,5 +11,8 @@
 //= require jquery_ujs
 //= require_tree .
 //
+$(document).ready (function() {
 $('.tabs').tabs();
 $('.my-tab-content').pills();
+$('a.cities').hover(function(){$('.submenu').show();});
+});

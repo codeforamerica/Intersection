@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @story.user_id
+%p
+  %b Project:
+  = @story.project_id
+%p
+  %b Team:
+  = @story.team_id
+%p
+  %b Story:
+  = @story.story
+
+= link_to 'Edit', edit_story_path(@story)
+\|
+= link_to 'Back', stories_path

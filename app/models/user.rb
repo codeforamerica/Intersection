@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :activities
   has_many :survey_responses, :dependent => :destroy
   has_many :surveys, :as => :surveyable, :class_name => "SurveyResponse"
+  has_many :stories
 
   def all_survey_average(time1=1.month.ago, time2=Time.now)
     resp_array = self.survey_responses.taken.during(time1, time2)
