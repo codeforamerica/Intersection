@@ -56,7 +56,7 @@ class Team < ActiveRecord::Base
       end
     end
     #return the current number, and put up or down the amount
-    current==0 ? [0, 0, 0] : [current, 100*((current-previous).to_f/previous.to_f), current - previous]
+    current==0 ? [0, 0, 0] : [current, 100*((current-previous).to_f/previous.to_f), current==previous ? current : current - previous]
   end
 
   def self.network_growth
