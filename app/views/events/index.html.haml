@@ -1,5 +1,6 @@
 %h1 
   ="2012 Events Attended (#{@events.size})"
+= link_to 'New Event', new_event_path if current_user
 =render "charts"
 =render :partial => "events_index", :locals => {:events => @events}
 

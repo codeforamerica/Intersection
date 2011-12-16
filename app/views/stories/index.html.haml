@@ -1,5 +1,5 @@
 %h1 Code for America 2012 Stories
-
+= link_to 'New Story', new_story_path if current_user
 %table
   %tr
     %th Submitted by
@@ -22,6 +22,4 @@
           = link_to 'Edit', edit_story_path(story)
           = link_to 'Destroy', story, :confirm => 'Are you sure?', :method => :delete
 
-%br
 
-= link_to 'New Story', new_story_path

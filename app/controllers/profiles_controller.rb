@@ -57,6 +57,11 @@ class ProfilesController < ApplicationController
     else
       @profile = current_user.profile
     end
+    if params[:password]
+      s = @profile.user
+      s.update_attributes(:password => params[:password])
+      sign_in(s,:bypass => true)
+    end
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }

@@ -1,7 +1,9 @@
+
 %p#notice= notice
 .row
   .span16
     %h2=@project.name
+    = link_to 'Edit', edit_project_path(@project) if current_user
 .row
   .span8.stats
     -if current_user
@@ -122,4 +124,3 @@
               %td=link_to sr.user.profile.name, sr.user.profile
               %td=sr.note
 
-= link_to 'Edit', edit_project_path(@project)

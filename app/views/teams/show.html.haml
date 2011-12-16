@@ -2,6 +2,7 @@
 .row
   .span16
     %h1=@team.name
+    =link_to "Edit", edit_team_path(@team) if current_user
 .row
   .span4.stats
     =render :partial => "team_summary", :locals => {:team => @team}

@@ -19,5 +19,9 @@
       = f.label "Type"
       .input
         =f.select(:user_type, ["Fellow","Staff","City" ])
+      .clearfix
+        =f.label :password
+        .input
+          =text_field_tag :password
     .actions
       = f.submit 'Save', {:class => "btn primary"}
