@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Intersection::Application.load_tasks
+
+task :default => :spec
+task :test => :spec
