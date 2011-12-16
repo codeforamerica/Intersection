@@ -59,6 +59,10 @@ class Team < ActiveRecord::Base
     current==0 ? [0, 0, 0] : [current, 100*((current-previous).to_f/previous.to_f), current - previous]
   end
 
+  def self.network_growth
+    Team.all.map { |x| [x, x.network_growth] }
+  end
+  
   def network_growth_by_month
     data = []
     6.times { |x|

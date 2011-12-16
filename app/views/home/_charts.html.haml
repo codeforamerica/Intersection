@@ -33,11 +33,15 @@
   var options = {'title':'Network Growth','width':450,'height':150,'vAxis':{'gridlines':{'color': '#FFF', 'count': 4}},'legend':{'position':'none'}} 
   var chart = new google.visualization.LineChart(document.getElementById('network_div'));
   chart.draw(network_data, options);
+  
+  var network_data = new google.visualization.DataTable();
+  network_data.addColumn('string', 'Date');
+  network_data.addColumn('number', 'Network Growth');
+  network_data.addRows(
+  =raw(Team.network_growth.map { |x| [x[0].name, x[1][2]]})
+  );
+  var options = {'title':'','width':450,'height':250}
+  var n_chart = new google.visualization.PieChart(document.getElementById('network_pie_div'));
+  n_chart.draw(network_data, options);
   }
 
-.row
-  .span8
-    %div{:id=>"pie_div"}
-  .span8
-    %div{:id=>"chart_div"}
-    %div{:id=>"network_div"}
