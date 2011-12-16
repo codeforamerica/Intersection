@@ -1,8 +1,48 @@
-%h1 
-  This Week's Surveys:
-
+.row
+  .span8
+    %h1 
+      This Week's Surveys:
+.row.event
+  .span16
+            
+.row.story
+  .span8
+    =link_to "Add a New Story", "#", :class =>"new_story"
+    =form_for(Story.new, :remote=> true) do |f|
+      .row
+        .span4
+          = f.label :project_id
+          = f.select(:project_id, Project.all.map {|x| [x.name, x.id]}, :include_blank => true)
+        .span4
+          = f.label :team_id
+          = f.select(:team_id, Team.all.map {|x| [x.name, x.id]}, :include_blank => true)
+      .row
+        .span8
+          = f.text_area :story
+      =f.submit "Save"
+      =link_to "Hide", "#", :class => "hide_story"
+  .span8
+    =link_to "Add a New Event", "#", :class => "new_event"
+    =form_for(Event.new, :remote=> true) do |f|
+      .row
+        .span4
+          = f.label :team_id
+          = f.select(:team_id, Team.all.map {|x| [x.name, x.id]}, :include_blank => true)
+        .span4
+          = f.label :attendance
+          = f.text_field :attendance
+          =f.label :url
+          = f.text_field :url
+      .row
+        .span8
+          =f.label :description
+          = f.text_area :description
+      =f.submit "Save"
+      =link_to "Hide", "#", :class => "hide_event"
 
 -@surveys.each do |survey|
+  .row
+    .span16
   =form_for(survey, :remote => true) do |f|
     %h3
       =survey.updated_at.strftime('%m/%d/%y')

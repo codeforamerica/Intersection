@@ -1,0 +1,6 @@
+$("form#new_event").hide();
+$("form#new_event").find('textarea,input[type="text"],select').val("");
+$("form#new_event").find('input[type="submit"]').val("Save");
+$("form#new_event").find('div.validation-error').empty();
+$(".flashes").append("<div class='alert-message success fade in' data-alert='alert'><a class= 'close' href='#'>x</a><p><strong><%=notice%></strong></p></div>");
+<% flash[:notice] = nil %>

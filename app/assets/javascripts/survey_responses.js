@@ -30,6 +30,16 @@ $(document).ready(function() {
       $(this).children('span').hide();
       }
       );
+  $("a.new_story").click(function() {
+    $("form#new_story").show();
+    $("form#new_event").hide();
+  });
+  $("a.new_event").click(function() {
+    $("form#new_event").show();
+    $("form#new_story").hide();
+  });
+  $("a.hide_story").click(function() {$("form#new_story").hide();});
+  $("a.hide_event").click(function() {$("form#new_event").hide();});
 });  
 
 function remove_on_class(val_id) { 

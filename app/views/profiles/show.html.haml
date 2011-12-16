@@ -37,6 +37,9 @@
 
 %ul.tabs{"data-tabs" => "tabs"}
   %li.active
+    %a{:href=>"#stories"}
+      Stories
+  %li
     %a{:href=>"#activity"}
       Activity
   -if current_user==@user or current_user.admin?
@@ -45,7 +48,14 @@
         Surveys
 
 .my-tab-content
-  .active.tab-pane{:id => "activity"}
+  .active.tab-pane{:id => "stories"}
+    %ul
+      -@user.stories.each do |story|
+        %li
+          =story.team.name + ": " if story.team
+          =story.project.name + ": " if story.project
+          =story.story
+  .tab-pane{:id => "activity"}
     %ul
       -@user.activities.order("updated_at DESC").each do |activity|
         %li

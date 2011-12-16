@@ -5,18 +5,17 @@
       %ul
         - @story.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
+  .clearfix
     = f.label :project_id
-    = f.number_field :project_id
-  .field
+    .input
+      = f.select(:project_id, Project.all.map {|x| [x.name, x.id]}, :include_blank => true)
+  .clearfix
     = f.label :team_id
-    = f.number_field :team_id
-  .field
+    .input
+      = f.select(:team_id, Team.all.map {|x| [x.name, x.id]}, :include_blank => true)
+  .clearfix
     = f.label :story
-    = f.text_area :story
+    .input
+      = f.text_area :story
   .actions
     = f.submit 'Save'

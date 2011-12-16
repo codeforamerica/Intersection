@@ -120,6 +120,30 @@ ul.submenu li a {
   color: black;
 }
 
+ul.subnav {
+  list-style: none;
+  padding: 10px
+}
+
+ul.subnav li {
+  float: right;
+  margin-right: 10px;
+}
+
+ul.subnav li a {
+  color: black;
+}
+
+.story label, .event label {
+  float: none;
+  font-weight: bold;
+}
+
+.story textarea, .event textarea {
+  margin-top: 10px;
+  width: 440px;
+  height: 100px;
+}
 
 
 

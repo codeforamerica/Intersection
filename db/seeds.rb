@@ -32,6 +32,14 @@ if Rails.env!='production'
       Factory(:event, :team => team)
     }
   end
+
+#Adding Stories
+  puts "Adding stories to teams"
+  Team.all.each do |team|
+    rand(10).times {
+      Factory(:story,:user=>User.all.shuffle.first, :team => team)
+    }
+  end
   
 #Adding BatchBook Stats
   puts "Adding Batchbook histories"
@@ -54,6 +62,13 @@ if Rails.env!='production'
     teams.shuffle[0..3].each { |x| x.projects << project}
     project.users << User.all.shuffle[0..3]
   }
+  
+  puts "Adding rand stories to projects"
+  Project.all.each do |project|
+    rand(10).times {
+      Factory(:story, :user=>User.all.shuffle.first,:project => project)
+    }
+  end
 
   puts "Adding milestones with completion dates"
   5.times { Factory(:milestone) }

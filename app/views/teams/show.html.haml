@@ -27,6 +27,9 @@
     %a{:href=>"#projects"}
       Projects
   %li
+    %a{:href=>"#stories"}
+      Stories
+  %li
     %a{:href=>"#activity"}
       Activity
   %li
@@ -60,6 +63,13 @@
       -@team.project_activities.each do |activity|
         %li
           =raw(activity.activity)
+  .tab-pane{:id => "stories"}
+    %ul
+      -@team.stories.each do |story|
+        %li
+          =story.team.name + ": " if story.team
+          =story.project.name + ": " if story.project
+          =story.story
   -if current_user and current_user.admin 
     %div.tab-pane{:id => "surveys"}
       %table

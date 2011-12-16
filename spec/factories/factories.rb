@@ -107,3 +107,7 @@ Factory.define :batchbook_list_history do |h|
   h.batchbook_list {Factory(:batchbook_list)}
 end
 
+Factory.define :story do |s|
+  s.user {Factory(:user)}
+  s.story {Faker::Lorem.paragraphs(2)}
+end
