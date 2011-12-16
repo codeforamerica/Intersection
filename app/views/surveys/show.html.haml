@@ -7,7 +7,7 @@
 .row
   .span16       
     %h3 Trends
-    =render :partial => "surveys/survey_trend", :locals => {:trends => @survey.survey_responses.trending}
+    =render :partial => "surveys/survey_trend", :locals => {:trends => @survey.survey_responses.trends_by_response}
 %p
 .rowi
   .span16

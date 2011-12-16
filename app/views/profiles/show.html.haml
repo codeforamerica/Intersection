@@ -8,7 +8,7 @@
   .span8.stats
     -if current_user and (current_user.profile==@profile or current_user.admin?)
       %h2 Survey Trends
-      =render :partial => "surveys/survey_trend", :locals => {:trends => @user.survey_responses.trending}
+      =render :partial => "surveys/survey_trend", :locals => {:trends => @user.survey_responses.trends_by_response}
     .clearfix
     %h2 Cities
     %ul

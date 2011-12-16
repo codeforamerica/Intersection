@@ -23,9 +23,9 @@
         %li.arrows
           =link_to project.name, "/projects/#{project.name}"
   .span8.stats
-    %h2 Recent Milestones
+    %h2 Recent Milestone
     %ul
-      -@project_history[0..10].each do |ph|
+      -@project_history[0..4].each do |ph|
         %li.arrows
           =link_to "#{ph.project.name} reached #{ph.milestone.name} on #{ph.updated_at.strftime('%m/%d/%y')}", "/projects/#{ph.project.name}"
       

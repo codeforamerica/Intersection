@@ -14,7 +14,7 @@
       %td
         =link_to survey.name, survey
         %br
-        =render :partial => "survey_trend", :locals => {:trends => survey.survey_responses.trending}
+        =render :partial => "survey_trend", :locals => {:trends => survey.survey_responses.trends_by_response}
       %td= survey.survey_type
       %td= survey.start_date.strftime("%m/%d/%y")
       %td= survey.end_date.strftime("%m/%d/%y")

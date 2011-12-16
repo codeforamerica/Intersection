@@ -12,7 +12,7 @@
         .span12.stats
           -if current_user
             %h2 Survey Trends
-            =render :partial => "surveys/survey_trend", :locals => {:trends => @team.survey_responses.trending}
+            =render :partial => "surveys/survey_trend", :locals => {:trends => @team.survey_responses.trends_by_response}
     .row
       .span12.stats
         %h2 Team Members

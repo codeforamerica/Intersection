@@ -88,6 +88,29 @@ ul.trends li {
   margin-right: 5px;
 }
 
+ul#survey {
+  list-style: none;
+  float:left;
+  color: black;
+  background-image: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+ul#survey #yellow, ul#survey #red, ul#survey #green {
+  color: black;
+}
+
+ul#survey li {
+  margin: 0px;
+}
+
+ul#survey li div {
+  text-align: center;
+  vertical-align: middle;
+}
+
+
 .tab-pane {
   display: none;
 }

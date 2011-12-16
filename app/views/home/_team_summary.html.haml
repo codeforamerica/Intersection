@@ -21,4 +21,4 @@
   
   %h4
     -if current_user
-      =render :partial => "surveys/survey_trend", :locals => {:trends => team.survey_responses.trending}
+      =render :partial => "surveys/survey_trend", :locals => {:trends => team.survey_responses.trends_by_response(num=2)}
