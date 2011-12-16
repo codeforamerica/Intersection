@@ -25,6 +25,9 @@
                 = link_to('Logout', destroy_user_session_path, :method => :delete)
                 |
                 = link_to('Profile', profile_path(current_user.profile))
+                -if current_user.admin?
+                  |
+                  =link_to "Admin", rails_admin_path
       .row
         .span16
           %ul#nav.menu
@@ -38,6 +41,8 @@
               = link_to 'Fellows', profiles_path
             %li
               = link_to 'Events', events_path
+            %li
+              = link_to 'Stories', stories_path
             -if current_user
               %li
                 = link_to "My Surveys", "/my_surveys"
@@ -47,8 +52,6 @@
             -if current_user.try(:admin?)
               %li
                 = link_to 'Surveys', surveys_path
-              %li
-                = link_to 'Admin', rails_admin_path
           %ul.submenu.clearfix
             -Team.all.each do |team|
               %li

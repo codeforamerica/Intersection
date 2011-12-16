@@ -2,6 +2,11 @@ class EventsController < InheritedResources::Base
   before_filter :authenticate_user!
   respond_to :html, :js
   
+  def index
+    @search = Event.search(params[:search])
+    @events = @search
+  end
+
   def create
     @event = Event.new(params[:event])
     if @event.save

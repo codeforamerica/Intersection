@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :team
-  order("event_date DESC")
+  default_scope order("event_date DESC")
 
   def self.grouped
     group("date(events.event_date)").size

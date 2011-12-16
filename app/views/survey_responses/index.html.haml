@@ -28,7 +28,11 @@
         .span4
           = f.label :team_id
           = f.select(:team_id, Team.all.map {|x| [x.name, x.id]}, :include_blank => true)
+          = f.label :event_date
+          = f.text_field :event_date, :class => "datepicker"
         .span4
+          = f.label :name
+          = f.text_field :name
           = f.label :attendance
           = f.text_field :attendance
           =f.label :url
