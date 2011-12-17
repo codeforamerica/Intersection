@@ -1,5 +1,7 @@
 =javascript_include_tag "https://www.google.com/jsapi"
 -team_project_data = @teams.map{|x| ["#{x.name}", x.projects.size]}
+-milestone_status_data = @projects.map { |x| x.active_milestone.milestone}.group_by(&:id).map{|k,v| [k, v.length]}.sort!
+-milestone_chart_data = milestone_status_data.map { |x| ["#{Milestone.find(x[0]).name}", x[1]] }
 %script{:type=>"text/javascript"}
   google.load('visualization', '1.0', {'packages':['corechart']});
   google.setOnLoadCallback(drawChart);
@@ -34,14 +36,27 @@
   var chart = new google.visualization.LineChart(document.getElementById('network_div'));
   chart.draw(network_data, options);
   
+  var project_data = new google.visualization.DataTable();
+  project_data.addColumn('string', 'Date');
+  project_data.addColumn('number', 'Project Milestones');
+  project_data.addRows(
+  =raw(milestone_chart_data)
+  );
+  var options = {'title':'Project Milestone Status','width':450,'height':250};
+  var project_chart = new google.visualization.ColumnChart(document.getElementById('project_chart_div'));
+  project_chart.draw(project_data, options);
+  
   var network_data = new google.visualization.DataTable();
   network_data.addColumn('string', 'Date');
   network_data.addColumn('number', 'Network Growth');
   network_data.addRows(
   =raw(Team.network_growth.map { |x| [x[0].name, x[1][2]]})
   );
-  var options = {'title':'','width':450,'height':250}
+  var options = {'title':'','width':450,'height':250};
   var n_chart = new google.visualization.PieChart(document.getElementById('network_pie_div'));
   n_chart.draw(network_data, options);
+
+
   }
+
 

@@ -71,7 +71,12 @@ if Rails.env!='production'
   end
 
   puts "Adding milestones with completion dates"
-  5.times { Factory(:milestone) }
+  Factory(:milestone, :name => "Research Completed")
+  Factory(:milestone, :name => "Opportunity Defined")
+  Factory(:milestone, :name => "MVP Plan Complete")
+  Factory(:milestone, :name => "MVP Launched")
+  Factory(:milestone, :name => "Testing with Users")
+  Factory(:milestone, :name => "App Transitioned")
   milestones = Milestone.all
   Project.order(:created_at => "ASC").each do |project|
     #look at the project created date and grab total number of months
