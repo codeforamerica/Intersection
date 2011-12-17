@@ -1,10 +1,10 @@
 %ul.trends
   -trends[0..12].each do |trend|
     %li.show_date
-      -i=1
+      -i=3
       =trend[0].to_date.strftime("%m-%d")
       %ul{:id => "survey"}
-        -trend[1].each do |t|
+        -trend[1].reverse.each do |t|
           %li
             =raw(trend_r_y_g(i,t))
-            -i+=1
+            -i-=1
