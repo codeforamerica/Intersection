@@ -4,7 +4,12 @@ class EventsController < InheritedResources::Base
   
   def index
     @search = Event.search(params[:search])
-    @events = @search
+    #@events = @search
+    @events = Event.all
+  end
+
+  def show
+    @event = Event.where(:id => params[:id])
   end
 
   def create
