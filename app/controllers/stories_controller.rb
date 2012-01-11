@@ -14,7 +14,7 @@ class StoriesController < InheritedResources::Base
         flash[:notice] = 'Story Saved'
         respond_with @story, :location => stories_url
       else
-        respond_with @story.errors
+        respond_with @story
       end
   end
 
