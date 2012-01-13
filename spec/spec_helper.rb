@@ -32,6 +32,8 @@ Spork.prefork do
     config.include Devise::TestHelpers, :type => :view
     config.include Devise::TestHelpers, :type => :helper
 
+    config.extend ControllerMacros, :type => :controller
+
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.

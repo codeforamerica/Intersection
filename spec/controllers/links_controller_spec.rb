@@ -1,6 +1,7 @@
 require 'spec_helper.rb'
 
 describe LinksController do
+
   before do
     @user = Factory(:user)
     @project = Factory(:project)
@@ -33,6 +34,8 @@ describe LinksController do
   end
   
   context "any nonadmin user" do
+    login_user
+
     before do
       sign_in(@user)
     end

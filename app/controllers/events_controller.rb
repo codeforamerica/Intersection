@@ -7,10 +7,6 @@ class EventsController < InheritedResources::Base
     @events = @search
   end
 
-  def show
-    @event = Event.where(:id => params[:id])
-  end
-
   def create
     @event = Event.new(params[:event])
     if @event.save
