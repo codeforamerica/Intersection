@@ -3,7 +3,7 @@ class TeamsController < InheritedResources::Base
   before_filter :is_admin?, :only => [:new, :create, :destroy]
 
   def team
-    @teams = Team.active_teams
+    @teams = Team.active_teams.order("name")
   end
 
   def show
