@@ -11,7 +11,7 @@
   = @event.attendance
 %p
   %b Event Date:
-  = @event.event_date.strftime('%d/%m%y')
+  = @event.event_date.strftime('%m/%d/%y')
 %p
   %b Url:
   =link_to @event.url, @event.url
