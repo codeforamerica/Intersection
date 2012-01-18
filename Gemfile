@@ -36,10 +36,10 @@ group :development, :test do
   gem 'sqlite3'
   gem 'spork', '0.9.0.rc9'
   gem 'timecop'
+  gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'mocha'
   gem 'webmock'
   gem 'webrat'
