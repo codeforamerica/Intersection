@@ -24,8 +24,10 @@ describe SurveysController do
   # Survey. As you add validations to Survey, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:survey_type => "not real", :name => "Awkward event", :scale => 10, :start_date => Time.now, :end_date => Time.now, :frequency => 5}
   end
+
+  login_admin
 
   describe "GET index" do
     it "assigns all surveys as @surveys" do
