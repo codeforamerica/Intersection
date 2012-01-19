@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  %body{:style => 'padding-top: 40px;'}
+  %body{ :style => 'padding-top: 40px;', "data-controller" => controller_name, "data-action" => action_name, :class => controller_name }
     .container
       .div{:class => 'row', :id=> "top_header"}
         .span-one-third

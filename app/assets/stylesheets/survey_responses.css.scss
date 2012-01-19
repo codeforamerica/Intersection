@@ -44,10 +44,14 @@ background-color: #d1eed1;
   background-color: green;
 }
 
-#new_story {
-display :none;
-}
+body.survey_responses {
 
-#new_event {
-display: none;
+  #new_story {
+  display :none;
+  }
+
+  #new_event {
+  display: none;
+  }
+
 }
