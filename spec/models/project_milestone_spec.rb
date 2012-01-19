@@ -12,7 +12,7 @@ describe ProjectMilestone do
   end
 
   it "should create new activity on milestone delete" do
-    @pm.delete
+    @pm.destroy
     Activity.count.should == 3
   end
   
