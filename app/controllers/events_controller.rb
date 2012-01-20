@@ -13,7 +13,7 @@ class EventsController < InheritedResources::Base
       flash[:notice] = 'Event Saved'
       respond_with @event, :location => stories_url
     else
-      respond_with @event.errors
+      respond_with @event
     end
   end
 end
