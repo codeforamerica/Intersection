@@ -5,7 +5,7 @@ Code for America's Project Dashboard
 ![Intersection](https://github.com/codeforamerica/Intersection/raw/master/screenshot.png "Intersection")
 
 ## <a name="build"></a>Build Status
-[![Build Status](https://secure.travis-ci.org/codeforamerica/Intersection.png?branch=master)][travis]
+[![Build Status](https://secure.travis-ci.org/codeforamerica/Intersection.png)][travis]
 
 [travis]: http://travis-ci.org/codeforamerica/Intersection
 
@@ -81,11 +81,6 @@ implementations:
 
 * Ruby 1.9.2
 * Ruby 1.9.3
-* [Rubinius][]
-* [Ruby Enterprise Edition][ree]
-
-[rubinius]: http://rubini.us/
-[ree]: http://www.rubyenterpriseedition.com/
 
 If something doesn't work on one of these interpreters, it should be considered
 a bug.

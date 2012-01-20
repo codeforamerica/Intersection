@@ -14,6 +14,7 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :project_users, :allow_destroy => true
   accepts_nested_attributes_for :team_projects, :allow_destroy => true
   scope :active, where(:active => true)
+  validates_presence_of :name
 
   after_create 'create_activity("started")'
   after_update 'create_activity("updated")'
@@ -52,10 +53,13 @@ class Project < ActiveRecord::Base
   end
   
   def create_activity(activity)
-  
     if $current_user
-      Activity.create(:user => $current_user, :project => self, :activity =>
-          "#{$current_user.profile.to_url} #{activity} #{self.to_url}")
+      if $current_user.profile
+        Activity.create(:user => $current_user, :project => self, :activity =>
+            "#{$current_user.profile.to_url} ")
+      else
+        Activity.create(:project => self, :user => $current_user, :activity => "#{self.to_url} #{activity}.")
+      end
     else
     Activity.create(:project => self, :activity => 
       "#{self.to_url} #{activity}.")
