@@ -5,7 +5,7 @@ Code for America's Project Dashboard
 ![Intersection](https://github.com/codeforamerica/Intersection/raw/master/screenshot.png "Intersection")
 
 ## <a name="build"></a>Build Status
-[![Build Status](https://secure.travis-ci.org/codeforamerica/Intersection.png?branch=master)][travis]
+[![Build Status](https://secure.travis-ci.org/codeforamerica/Intersection.png)][travis]
 
 [travis]: http://travis-ci.org/codeforamerica/Intersection
 
