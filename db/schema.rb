@@ -18,23 +18,23 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.integer  "user_id"
     t.integer  "project_id"
     t.text     "activity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "batchbook_list_histories", :force => true do |t|
     t.integer  "batchbook_list_id"
     t.integer  "contact_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "batchbook_lists", :force => true do |t|
     t.integer  "team_id"
     t.integer  "batchbook_id"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.datetime "locked_at"
     t.datetime "failed_at"
     t.string   "locked_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
@@ -59,37 +59,37 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.datetime "event_date"
     t.string   "url"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "link_types", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "links", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
     t.integer  "link_type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "url"
   end
 
   create_table "milestones", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
     t.text     "bio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "user_type"
   end
 
@@ -99,15 +99,15 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.date     "planned_date"
     t.boolean  "active",         :default => false
     t.date     "completed_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "project_users", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.text     "description"
     t.text     "impact_statement"
     t.boolean  "active",           :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -126,8 +126,8 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.string   "table"
     t.integer  "month",      :limit => 2
     t.integer  "year",       :limit => 5
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
@@ -137,8 +137,8 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.integer  "project_id"
     t.integer  "team_id"
     t.text     "story"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "survey_responses", :force => true do |t|
@@ -150,8 +150,8 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.string   "surveyable_type"
     t.integer  "surveyable_id"
     t.string   "code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "surveys", :force => true do |t|
@@ -161,8 +161,8 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "frequency"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "taggings", :force => true do |t|
@@ -185,28 +185,28 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
   create_table "team_projects", :force => true do |t|
     t.integer  "project_id"
     t.integer  "team_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "team_users", :force => true do |t|
     t.integer  "user_id"
     t.integer  "team_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.boolean  "active",     :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "user_types", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -220,8 +220,8 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.boolean  "admin"
   end
 
