@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "events/index.html.haml" do
+describe "events/index" do
   before(:each) do
     @event = Factory(:event, :name => "Name", :attendance => 1, :url => "Url", :description => "MyText")
     assign(:events, [

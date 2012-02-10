@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "surveys/edit.html.haml" do
+describe "surveys/edit" do
   before(:each) do
     @survey = assign(:survey, stub_model(Survey,
       :name => "MyString",

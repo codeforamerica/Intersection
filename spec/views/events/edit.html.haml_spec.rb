@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "events/edit.html.haml" do
+describe "events/edit" do
   before(:each) do
     @event = assign(:event, stub_model(Event,
       :team_id => 1,
