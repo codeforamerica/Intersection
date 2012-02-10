@@ -55,7 +55,7 @@ GEM
       rails (~> 3.0)
     addressable (2.2.6)
     arel (3.0.0)
-    bbenezech-nested_form (0.0.2)
+    bbenezech-nested_form (0.0.3)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (1.4.4)
       sass-rails (~> 3.1)
