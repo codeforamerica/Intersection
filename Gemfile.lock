@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/ryanb/nested_form.git
-  revision: 57f32788f1952bcd633057b4b56b69b51df17610
+  revision: c5fc50abbed106ab8d5e8434f780ff6270c8ff01
   specs:
-    nested_form (0.1.1)
+    nested_form (0.2.0)
 
 GIT
   remote: git://github.com/sferik/rails_admin.git
