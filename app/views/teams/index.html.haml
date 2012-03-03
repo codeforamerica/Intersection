@@ -1,6 +1,10 @@
+%h1 Cities
+%br
 .row
-  -@teams.each do |team|
-    =  link_to team.name, team
-    %br
+  .span6
+    %ul
+    - @teams.each do |team|
+      %li
+        =  link_to team.name, team
 
 
