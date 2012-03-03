@@ -1,11 +1,6 @@
 .row
-  -@teams[0..3].each do |team|  
-    .span4.stats
-      =render :partial => "home/team_summary", :locals => {:team => team}
-.row
-  -@teams[4..7].each do |team|  
-    .span4.stats
-      =render :partial => "home/team_summary", :locals => {:team => team}
-
+  -@teams.each do |team|
+    =  link_to team.name, team
+    %br
 
 
