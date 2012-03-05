@@ -1,10 +1,11 @@
 %h1 Cities
 %br
-.row
-  .span6
-    %ul
+%table.table
+  %tr
+    %th City
     - @teams.each do |team|
-      %li
-        =  link_to team.name, team
+      %tr
+        %td
+          =  link_to team.name, team
 
 
