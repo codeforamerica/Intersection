@@ -61,16 +61,14 @@
       .row
         .span16.flashes
           - if flash[:notice]
-            .div{:class => 'alert-message success fade in', 'data-alert' => 'alert'}
-              %a.close{:href => '#'} x
-              %p
-                %strong
-                  = notice
+            .div{:class => 'alert fade in'}
+              %a.close{'data-dissmiss' => 'alert', :href=> '#'} x
+              %strong
+                = notice
           - if flash[:alert]
-            .div{:class => 'alert-message info fade in', 'data-alert' => 'alert'}
-              %a.close{:href => '#'} x
-              %p
-                %strong
-                  = alert
+            .div{:class => 'alert fade in'}
+              %a.close{'data-dissmiss' => 'alert', :href=> '#'} x
+              %strong
+                = alert
       .row
       = yield
