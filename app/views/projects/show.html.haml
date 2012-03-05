@@ -37,10 +37,10 @@
     %h2 Details
     %ul
       %li
-        %b Description: 
+        %b Description:
         =@project.description
       %li
-        %b Impact: 
+        %b Impact:
         =@project.impact_statement
       %li
         %b Tags:
@@ -55,9 +55,9 @@
       -@project.project_milestones.each do |milestone|
         %li.milestone{:class => "#{milestone.active? ? 'active' : 'inactive'}"}
           %span.name
-            =milestone.milestone.name 
+            =milestone.milestone.name
           %br
-          -if milestone.completed_date? 
+          -if milestone.completed_date?
             %span.completed
               Completed On
               =milestone.completed_date.strftime("%m-%d-%y")
@@ -65,62 +65,58 @@
             %span.planned
               Planned Completion On:
               =milestone.planned_date.strftime("%m-%d-%y")
-%ul.tabs{"data-tabs" => "tabs"}
-  %li.active
-    %a{:href=>"#comments"}
-      Comment Stream
-  %li
-    %a{:href=>"#stories"}
-      Stories
-  %li
-    %a{:href=>"#activity"}
-      Activity
-  %li
-    %a{:href=>"#pivotal"}
-      Pivotal Tracker Activity
-  %li
-    %a{:href=>"#github"}
-      Github Activity
-  -if current_user and current_user.admin?
-    %li
-      %a{:href=>"#surveys"}
-        Surveys
 
-.my-tab-content
-  .tab-pane{:id => "stories"}
-    %ul
-      -@project.stories.each do |story|
-        %li
-          =story.team.name + ": " if story.team
-          =story.project.name + ": " if story.project
-          =story.story
-  .tab-pane{:id => "activity"}
-    %ul
-      -@project.activities.order("updated_at DESC").each do |activity|
-        %li
-          =raw(activity.activity)
-  .tab-pane{:id => "pivotal"}
-    Coming soon!
-  .tab-pane{:id => "github"}
-    Coming soon!
-  .active.tab-pane{:id => "comments"}
-    %ul
-    -@project.survey_responses.taken.order("updated_at DESC").each do |comment|
-      %li=comment.note unless comment.note.nil?
-  -if current_user and current_user.admin?
-    .tab-pane{:id => "surveys"}
-      %table
-        %tr
-          %th Date
-          %th Survey
-          %th Value
-          %th Name
-          %th Comments
-          -@project.survey_responses.order("updated_at DESC").each do |sr|
-            %tr
-              %td=sr.updated_at.strftime("%m/%d/%y")
-              %td=survey_name(sr)
-              %td=raw(r_y_g(sr.response))
-              %td=link_to sr.user.profile.name, sr.user.profile
-              %td=sr.note
+
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      %a{:href=>"#1", 'data-toggle' => 'tab'} Comment Stream
+    %li
+      %a{:href=>"#2", 'data-toggle' => 'tab'} Stories
+    %li
+      %a{:href=>"#3", 'data-toggle' => 'tab'} Activity
+    %li
+      %a{:href=>"#4", 'data-toggle' => 'tab'} Pivotal Tracker Activity
+    %li
+      %a{:href=>"#5", 'data-toggle' => 'tab'} Github Activity
+    - if current_user and current_user.admin?
+      %li
+        %a{:href=>"#6", 'data-toggle' => 'tab'} Surveys
+  .tab-content
+    .tab-pane.active#1
+      %ul
+      - @project.survey_responses.taken.order("updated_at DESC").each do |comment|
+        %li=comment.note unless comment.note.nil?
+    .tab-pane#2
+      %ul
+        -@project.stories.each do |story|
+          %li
+            =story.team.name + ": " if story.team
+            =story.project.name + ": " if story.project
+            story.story
+    .tab-pane#3
+      %ul
+        -@project.activities.order("updated_at DESC").each do |activity|
+          %li
+            =raw(activity.activity)
+    .tab-pane#4
+      Coming soon!
+    .tab-pane#5
+      Coming soon!
+    - if current_user and current_user.admin?
+      .tab-pane{:id => "surveys"}
+        %table
+          %tr
+            %th Date
+            %th Survey
+            %th Value
+            %th Name
+            %th Comments
+            - @project.survey_responses.order("updated_at DESC").each do |sr|
+              %tr
+                %td=sr.updated_at.strftime("%m/%d/%y")
+                %td=survey_name(sr)
+                %td=raw(r_y_g(sr.response))
+                %td=link_to sr.user.profile.name, sr.user.profile
+                %td=sr.note
 
