@@ -3,7 +3,7 @@
 = link_to 'New Project', new_project_path if current_user
 =render "charts" unless @projects.blank? or ProjectMilestone.count==0
 =form_for @search do |f|
-  %table
+  %table.table
     %tr
       %th Name
       %th Tags
