@@ -1,11 +1,11 @@
 
 %p#notice= notice
 .row
-  .span16
+  .span12
     %h2=@project.name
     = link_to 'Edit', edit_project_path(@project) if current_user
 .row
-  .span8.stats
+  .span6.stats
     -if current_user
       %h2 Survey Trends
       =render :partial => "surveys/survey_trend", :locals => {:trends => @project.survey_responses.trends_by_response}
@@ -33,7 +33,7 @@
           =link.name + ":"
           =link_to link.url
           ="(#{link.link_type.name})"
-  .span8.stats
+  .span6.stats
     %h2 Details
     %ul
       %li
