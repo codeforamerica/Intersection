@@ -1,15 +1,15 @@
 =render :partial => "charts"
-.row 
-  .span8
+.row
+  .span6
     %div{:id=>"pie_div"}
     -if ProjectMilestone.count > 0
-      %div{:id=>"project_chart_div"}  
-  .span8
+      %div{:id=>"project_chart_div"}
+  .span6
     %div{:id=>"chart_div"}
     %div{:id=>"network_div"}
--if current_user
+- if current_user
   .row.new_section
-    .span16.stats
+    .span12.stats
       -if current_user
         %h2 Survey Trends
         %ul
@@ -19,7 +19,7 @@
               =render :partial => "surveys/survey_trend", :locals => {:trends => survey.survey_responses.trends_by_response(num=4)}
               .clearfix
 .row.new_section
-  .span4.stats
+  .span3.stats
     %h2 2012 CFA Stats
     %ul
       %li.arrows
@@ -29,18 +29,18 @@
       %li.arrows
         =link_to "#{@teams.size} Cities", teams_path
       %li.arrows
-        =link_to "#{@network_size.inject(0) {|sum, x| sum + x[0]}} network size", teams_path 
+        =link_to "#{@network_size.inject(0) {|sum, x| sum + x[0]}} network size", teams_path
       %li.arrows
         =link_to "#{number_to_percentage(@network_size.inject(0) {|sum, x| sum + x[1]}/@network_size.size, :precision => 2)} network growth", teams_path
       %li.arrows
-        =link_to "#{@events.size} events attended" 
-  .span4.stats
+        =link_to "#{@events.size} events attended"
+  .span3.stats
     %h2 Recent Projects
     %ul
       -@projects[0..10].each do |project|
         %li.arrows
           =link_to project.name, "/projects/#{project.name}"
-  .span8.stats
+  .span6.stats
     %h2 Network Growth
     %ul
       .row
@@ -58,7 +58,7 @@
       -Team.network_growth.sort { |x,y| x[1][1] <=> y[1][1]}.reverse.each do |team|
         %li.arrows
           .row
-            .span4
+            .span3
               =link_to "#{team.first.name}"
             .span1
               =number_to_percentage(team[1][1], :precision => 2)
@@ -66,7 +66,7 @@
               =team[1][2]
             .span1
               =team[1][0]
-      
+
 
 
 
