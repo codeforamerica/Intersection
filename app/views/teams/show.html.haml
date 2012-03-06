@@ -6,7 +6,7 @@
 .row
   .span4.stats
     =render :partial => "team_summary", :locals => {:team => @team}
-  .span12
+  .span8
     -if current_user
       .row
         .span12.stats
@@ -14,7 +14,7 @@
             %h2 Survey Trends
             =render :partial => "surveys/survey_trend", :locals => {:trends => @team.survey_responses.trends_by_response}
     .row
-      .span12.stats
+      .span8.stats
         %h2 Team Members
         %ul.team_members
           -@team.all_members.each do |user|
@@ -36,7 +36,7 @@
   %li
     %a{:href=>"#events"}
       Events
-  
+
   -if current_user and current_user.admin?
     %li
       %a{:href=>"#surveys"}
@@ -59,7 +59,7 @@
         =render @team.projects
   %div.tab-pane{:id=> "events"}
     =render :partial => "events/events_index", :locals => {:events => @team.events}
-  %div.tab-pane{:id => "activity"}      
+  %div.tab-pane{:id => "activity"}
     %ul
       -@team.project_activities.each do |activity|
         %li
@@ -71,7 +71,7 @@
           =story.team.name + ": " if story.team
           =story.project.name + ": " if story.project
           =story.story
-  -if current_user and current_user.admin 
+  -if current_user and current_user.admin
     %div.tab-pane{:id => "surveys"}
       %table
         %tr
