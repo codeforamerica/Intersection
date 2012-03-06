@@ -28,7 +28,7 @@
                   |
                   =link_to "Admin", rails_admin_path
       .row
-        .span16
+        .span12
           %ul#nav.menu
             %li
               = link_to 'Home', root_path
@@ -56,10 +56,10 @@
               %li
                 =link_to team.name, "/teams/#{team.name}"
       .row
-        .span16
+        .span12
           %p
       .row
-        .span16.flashes
+        .span12.flashes
           - if flash[:notice]
             .div{:class => 'alert fade in'}
               %a.close{'data-dissmiss' => 'alert', :href=> '#'} x
