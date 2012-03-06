@@ -5,7 +5,7 @@
       %ul
         - @event.errors.full_messages.each do |msg|
           %li= msg
-  
+
   .fieldset
     .clearfix
       = f.label :team_id
@@ -18,7 +18,7 @@
     .clearfix
       = f.label :attendance
       .input
-        = f.number_field :attendance
+        = f.text_field :attendance
     .clearfix
       = f.label :event_date
       .input
