@@ -10,7 +10,7 @@
     .clearfix
       = f.label :team_id
       .input
-        = f.select(:team_id, Team.all.map { |x| [x.name,x.id]})
+        = f.select(:team_id, Team.all(:order => "name").map { |x| [x.name,x.id]})
     .clearfix
       = f.label :name
       .input
