@@ -23,68 +23,62 @@
               %br
               =link_to user.profile.name, user.profile
 
-%ul.tabs{"data-tabs" => "tabs"}
-  %li.active
-    %a{:href=>"#projects"}
-      Projects
-  %li
-    %a{:href=>"#stories"}
-      Stories
-  %li
-    %a{:href=>"#activity"}
-      Activity
-  %li
-    %a{:href=>"#events"}
-      Events
-
-  -if current_user and current_user.admin?
+.tabbale
+  %ul.nav.nav-tabs
+    %li.active
+      %a{:href=>"#1", 'data-toggle' => 'tab'} Projects
     %li
-      %a{:href=>"#surveys"}
-        Surveys
-
-.my-tab-content
-  .active.tab-pane{:id => "projects"}
-    %table
-      %tr
-        %th Name
-        %th Tags
-        %th Team
-        -if current_user
-          %th Survey
-        %th Active
-        %th Milestone
-        %th Progress
-        %th Last Updated
-        %th
-        =render @team.projects
-  %div.tab-pane{:id=> "events"}
-    =render :partial => "events/events_index", :locals => {:events => @team.events}
-  %div.tab-pane{:id => "activity"}
-    %ul
-      -@team.project_activities.each do |activity|
-        %li
-          =raw(activity.activity)
-  .tab-pane{:id => "stories"}
-    %ul
-      -@team.stories.each do |story|
-        %li
-          =story.team.name + ": " if story.team
-          =story.project.name + ": " if story.project
-          =story.story
-  -if current_user and current_user.admin
-    %div.tab-pane{:id => "surveys"}
+      %a{:href=>"#2", 'data-toggle' => 'tab'} Stories
+    %li
+      %a{:href=>"#3", 'data-toggle' => 'tab'} Activity
+    %li
+      %a{:href=>"#4", 'data-toggle' => 'tab'} Events
+    - if current_user and current_user.admin?
+      %li
+        %a{:href=>"#5", 'data-toggle' => 'tab'} Surveys
+  .tab-content
+    .tab-pane.active#1
       %table
         %tr
-          %th Date
-          %th Survey
-          %th Value
           %th Name
-          %th Comments
-          -@team.survey_responses.order("updated_at DESC").each do |sr|
-            %tr
-              %td=sr.updated_at.strftime("%m/%d/%y")
-              %td=survey_name(sr)
-              %td=raw(r_y_g(sr.response))
-              %td=link_to sr.user.profile.name, sr.user.profile
-              %td=sr.note
+          %th Tags
+          %th Team
+          -if current_user
+            %th Survey
+          %th Active
+          %th Milestone
+          %th Progress
+          %th Last Updated
+          %th
+          =render @team.projects
+    .tab-pane#2
+      =render :partial => "events/events_index", :locals => {:events => @team.events}
+    .tab-pane#3
+      %ul
+        - @team.project_activities.each do |activity|
+          %li
+            =raw(activity.activity)
+    .tab-pane#4
+      %ul
+        - @team.stories.each do |story|
+          %li
+            =story.team.name + ": " if story.team
+            =story.project.name + ": " if story.project
+            =story.story
+    - if current_user and current_user.admin
+      %div.tab-pane#5
+        %table
+          %tr
+            %th Date
+            %th Survey
+            %th Value
+            %th Name
+            %th Comments
+            - @team.survey_responses.order("updated_at DESC").each do |sr|
+              %tr
+                %td=sr.updated_at.strftime("%m/%d/%y")
+                %td=survey_name(sr)
+                %td=raw(r_y_g(sr.response))
+                %td=link_to sr.user.profile.name, sr.user.profile
+                %td=sr.note
 
