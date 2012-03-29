@@ -12,7 +12,8 @@
 //= require_tree .
 //
 $(document).ready (function() {
-$('.tabs').tabs();
-$('.my-tab-content').pills();
-$('a.cities').hover(function(){$('.submenu').show();});
+	$('.tabs').tabs();
+	$('.my-tab-content').pills();
+	$('a.cities').hover(function(){$('.submenu').show();});
+	
 });
