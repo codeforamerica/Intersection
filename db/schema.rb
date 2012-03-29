@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111216181649) do
+ActiveRecord::Schema.define(:version => 20120328225527) do
 
   create_table "activities", :force => true do |t|
     t.integer  "team_id"
@@ -103,6 +103,13 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
     t.datetime "updated_at",                        :null => false
   end
 
+  create_table "project_sponsors", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "sponsor_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "project_users", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
@@ -131,6 +138,15 @@ ActiveRecord::Schema.define(:version => 20111216181649) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "sponsors", :force => true do |t|
+    t.string   "name"
+    t.string   "identity"
+    t.string   "email"
+    t.string   "link"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "stories", :force => true do |t|
     t.integer  "user_id"

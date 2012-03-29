@@ -26,6 +26,14 @@
           %br
           =link_to user.profile.name, user.profile
     .clearfix
+    %h2 Sponsors
+    %ul.team_members
+      -@project.sponsors.each do |sponor|
+        %li
+          =link_to gravatar_image_tag(sponor.email)
+          %br
+          =link_to sponor.name, "http://" + sponor.link
+    .clearfix
     %h2 Links
     %ul
       -@project.links.each do |link|

@@ -69,5 +69,12 @@
     =f.fields_for :team_projects do |u|
       = u.select(:team_id, Team.all.collect { |p| [p.name, p.id]}, {:include_blank => false})
       = u.link_to_remove "Remove"
+    %h2
+      Sponsors
+    = f.link_to_add "Add Sponsor",:project_sponsors
+    %p  
+    =f.fields_for :project_sponsors do |u|
+      = u.select(:sponsor_id, Sponsor.all.collect { |p| [p.name + " - " + p.identity, p.id]}, {:include_blank => false})
+      = u.link_to_remove "Remove"
   .actions
     = f.submit 'Save',{:class => "btn primary"}
