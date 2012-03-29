@@ -9,10 +9,16 @@ class Project < ActiveRecord::Base
   has_many :activities
   has_many :survey_responses, :as => :surveyable
   has_many :stories
+
+  has_many :project_sponsors, :dependent => :destroy
+  has_many :sponsors, :through => :project_sponsors
+
+
   accepts_nested_attributes_for :links, :allow_destroy => true
   accepts_nested_attributes_for :project_milestones, :allow_destroy => true
   accepts_nested_attributes_for :project_users, :allow_destroy => true
   accepts_nested_attributes_for :team_projects, :allow_destroy => true
+  accepts_nested_attributes_for :project_sponsors, :allow_destroy => true
   scope :active, where(:active => true)
   validates_presence_of :name
 
