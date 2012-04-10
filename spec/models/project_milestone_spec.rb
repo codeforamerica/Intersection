@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe ProjectMilestone do
   before do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     $current_user = @user
-    @pm = Factory(:project_milestone) 
+    @pm = FactoryGirl.create(:project_milestone)
   end
 
   it "should create new activity on new milestone" do
@@ -15,7 +15,7 @@ describe ProjectMilestone do
     @pm.destroy
     Activity.count.should == 3
   end
-  
+
   it "should create new activity on planned date change" do
     @pm.update_attributes(:planned_date => 1.week.ago)
     puts Activity.last.activity
@@ -30,7 +30,7 @@ describe ProjectMilestone do
   end
 
   it "should create new activity on active status change and change other milestones to inactive if true" do
-    Factory(:project_milestone, :project => @pm.project, :active => true)
+    FactoryGirl.create(:project_milestone, :project => @pm.project, :active => true)
     ProjectMilestone.where(:active => true).size.should == 1
     @pm.update_attributes(:active => true)
     ProjectMilestone.where(:active => true).size.should == 1

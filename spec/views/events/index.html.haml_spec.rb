@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "events/index" do
   before(:each) do
-    @event = Factory(:event, :name => "Name", :attendance => 1, :url => "Url", :description => "MyText")
+    @event = FactoryGirl.create(:event, :name => "Name", :attendance => 1, :url => "Url", :description => "MyText")
     assign(:events, [
       @event, @event
     ])

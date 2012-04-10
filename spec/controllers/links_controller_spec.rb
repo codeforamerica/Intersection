@@ -3,9 +3,9 @@ require 'spec_helper.rb'
 describe LinksController do
 
   before do
-    @user = Factory(:user)
-    @project = Factory(:project)
-    @link = Factory(:link, :project => @project)
+    @user = FactoryGirl.create(:user)
+    @project = FactoryGirl.create(:project)
+    @link = FactoryGirl.create(:link, :project => @project)
     @link_type = @link.link_type
   end
 
@@ -19,7 +19,7 @@ describe LinksController do
       get :show, :id => @link.id
       response.should be_success
     end
-   
+
     it "should not allow edit, update, create, or destroy" do
       get :destroy, :id => @link.id
       response.should be_redirect
@@ -27,12 +27,12 @@ describe LinksController do
       response.should be_redirect
       get :edit, :id => @link.id
       response.should be_redirect
-      post :create, Factory.attributes_for(:link)
+      post :create, FactoryGirl.attributes_for(:link)
       response.should be_redirect
     end
 
   end
-  
+
   context "any nonadmin user" do
     login_user
 
@@ -49,12 +49,12 @@ describe LinksController do
       get :show, :id => @link.id
       response.should be_success
     end
-   
+
     it "should allow editing of a Link" do
       put :update, :id => @link.id, :link => {:name => 'something'}
       @link.reload.name.should == 'something'
     end
-     
+
     it "should allow destroy" do
       delete :destroy, :id => @link.id
       Link.count.should == 0
@@ -62,7 +62,7 @@ describe LinksController do
     end
 
     it "should allow create" do
-      post :create, :link => Factory.attributes_for(:link, :project_id => @project.id, :link_type_id => @link_type.id)
+      post :create, :link => FactoryGirl.attributes_for(:link, :project_id => @project.id, :link_type_id => @link_type.id)
       Link.count.should==2
       response.should be_redirect
     end

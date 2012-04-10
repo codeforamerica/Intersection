@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'User' do
   before do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
   end
 
   context 'has accessible attribute' do

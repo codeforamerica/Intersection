@@ -34,8 +34,8 @@ FactoryGirl.define do
   factory :link do |l|
     l.name "Something"
     l.url {Faker::Internet.domain_name}
-    l.project {Factory(:project)}
-    l.link_type {Factory(:link_type)}
+    l.project {FactoryGirl.create(:project)}
+    l.link_type {FactoryGirl.create(:link_type)}
   end
 
 
@@ -44,8 +44,8 @@ FactoryGirl.define do
   end
 
   factory :project_milestone do |pm|
-    pm.milestone {Factory(:milestone)}
-    pm.project {Factory(:project)}
+    pm.milestone {FactoryGirl.create(:milestone)}
+    pm.project {FactoryGirl.create(:project)}
     pm.planned_date {rand(6).months.ago}
   end
 
@@ -56,7 +56,7 @@ FactoryGirl.define do
   end
 
   factory :event do |e|
-    e.team {Factory(:team)}
+    e.team {FactoryGirl.create(:team)}
     e.name {Faker::Lorem.sentence}
     e.attendance {rand(200)}
     e.event_date {rand(15).weeks.ago}
@@ -79,34 +79,34 @@ FactoryGirl.define do
     r.expires_on {Time.now + 1.week}
     r.response 6
     r.note {Faker::Lorem.sentence(2)}
-    r.survey {Factory(:survey)}
-    r.user {Factory(:user)}
+    r.survey {FactoryGirl.create(:survey)}
+    r.user {FactoryGirl.create(:user)}
   end
 
   factory :user_survey_response, :parent => :survey_response do |u|
-    u.surveyable {Factory(:user)}
+    u.surveyable {FactoryGirl.create(:user)}
   end
 
   factory :project_survey_response do |u|
-    u.surveyable {Factory(:project)}
+    u.surveyable {FactoryGirl.create(:project)}
   end
 
   factory :team_survey_response do |u|
-    u.surveyable {Factory(:team)}
+    u.surveyable {FactoryGirl.create(:team)}
   end
 
   factory :batchbook_list do |l|
-    l.team {Factory(:team)}
+    l.team {FactoryGirl.create(:team)}
     l.batchbook_id {rand(100000)}
   end
 
   factory :batchbook_list_history do |h|
     h.contact_number {rand(10000)}
-    h.batchbook_list {Factory(:batchbook_list)}
+    h.batchbook_list {FactoryGirl.create(:batchbook_list)}
   end
 
   factory :story do |s|
-    s.user {Factory(:user)}
+    s.user {FactoryGirl.create(:user)}
     s.story {Faker::Lorem.paragraphs(2)}
   end
 end
