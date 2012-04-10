@@ -8,10 +8,10 @@ class Link < ActiveRecord::Base
 
   def create_activity(activity, verb)
     if $current_user
-    Activity.create(:user => $current_user, :project => self.project, :activity => 
+    Activity.create(:user => $current_user, :project => self.project, :activity =>
       "#{$current_user.profile.to_url} #{activity} #{self.to_url} #{verb} #{self.project.to_url}")
     else
-    Activity.create(:project => self.project, :activity => 
+    Activity.create(:project => self.project, :activity =>
       "#{self.to_url} #{activity} #{verb} #{self.project.to_url}</a>")
     end
   end

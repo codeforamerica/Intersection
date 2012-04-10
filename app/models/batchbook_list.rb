@@ -17,7 +17,7 @@ class BatchbookList < ActiveRecord::Base
   end
 
   def get_list
-    conn.get('/service/lists.xml?offset=0&limit=1000') 
+    conn.get('/service/lists.xml?offset=0&limit=1000')
   end
 
   def parse_list(xml_response)
@@ -30,8 +30,8 @@ class BatchbookList < ActiveRecord::Base
       end
       parsed << parse_node
     end
-    parsed 
-    
+    parsed
+
   end
 
   def conn

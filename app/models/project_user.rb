@@ -5,7 +5,7 @@ class ProjectUser < ActiveRecord::Base
   after_destroy 'create_activity("left")'
 
   def create_activity(activity)
-    Activity.create(:user => self.user, :project => self.project, :activity => 
+    Activity.create(:user => self.user, :project => self.project, :activity =>
       "#{self.user.profile.to_url} #{activity} the #{self.project.to_url} project")
   end
 

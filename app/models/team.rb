@@ -11,7 +11,7 @@ class Team < ActiveRecord::Base
   accepts_nested_attributes_for :team_projects, :allow_destroy => true
   accepts_nested_attributes_for :team_users, :allow_destroy => true
   accepts_nested_attributes_for :batchbook_lists, :allow_destroy => true
-  
+
   scope :active_teams, where(:active => true)
 
   def project_activities
@@ -19,7 +19,7 @@ class Team < ActiveRecord::Base
     if ids.blank?
       []
     else
-      Activity.where("project_id in (#{ids.join(',')})").order("created_at DESC")    
+      Activity.where("project_id in (#{ids.join(',')})").order("created_at DESC")
     end
   end
 
@@ -62,7 +62,7 @@ class Team < ActiveRecord::Base
   def self.network_growth
     Team.all.map { |x| [x, x.network_growth] }
   end
-  
+
   def network_growth_by_month
     data = []
     6.times { |x|

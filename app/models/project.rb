@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   has_many :links, :dependent => :destroy
   has_many :project_milestones, :dependent => :destroy
   has_many :milestones, :through => :project_milestones
-  has_many :team_projects, :dependent => :destroy 
+  has_many :team_projects, :dependent => :destroy
   has_many :teams, :through => :team_projects
   has_many :project_users, :dependent => :destroy
   has_many :users, :through => :project_users
@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
   after_update 'create_activity("updated")'
 
   acts_as_taggable
-  
+
   def self.grouped
     group("date(projects.created_at)").size
   end
@@ -51,7 +51,7 @@ class Project < ActiveRecord::Base
     0
   end
   end
-  
+
   def create_activity(activity)
     if $current_user
       if $current_user.profile
@@ -61,7 +61,7 @@ class Project < ActiveRecord::Base
         Activity.create(:project => self, :user => $current_user, :activity => "#{self.to_url} #{activity}.")
       end
     else
-    Activity.create(:project => self, :activity => 
+    Activity.create(:project => self, :activity =>
       "#{self.to_url} #{activity}.")
     end
   end

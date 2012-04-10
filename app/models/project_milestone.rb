@@ -37,7 +37,7 @@ class ProjectMilestone < ActiveRecord::Base
         "Milestone '#{self.milestone.name}' marked as active.")
     end
   end
-  
+
   def update_completed_date
     if $current_user
       Activity.create(:user => $current_user, :project => self.project, :activity =>

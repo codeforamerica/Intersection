@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
       0
     end
   end
-  
+
   def self_survey_average(time1=1.month.ago, time2=Time.now)
     resp_array = self.survey_responses.taken.during(time1, time2)
     if resp_array.size > 0
