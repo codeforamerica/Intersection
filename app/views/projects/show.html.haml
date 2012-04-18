@@ -64,7 +64,8 @@
           -else
             %span.planned
               Planned Completion On:
-              =milestone.planned_date.strftime("%m-%d-%y")
+              - unless milestone.planned_date.nil?
+                = milestone.planned_date.strftime("%m-%d-%y")
 
 
 .tabbable
