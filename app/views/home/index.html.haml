@@ -38,7 +38,7 @@
     %ul
       -@projects[0..10].each do |project|
         %li.arrows
-          =link_to project.name, "/projects/#{project.name}"
+          =link_to project.name, project
   .span6.stats
     %h2 Network Growth
     %ul
