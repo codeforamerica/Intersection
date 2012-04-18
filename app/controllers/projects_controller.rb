@@ -3,8 +3,13 @@ class ProjectsController < InheritedResources::Base
 
   def index
     params[:search][:project_milestones_active_equals] = true if params[:search] and params[:search][:project_milestones_milestone_id_equals]!=0
-    @search = Project.tagged_with(["qw"],:exclude => true).search(params[:search])
-    @projects = @search.order("created_at DESC")
+
+    if params[:search][:taggings_tag_name_contains] == "qw"
+      @search = Project.search(params[:search])
+    else
+      @search = Project.tagged_with(["qw"],:exclude => true).search(params[:search])
+    end
+      @projects = @search.order("created_at DESC")
   end
 
   def show
