@@ -1,3 +1,7 @@
+branches:
+  only:
+    - 'master'
+
 before_install: "gem update --system"
 bundler_args: "--without assets:development:production"
 before_script: "bundle exec rake db:create db:migrate test"
@@ -6,4 +10,14 @@ rvm:
   - 1.9.2
   - 1.9.3
 env: "RAILS_ENV=test"
+
+language: ruby
+rvm:
+  - 1.9.2
+  - 1.9.3
+
+notifications:
+  irc:
+    channels:
+      - 'irc.freenode.org:6667#codeforamerica'
 
