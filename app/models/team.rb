@@ -44,7 +44,7 @@ class Team < ActiveRecord::Base
     members.uniq
   end
 
-  def network_growth(time1=4.weeks.ago, time2=Time.now)
+  def network_growth(time1=Date.new(2012,1,1), time2=Time.now)
     previous = 0
     current = 0
     self.batchbook_lists.each do |list|
