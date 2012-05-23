@@ -35,7 +35,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'sqlite3'
-  gem 'spork', '0.9.0'
+  gem 'spork'
   gem 'timecop'
   gem 'factory_girl_rails'
 end
