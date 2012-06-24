@@ -34,3 +34,4 @@ tramp
 .DS_Store
 public/system/*
 .sass-cache/
+.env
