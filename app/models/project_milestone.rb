@@ -51,10 +51,10 @@ class ProjectMilestone < ActiveRecord::Base
   def update_planned_date
     if $current_user
       Activity.create(:user => $current_user, :project => self.project, :activity =>
-        "#{$current_user.profile.to_url} updated the planned date for milestone '#{self.milestone.name}' from #{self.planned_date_was.strftime('%m-%d-%y')} to #{self.planned_date.strftime('%m-%d-%y')}")
+        "#{$current_user.profile.to_url} updated the planned date for milestone '#{self.milestone.name}' from #{self.planned_date_was.try(:strftime, '%m-%d-%y')} to #{self.planned_date.try(:strftime, '%m-%d-%y')}")
     else
       Activity.create(:project => self.project, :activity =>
-        "Planned date for milestone '#{self.milestone.name}' updated from #{self.planned_date_was.strftime('%m-%d-%y')} to #{self.planned_date.strftime('%m-%d-%y')}")
+        "Planned date for milestone '#{self.milestone.name}' updated from #{self.planned_date_was.try(:strftime, '%m-%d-%y')} to #{self.planned_date.try(:strftime, '%m-%d-%y')}")
     end
   end
 
