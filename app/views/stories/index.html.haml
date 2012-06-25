@@ -11,15 +11,17 @@
 
   - @stories.each do |story|
     %tr
-      -if story.user
-        %td= link_to story.user.name, story.user.profile
-      -if story.project
-        %td
+      %td
+        -if story.user
+          = link_to story.user.name, story.user.profile
+      %td
+        -if story.project
           = link_to story.project.name, story.project if story.project
-      -if story.team
-        %td
+      %td
+        -if story.team
           = link_to story.team.name, story.team if story.team
-      %td= story.story
+      %td
+        = story.story
       %td
         = link_to 'Show', story
         -if current_user
