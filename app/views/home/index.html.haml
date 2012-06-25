@@ -18,7 +18,7 @@
               =render :partial => "surveys/survey_trend", :locals => {:trends => survey.survey_responses.trends_by_response(num=4)}
               .clearfix
 .row.new_section
-  .span3.stats
+  .span4.stats
     %h2 2012 CFA Stats
     %ul
       %li.arrows
@@ -33,42 +33,9 @@
         =link_to "#{number_to_percentage(@network_size.inject(0) {|sum, x| sum + x[1]}/@network_size.size, :precision => 2)} network growth", teams_path
       %li.arrows
         =link_to "#{@events.size} events attended"
-  .span3.stats
+  .span8.stats
     %h2 Recent Projects
     %ul
       -@projects[0..10].each do |project|
         %li.arrows
           =link_to project.name, project
-  .span6.stats
-    %h2 Network Growth
-    %ul
-      .row
-        .span8
-          %div{:id=>"network_pie_div"}
-      .row
-        .span4
-          City
-        .span1
-          \%
-        .span1
-          New
-        .span1
-          Current
-      -Team.network_growth.sort { |x,y| x[1][1] <=> y[1][1]}.reverse.each do |team|
-        %li.arrows
-          .row
-            .span3
-              =link_to "#{team.first.name}"
-            .span1
-              =number_to_percentage(team[1][1], :precision => 2)
-            .span1
-              =team[1][2]
-            .span1
-              =team[1][0]
-
-
-
-
-
-
-
