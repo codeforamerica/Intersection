@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   has_many :team_projects, :dependent => :destroy
   has_many :teams, :through => :team_projects
   has_many :project_users, :dependent => :destroy
-  has_many :users, :through => :project_users
+  has_many :users, :through => :project_users, :uniq => true
   has_many :activities
   has_many :survey_responses, :as => :surveyable
   has_many :stories
