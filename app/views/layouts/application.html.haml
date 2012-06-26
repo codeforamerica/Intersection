@@ -17,10 +17,10 @@
         .span-one-third
           -if current_user
             .gravatar
-              =gravatar_image_tag(current_user.email, :alt => current_user.profile.name)
+              =gravatar_image_tag(current_user.email, :alt => current_user.name)
             .profile
               %h2
-                = "Welcome #{current_user.profile.name}"
+                = "Welcome #{current_user.name}"
               .links
                 = link_to('Logout', destroy_user_session_path, :method => :delete)
                 |
