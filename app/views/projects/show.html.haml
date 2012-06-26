@@ -30,8 +30,7 @@
     %ul
       -@project.links.each do |link|
         %li
-          =link.name + ":"
-          =link_to link.url
+          =link_to link.name, link.name
           ="(#{link.link_type.name})"
   .span6.stats
     %h2 Details
