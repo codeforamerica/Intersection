@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    self.profile.name
+    self.profile.try(:name)
   end
 
   def new_surveys?
