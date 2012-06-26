@@ -1,6 +1,6 @@
-%h1 Code for America 2012 Stories
-%br
-= link_to 'New Story', new_story_path if current_user
+%h1.floated Code for America 2012 Stories
+#new
+  = link_to 'New Story', new_story_path, :class => "btn btn-primary"  if current_user
 %table.table
   %tr
     %th Submitted by

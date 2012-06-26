@@ -2,25 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.stats h2 {
-color: #000;
-text-transform: uppercase;
-font-size: 1.2em;
-display: -moz-inline-stack;
-display: inline-block;
-padding-right: 18px;
-background: url(/assets/red-arrow.gif) 100% 50% no-repeat;
-text-shadow: #CCC 1px 1px 1px;
-}
-
-.stats a{
-  text-decoration: none;
-  color: #666;
-}
-
-.stats h2 a {
-  color: #000;
-}
 
 .stats ul {
 padding-top: 11px;
@@ -57,22 +38,9 @@ color: #666;
 .stats ul h4 {
 font-size: 11px;
 margin-bottom: 5px;
-background: url(/assets/horizontal-dots.gif) 0 0 repeat-x;
 }
 
 .row.new_section {
 padding-top: 15px;
-background: url(/assets/wrap-bg-t.gif) 0 0 repeat-x;
 margin-top: 10px;
-}
-
-li.arrows a { 
-padding-left: 21px;
-display: block;
-background: url(/assets/bullet-red-arrow.gif) 0 3px no-repeat;
-color: #707070;
-font-size: 1.17em;
-font-weight: bold;
-text-decoration: none;
-text-transform: uppercase;
 }
