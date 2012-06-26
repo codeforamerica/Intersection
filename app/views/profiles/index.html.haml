@@ -4,6 +4,6 @@
     %ul.profiles
       -@profiles.select {|x| x.user_type == "Fellow"}.each do |profile|
         %li
-          =link_to gravatar_image_tag(profile.user.email, :alt => profile.name), "/profiles/#{profile.name}"
+          =link_to gravatar_image_tag(profile.user.email, :alt => profile.try(:name)), "/profiles/#{profile.try(:name)}"
           %br
-          =link_to profile.name, "/profiles/#{profile.name}"
+          =link_to profile.try(:name), "/profiles/#{profile.try(:name)}"

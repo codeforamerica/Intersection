@@ -22,9 +22,9 @@
     %ul.team_members
       -@project.users.each do |user|
         %li
-          =link_to gravatar_image_tag(user.email, :alt => user.profile.name), user.profile
+          =link_to gravatar_image_tag(user.email, :alt => user.profile.try(:name)), user.profile
           %br
-          =link_to user.profile.name, user.profile
+          =link_to user.profile.try(:name), user.profile
     .clearfix
     %h2 Links
     %ul
@@ -117,6 +117,6 @@
                 %td=sr.updated_at.strftime("%m/%d/%y")
                 %td=survey_name(sr)
                 %td=raw(r_y_g(sr.response))
-                %td=link_to sr.user.profile.name, sr.user.profile
+                %td=link_to sr.user.profile.try(:name), sr.user.profile
                 %td=sr.note
 

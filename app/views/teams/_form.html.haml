@@ -21,7 +21,7 @@
       .clearfix
         =u.label "User"
         .input
-          = u.select(:user_id, User.all.collect { |p| [p.profile.name, p.id]}, {:include_blank => false})
+          = u.select(:user_id, User.all.collect { |p| [p.profile.try(:name), p.id]}, {:include_blank => false})
           %span.help-block
             = u.link_to_remove "Remove"
     = f.link_to_add "Add User",:team_users
