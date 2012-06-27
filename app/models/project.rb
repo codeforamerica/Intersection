@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   has_many :links, :dependent => :destroy
   has_many :project_milestones, :dependent => :destroy
-  has_many :milestones, :through => :project_milestones
+  has_many :milestones, :through => :project_milestones, :uniq => true
   has_many :team_projects, :dependent => :destroy
   has_many :teams, :through => :team_projects
   has_many :project_users, :dependent => :destroy
