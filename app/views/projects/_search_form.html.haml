@@ -1,0 +1,17 @@
+%tr
+  %td
+    = f.text_field :name_contains,:class=>"search_medium"
+  %td
+    =f.text_field :taggings_tag_name_contains,:class=>"search_medium"
+  %td
+    = f.text_field :teams_name_contains, :class => "search_medium"
+  %td
+  %td
+    = f.check_box :active_equals, :checked => true
+  %td
+    = f.select "project_milestones_milestone_id_equals", Milestone.all.collect { |m| [m.name, m.id]}, {:include_blank => true}
+  %td
+  %td
+  %td
+    =f.submit "Submit", :value=>"Search", :class=>"btn info"
+    =link_to "Clear", projects_path
