@@ -2,7 +2,7 @@ module ProjectsHelper
 
   def on_schedule(milestone_history)
     if milestone_history.completed_date.blank?
-      if milestone.planned_date.present?
+      if milestone_history.planned_date.present?
         schedule = milestone_history.planned_date.to_time - Time.now        
         if schedule < -1209600
           "red_schedule"
