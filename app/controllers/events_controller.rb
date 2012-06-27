@@ -3,7 +3,7 @@ class EventsController < InheritedResources::Base
   respond_to :html, :js
   
   def index
-    @search = Event.search(params[:search])
+    @search = Event.search(params[:search]).order('event_date DESC')
     @events = @search
   end
 
