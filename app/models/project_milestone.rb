@@ -28,7 +28,7 @@ class ProjectMilestone < ActiveRecord::Base
 
   def update_active_status
     #change all other active states on project milestones to false
-    self.project.project_milestones.where("active == ? and id != ?", true, self.id).each { |pm| pm.update_attributes(:active => false)}
+    self.project.project_milestones.where("active = ? and id != ?", true, self.id).each { |pm| pm.update_attributes(:active => false)}
     if $current_user
       Activity.create(:user => $current_user, :project => self.project, :activity =>
         "#{$current_user.profile.to_url} marked milestone '#{self.milestone.name}' as active")
