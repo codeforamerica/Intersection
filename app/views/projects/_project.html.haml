@@ -11,15 +11,15 @@
       =raw(r_y_g(project.survey_average)) if project.active?
   %td= project.active? ? raw('<span class="label label-success">Yes</span>') : raw('<span class="label label-important">No</span>')
   %td
-    -active_milestone = project.project_milestones.where(:active => true)
-    -if !active_milestone.blank?
-      =active_milestone.first.milestone.name
+    -active_milestones = project.project_milestones.where(:active => true)
+    -if active_milestones.present?
+      =active_milestones.first.milestone.name
   %td
     %div.bar_graph
-      -if !active_milestone.blank?
-        %div{:class => "size_#{active_milestone.first.milestone.id} #{on_schedule(active_milestone.first)}"}
+      -if active_milestones.present?
+        %div{:class => "size_#{active_milestones.first.milestone_id} #{on_schedule(active_milestones.first)}"}
   %td
-    -if !project.project_milestones.blank?
+    -if project.project_milestones.present?
       =project.project_milestones.order("updated_at DESC").first.updated_at.strftime("%m-%d-%Y")
   -if current_user
     %td

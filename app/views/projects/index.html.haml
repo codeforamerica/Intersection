@@ -2,37 +2,40 @@
   ="Projects (#{@projects.size})"
 = link_to 'New Project', new_project_path if current_user
 =form_for @search do |f|
-  %table.table
-    %tr
-      %th Name
-      %th Tags
-      %th Team
-      -if current_user
-        %th Survey
-      %th Active
-      %th Milestone
-      %th Progress
-      %th Last Updated
-      %th
+  %table.table.sortable
+    %thead
+      %tr
+        %th Name
+        %th Tags
+        %th Team
+        -if current_user
+          %th Survey
+        %th Active
+        %th Milestone
+        %th Progress
+        %th Last Updated
+        %th
 
-    %tr
-      %td
-        = f.text_field :name_contains,:class=>"search_medium"
-      %td
-        =f.text_field :taggings_tag_name_contains,:class=>"search_medium"
-      %td
-        = f.text_field :teams_name_contains, :class => "search_medium"
-      %td
-      %td
-        = f.check_box :active_equals, :checked => true
-      %td
-        = f.select "project_milestones_milestone_id_equals", Milestone.all.collect { |m| [m.name, m.id]}, {:include_blank => true}
-      %td
-      %td
-      %td
-        =f.submit "Submit", :value=>"Search", :class=>"btn info"
-        =link_to "Clear", projects_path
-    =render @projects
+    %tbody
+      %tr
+        %td
+          = f.text_field :name_contains,:class=>"search_medium"
+        %td
+          =f.text_field :taggings_tag_name_contains,:class=>"search_medium"
+        %td
+          = f.text_field :teams_name_contains, :class => "search_medium"
+        %td
+        %td
+          = f.check_box :active_equals, :checked => true
+        %td
+          = f.select "project_milestones_milestone_id_equals", Milestone.all.collect { |m| [m.name, m.id]}, {:include_blank => true}
+        %td
+        %td
+        %td
+          =f.submit "Submit", :value=>"Search", :class=>"btn info"
+          =link_to "Clear", projects_path
+  
+      =render @projects
 
 %br
 

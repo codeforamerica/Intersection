@@ -45,12 +45,12 @@
         %b Tags:
         =@project.tag_list
     %h2 Milestones
-    -active_milestone = @project.project_milestones.where(:active => true)
+    -active_milestones = @project.project_milestones.where(:active => true)
     %ul
       %li
         %div.bar_graph
-          -if !active_milestone.blank?
-            %div{:class => "size_#{active_milestone.first.milestone.id} #{on_schedule(active_milestone.first)}"}
+          -if active_milestones.present?
+            %div{:class => "size_#{active_milestones.first.milestone_id} #{on_schedule(active_milestones.first)}"}
       -@project.project_milestones.each do |milestone|
         %li.milestone{:class => "#{milestone.active? ? 'active' : 'inactive'}"}
           %span.name
