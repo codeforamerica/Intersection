@@ -20,7 +20,7 @@
         %div{:class => "size_#{active_milestones.first.milestone_id} #{on_schedule(active_milestones.first)}"}
   %td
     -if project.project_milestones.present?
-      =project.project_milestones.order("updated_at DESC").first.updated_at.strftime("%m-%d-%Y")
+      =project.updated_at.strftime("%m-%d-%Y")
   -if current_user
     %td
       = link_to 'Edit', edit_project_path(project)
