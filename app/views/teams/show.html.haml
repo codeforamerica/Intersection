@@ -36,18 +36,20 @@
         %a{:href=>"#5", 'data-toggle' => 'tab'} Surveys
   .tab-content
     .tab-pane.active#1
-      %table.table
-        %tr
-          %th Name
-          %th Tags
-          %th Team
-          -if current_user
-            %th Survey
-          %th Active
-          %th Milestone
-          %th Progress
-          %th Last Updated
-          %th
+      %table.table.sortable
+        %thead
+          %tr
+            %th Name
+            %th Tags
+            %th Team
+            -if current_user
+              %th Survey
+            %th Active
+            %th Milestone
+            %th Progress
+            %th Last Updated
+            %th
+        %tbody
           =render @team.projects
     .tab-pane#2
       =render :partial => "events/events_index", :locals => {:events => @team.events}
