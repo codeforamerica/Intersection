@@ -2,6 +2,10 @@ class TeamsController < InheritedResources::Base
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :is_admin?, :only => [:new, :create, :destroy]
 
+  def index
+    @teams = Team.active_teams.order('sort_order')
+  end
+  
   def team
     @teams = Team.active_teams.order("name")
   end
