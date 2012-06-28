@@ -2,14 +2,14 @@ class ProjectsController < InheritedResources::Base
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @search = Project.tagged_with(["qw"],:exclude => true).search(params[:search])
+    @search = Project.tagged_with(["quick win"],:exclude => true).search(params[:search])
 
     if params[:search].nil?
-      @search =  Project.tagged_with(["qw"],:exclude => true).search
-    elsif  params[:search][:taggings_tag_name_contains] == "qw"
+      @search =  Project.tagged_with(["quick win"],:exclude => true).search
+    elsif  params[:search][:taggings_tag_name_contains] == "quick win"
       @search = Project.search(params[:search])
     else
-      @search = Project.tagged_with(["qw"],:exclude => true).search(params[:search])
+      @search = Project.tagged_with(["quick win"],:exclude => true).search(params[:search])
     end
 
     @projects = @search.order("created_at DESC")
