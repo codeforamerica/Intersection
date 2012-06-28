@@ -11,169 +11,169 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410224457) do
+ActiveRecord::Schema.define(:version => 20120628005728) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "team_id"
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.text     "activity"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "team_id"
+    t.integer   "user_id"
+    t.integer   "project_id"
+    t.text      "activity"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "batchbook_list_histories", :force => true do |t|
-    t.integer  "batchbook_list_id"
-    t.integer  "contact_number"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.integer   "batchbook_list_id"
+    t.integer   "contact_number"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "batchbook_lists", :force => true do |t|
-    t.integer  "team_id"
-    t.integer  "batchbook_id"
-    t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer   "team_id"
+    t.integer   "batchbook_id"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.string   "queue"
+    t.integer   "priority",   :default => 0
+    t.integer   "attempts",   :default => 0
+    t.text      "handler"
+    t.text      "last_error"
+    t.timestamp "run_at"
+    t.timestamp "locked_at"
+    t.timestamp "failed_at"
+    t.string    "locked_by"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "queue"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "events", :force => true do |t|
-    t.integer  "team_id"
-    t.string   "name"
-    t.integer  "attendance"
-    t.datetime "event_date"
-    t.string   "url"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer   "team_id"
+    t.string    "name"
+    t.integer   "attendance"
+    t.timestamp "event_date"
+    t.string    "url"
+    t.text      "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "link_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "links", :force => true do |t|
-    t.string   "name"
-    t.integer  "project_id"
-    t.integer  "link_type_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "url"
+    t.string    "name"
+    t.integer   "project_id"
+    t.integer   "link_type_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "url"
   end
 
   create_table "milestones", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "profiles", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.text     "bio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "user_type"
+    t.integer   "user_id"
+    t.string    "name"
+    t.text      "bio"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "user_type"
   end
 
   create_table "project_milestones", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "milestone_id"
-    t.date     "planned_date"
-    t.boolean  "active",         :default => false
-    t.date     "completed_date"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer   "project_id"
+    t.integer   "milestone_id"
+    t.date      "planned_date"
+    t.boolean   "active",         :default => false
+    t.date      "completed_date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "project_users", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "project_id"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "projects", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.text     "impact_statement"
-    t.boolean  "active",           :default => true
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.string    "name"
+    t.text      "description"
+    t.text      "impact_statement"
+    t.boolean   "active",           :default => true
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.text      "message"
+    t.string    "username"
+    t.integer   "item"
+    t.string    "table"
+    t.integer   "month"
+    t.integer   "year"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "stories", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.integer  "team_id"
-    t.text     "story"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.integer   "project_id"
+    t.integer   "team_id"
+    t.text      "story"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "survey_responses", :force => true do |t|
-    t.integer  "survey_id"
-    t.integer  "response"
-    t.text     "note"
-    t.integer  "user_id"
-    t.date     "expires_on"
-    t.string   "surveyable_type"
-    t.integer  "surveyable_id"
-    t.string   "code"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer   "survey_id"
+    t.integer   "response"
+    t.text      "note"
+    t.integer   "user_id"
+    t.date      "expires_on"
+    t.string    "surveyable_type"
+    t.integer   "surveyable_id"
+    t.string    "code"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "surveys", :force => true do |t|
-    t.string   "name"
-    t.string   "survey_type"
-    t.integer  "scale"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer  "frequency"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string    "name"
+    t.string    "survey_type"
+    t.integer   "scale"
+    t.timestamp "start_date"
+    t.timestamp "end_date"
+    t.integer   "frequency"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "taggings", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context"
-    t.datetime "created_at"
+    t.integer   "tag_id"
+    t.integer   "taggable_id"
+    t.string    "taggable_type"
+    t.integer   "tagger_id"
+    t.string    "tagger_type"
+    t.string    "context"
+    t.timestamp "created_at"
   end
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
@@ -184,46 +184,47 @@ ActiveRecord::Schema.define(:version => 20120410224457) do
   end
 
   create_table "team_projects", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "team_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "project_id"
+    t.integer   "team_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "team_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.integer   "team_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "teams", :force => true do |t|
-    t.string   "name"
-    t.boolean  "active",     :default => true
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.string    "name"
+    t.boolean   "active",     :default => true
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "sort_order"
   end
 
   create_table "user_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
-    t.boolean  "admin"
+    t.string    "email",                                 :default => "", :null => false
+    t.string    "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",                         :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
