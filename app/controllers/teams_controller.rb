@@ -5,10 +5,6 @@ class TeamsController < InheritedResources::Base
   def index
     @teams = Team.active_teams.order('sort_order')
   end
-  
-  def team
-    @teams = Team.active_teams.order("name")
-  end
 
   def show
     @team = params[:id].to_i==0 ? Team.where(:name => params[:id]).first : Team.find(params[:id])
