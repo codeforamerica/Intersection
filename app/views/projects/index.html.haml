@@ -1,20 +1,20 @@
-%h1
+%h1.floated
   ="Projects (#{@projects.size})"
-= link_to 'New Project', new_project_path if current_user
+#new
+  = link_to 'New Project', new_project_path, :class=> "btn btn-primary" if current_user
 =form_for @search do |f|
-  %table.table.sortable
-    %thead
-      %tr
-        %th Name
-        %th Tags
-        %th Team
-        -if current_user
-          %th Survey
-        %th Active
-        %th Milestone
-        %th Progress
-        %th Last Updated
-        %th
+  %table.table.table-striped
+    %tr
+      %th Name
+      %th Tags
+      %th Team
+      -if current_user
+        %th Survey
+      %th Active
+      %th Milestone
+      %th Progress
+      %th Last Updated
+      %th
 
     %tbody  
       =render @projects
