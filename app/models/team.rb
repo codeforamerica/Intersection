@@ -16,7 +16,7 @@ class Team < ActiveRecord::Base
   if Rails.env == 'development'
     has_attached_file :logo, :styles => { :thumb => "50x50#", :icon => "30x30#" }
   elsif Rails.env == 'production'
-    has_attached_file :image, 
+    has_attached_file :logo, 
                       :styles => { :thumb => "50x50#", :icon => "30x30#" }, 
                       :storage => :s3,
                       :bucket => 'intersection',
