@@ -3,9 +3,14 @@
 %table.table
   %tr
     %th City
+    %th &nbsp;
     - @teams.each do |team|
       %tr
+        %td{:width=>'30px'}
+          - if team.logo?
+            = image_tag(team.logo.url(:icon))
         %td
-          =  link_to team.name, team
+          %h3
+            = link_to team.name, team
 
 

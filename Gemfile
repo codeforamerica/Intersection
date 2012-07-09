@@ -26,6 +26,8 @@ gem 'delayed_job_active_record'
 gem 'ox'
 gem 'faraday'
 gem 'faraday_middleware'
+gem 'paperclip'
+
 group :development do
   gem 'ZenTest'
 end

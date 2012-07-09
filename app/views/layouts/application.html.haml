@@ -27,11 +27,12 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.brand{:href => "/"} Intersection
           .nav-collapse
             %ul.nav
               %li
-                = link_to 'Home', root_path
+                = image_tag('CfA_logo.png', :class => 'logo')
+              %li
+                = link_to 'Intersection', root_path, :class => 'brand'
               %li
                 = link_to 'Cities', teams_path, :class => "cities"
                 %ul.submenu.clearfix
@@ -48,24 +49,22 @@
                 = link_to 'Stories', stories_path
             %ul.nav.pull-right
               -if current_user
+                %li
+                  = link_to "My Surveys", "/my_surveys"
                 -if current_user.try(:admin?)
                   %li
                     = link_to 'Surveys', surveys_path
-                %li
-                  = link_to "My Surveys", "/my_surveys"
-                %li
-                  = link_to('Me', profile_path(current_user.profile))
-                %li
-                  = link_to('Logout', destroy_user_session_path, :method => :delete)
                 -if current_user.admin?
                   %li
                     =link_to "Admin", rails_admin_path
                 %li
+                  = link_to('Logout', destroy_user_session_path, :method => :delete)
+                %li
                   .gravatar
                     = link_to(gravatar_image_tag(current_user.email, :alt => current_user.profile.name), profile_path(current_user.profile))
-                -if !user_signed_in?
-                  %li
-                    = link_to('Login', new_user_session_path)
+              -if !user_signed_in?
+                %li
+                  = link_to('Login', new_user_session_path)
           / /.nav-collapse
     .container
       .row
