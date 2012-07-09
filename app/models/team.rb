@@ -13,8 +13,20 @@ class Team < ActiveRecord::Base
   accepts_nested_attributes_for :team_users, :allow_destroy => true
   accepts_nested_attributes_for :batchbook_lists, :allow_destroy => true
   
-  has_attached_file :logo, :styles => { :thumb => "50x50#", :icon => "30x30#" }
-
+  if Rails.env == 'development'
+    has_attached_file :logo, :styles => { :thumb => "50x50#", :icon => "30x30#" }
+  elsif Rails.env == 'production'
+    has_attached_file :image, 
+                      :styles => { :thumb => "50x50#", :icon => "30x30#" }, 
+                      :storage => :s3,
+                      :bucket => 'intersection',
+                      :path => "teams/:id/:filename/:style",
+                      :s3_credentials => {
+                        :access_key_id => ENV['S3_KEY'],
+                        :secret_access_key => ENV['S3_SECRET']
+                      }
+  end
+  
   scope :active_teams, where(:active => true)
 
   def project_activities
