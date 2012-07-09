@@ -27,7 +27,6 @@ gem 'ox'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'paperclip'
-gem 'aws-s3'
 
 
 group :development do
@@ -54,6 +53,8 @@ end
 group :production do
   gem 'pg'
   gem 'thin'
+  gem 'aws-s3'
+  gem 'aws-sdk'
 end
 
 
