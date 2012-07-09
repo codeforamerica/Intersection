@@ -4,7 +4,7 @@
   - @teams.each do |team|
     %tr
       %td{:width=>'30px'}
-        - if team.logo?
+        - if team.logo.present?
           = image_tag(team.logo.url(:icon))
       %td
         %h3
