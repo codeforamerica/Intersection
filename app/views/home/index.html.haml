@@ -12,14 +12,14 @@
     %h2 2012 CFA Stats
     %ul
       %li.arrows
-        =link_to "#{@fellows.size} Fellows", profiles_path
+        %h3=link_to "#{@fellows.size} Fellows", profiles_path
       %li.arrows
-        =link_to "#{@projects.size} Projects", projects_path
+        %h3=link_to "#{@projects.size} Projects", projects_path
       %li.arrows
-        =link_to "#{@events.size} events attended"
+        %h3=link_to "#{@events.size} events attended"
   .span8.stats
     %h2 Recent Projects
     %ul
       -@projects[0..10].each do |project|
         %li.arrows
-          =link_to project.name, project
+          %h3=link_to project.name, project

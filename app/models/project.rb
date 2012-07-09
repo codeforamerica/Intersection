@@ -9,11 +9,15 @@ class Project < ActiveRecord::Base
   has_many :activities
   has_many :survey_responses, :as => :surveyable
   has_many :stories
+  
   accepts_nested_attributes_for :links, :allow_destroy => true
   accepts_nested_attributes_for :project_milestones, :allow_destroy => true
   accepts_nested_attributes_for :project_users, :allow_destroy => true
   accepts_nested_attributes_for :team_projects, :allow_destroy => true
+  
   scope :active, where(:active => true)
+  scope :featured, where(:featured => true)
+  
   validates_presence_of :name
 
   after_create 'create_activity("started")'

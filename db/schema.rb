@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120709032137) do
+ActiveRecord::Schema.define(:version => 20120709153546) do
 
   create_table "activities", :force => true do |t|
     t.integer   "team_id"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20120709032137) do
     t.boolean   "active",           :default => true
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.boolean   "featured",         :default => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|
