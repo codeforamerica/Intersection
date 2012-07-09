@@ -56,6 +56,10 @@ GEM
       rails (~> 3.0)
     addressable (2.2.8)
     arel (3.0.2)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bbenezech-nested_form (0.0.3)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.2)
@@ -230,6 +234,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    xml-simple (1.1.1)
 
 PLATFORMS
   ruby
@@ -237,6 +242,7 @@ PLATFORMS
 DEPENDENCIES
   ZenTest
   acts-as-taggable-on
+  aws-s3
   bootstrap-sass
   coffee-rails (~> 3.2.1)
   delayed_job

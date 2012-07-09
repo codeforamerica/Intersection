@@ -27,6 +27,8 @@ gem 'ox'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'paperclip'
+gem 'aws-s3'
+
 
 group :development do
   gem 'ZenTest'
