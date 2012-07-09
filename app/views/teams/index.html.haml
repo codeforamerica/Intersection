@@ -1,16 +1,11 @@
 %h1 Cities
 %br
 %table.table
-  %tr
-    %th City
-    %th &nbsp;
-    - @teams.each do |team|
-      %tr
-        %td{:width=>'30px'}
-          - if team.logo?
-            = image_tag(team.logo.url(:icon))
-        %td
-          %h3
-            = link_to team.name, team
-
-
+  - @teams.each do |team|
+    %tr
+      %td{:width=>'30px'}
+        - if team.logo?
+          = image_tag(team.logo.url(:icon))
+      %td
+        %h3
+          = link_to team.name, team
